@@ -30,3 +30,11 @@ adjective_animal <- function(n_adjectives=1, style="snake") {
 ##' @rdname adjective_animal
 ##' @export
 aa <- adjective_animal
+
+##' Generate UUIDs using the uuid package
+##' @title Generate UUIDs
+##' @param n Number of ids to generate
+##' @export
+uuid <- function(n) {
+  vapply(seq_len(n), uuid::UUIDgenerate, character(1))
+}
