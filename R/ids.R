@@ -35,6 +35,18 @@ aa <- adjective_animal
 ##' @title Generate UUIDs
 ##' @param n Number of ids to generate
 ##' @export
+##' @importFrom uuid UUIDgenerate
 uuid <- function(n) {
   vapply(seq_len(n), uuid::UUIDgenerate, character(1))
 }
+
+## random <- function(n, nchar=32, numbers=TRUE, lower=TRUE, upper=FALSE) {
+##   pool <- c(if (numbers) 0:9,
+##             if (lower) letters,
+##             if (upper) LETTERS)
+##   if (length(pool) == 0L) {
+##     stop("Can't generate random ids with no pool")
+##   }
+##   i <- sample.int(length(pool), n * nchar, replace=TRUE)
+##   apply(matrix(pool[i], n), 1, paste, collapse="")
+## }
