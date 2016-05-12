@@ -3,50 +3,27 @@
 
 ##' Generic id generating function
 ##' @title Generic id generating function
+##'
+##' @param n number of ids to return.  If \code{NULL}, it instead
+##'   returns the generating function
+##'
 ##' @param ... A number of character vectors
+##'
 ##' @param vals A list of character vectors, \emph{instead} of \code{...}
-##' @param style Style to join words with
+##'
+##' @param style Style to join words with.  Can be one of "Pascal",
+##'   "camel", "snake", "kebab", "title", "sentence", "lower",
+##'   "upper", and "constant".
+##'
+##' @return Either a character vector of length \code{n}, or a
+##'   function of one argument if \code{n} is \code{NULL}
+##'
 ##' @export
-ids <- function(..., vals=list(...), style="snake") {
+ids <- function(n, ..., vals=list(...), style="snake") {
   nvals <- length(vals)
   combine <- make_combine(style)
-  function(n=1) {
+  gen <- function(n=1) {
     combine(vapply(vals, sample, character(n), n))
   }
+  if (is.null(n)) gen else gen(n)
 }
-
-##' Ids based on a number of adjectives and an animal
-##' @title Ids based on a number of adjectives and an animal
-##' @param n_adjectives Number of adjectives to prefix the anmial with
-##' @param style Style to join the words with
-##' @export
-##' @examples
-##' a2a <- aa(2)
-##' a2a()
-adjective_animal <- function(n_adjectives=1, style="snake") {
-  ids(vals=c(rep(list(adjectives), n_adjectives), list(animals)), style=style)
-}
-
-##' @rdname adjective_animal
-##' @export
-aa <- adjective_animal
-
-##' Generate UUIDs using the uuid package
-##' @title Generate UUIDs
-##' @param n Number of ids to generate
-##' @export
-##' @importFrom uuid UUIDgenerate
-uuid <- function(n) {
-  vapply(seq_len(n), uuid::UUIDgenerate, character(1))
-}
-
-## random <- function(n, nchar=32, numbers=TRUE, lower=TRUE, upper=FALSE) {
-##   pool <- c(if (numbers) 0:9,
-##             if (lower) letters,
-##             if (upper) LETTERS)
-##   if (length(pool) == 0L) {
-##     stop("Can't generate random ids with no pool")
-##   }
-##   i <- sample.int(length(pool), n * nchar, replace=TRUE)
-##   apply(matrix(pool[i], n), 1, paste, collapse="")
-## }

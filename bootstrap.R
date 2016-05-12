@@ -2,14 +2,15 @@
 read <- function(url) {
   f <- tempfile()
   download.file(url, f, method="curl")
-  jsonlite::fromJSON(suppressWarnings(readLines(f)))
+  dat <- readChar(f, file.size(f))
+  dat <- sub(".+?=\\s*", "", dat)
+  dat <- sub(";\\s*", "", dat)
+  sort(unique(tolower(jsonlite::fromJSON(dat))))
 }
 
-fmt <- "https://raw.githubusercontent.com/a-type/adjective-adjective-animal/master/lists/%s.json"
+fmt <- "https://raw.githubusercontent.com/a-type/adjective-adjective-animal/master/lib/lists/%s.js"
 
-animals <- read(sprintf(fmt, "animals"))
-adjectives <- read(sprintf(fmt, "adjectives"))
+gfycat_animals <- read(sprintf(fmt, "animals"))
+gfycat_adjectives <- read(sprintf(fmt, "adjectives"))
 
-adjectives <- sort(unique(tolower(adjectives)))
-
-save(animals, adjectives, file="R/sysdata.rda")
+save(gfycat_animals, gfycat_adjectives, file="R/sysdata.rda")
