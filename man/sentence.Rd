@@ -20,9 +20,14 @@ rather than slurping or jogging)}
 \description{
 Create a sentence style identifier.  This uses the approach
 described by Asana on their blog
-\url{https://blog.asana.com/2011/09/6-sad-squid-snuggle-softly/}
+\url{https://blog.asana.com/2011/09/6-sad-squid-snuggle-softly/}.
+This approach encodes 32 bits of information (so 2^32 ~= 4 billion
+possibilities) and in theory can be remapped to an integer if you
+really wanted to.
 }
 \author{
 Rich FitzJohn
+sentence()
+sentence(3, past=TRUE)
 }
 

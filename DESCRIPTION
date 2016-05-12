@@ -9,6 +9,7 @@ LazyData: true
 URL: https://github.com/richfitz/ids
 BugReports: https://github.com/richfitz/ids/issues
 Imports:
+    openssl,
     uuid
 Suggests:
     testthat

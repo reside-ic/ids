@@ -2,6 +2,7 @@
 
 export(adjective_animal)
 export(ids)
+export(random_id)
 export(sentence)
 export(uuid)
 importFrom(uuid,UUIDgenerate)
