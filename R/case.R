@@ -6,6 +6,7 @@
 ## lower case
 ## upper case
 ## CONSTANT_CASE
+## Sentence case
 check_style <- function(style) {
   if (!is.character(style)) {
     stop("style must be a character vector")
@@ -50,6 +51,15 @@ toupper_camel <- function(x) {
   x
 }
 
+toupper_sentence <- function(x) {
+  if (is.matrix(x)) {
+    x[, 1] <- toupper_initial(x[, 1])
+  } else {
+    x[1] <- toupper_initial(x[1])
+  }
+  x
+}
+
 toupper_pascal <- function(x) {
   x[] <- toupper_initial(x)
   x
@@ -64,5 +74,6 @@ cases <- function() {
        lower=list(join=" ",    tr=identity), # lower case already
        upper=list(join=" ",    tr=toupper),
        title=list(join=" ",    tr=toupper_pascal),
+       sentence=list(join=" ", tr=toupper_sentence),
        constant=list(join="_", tr=toupper))
 }

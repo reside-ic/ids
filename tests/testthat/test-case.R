@@ -18,3 +18,8 @@ test_that("camel", {
               equals(rbind(c("aaa", "Bbb"),
                            c("ccc", "Ddd"))))
 })
+
+test_that("sentence", {
+  tr <- make_combine("sentence")
+  expect_equal(tr(c("foo", "bar")), "Foo bar")
+})
