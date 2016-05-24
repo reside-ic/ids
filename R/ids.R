@@ -23,7 +23,7 @@ ids <- function(n, ..., vals=list(...), style="snake") {
   nvals <- length(vals)
   combine <- make_combine(style)
   gen <- function(n=1) {
-    combine(vapply(vals, sample, character(n), n))
+    combine(vapply(vals, sample, character(n), n, replace=TRUE))
   }
   if (is.null(n)) gen else gen(n)
 }
