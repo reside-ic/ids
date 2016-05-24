@@ -4,7 +4,8 @@
 \alias{adjective_animal}
 \title{Ids based on a number of adjectives and an animal}
 \usage{
-adjective_animal(n = 1, n_adjectives = 1, style = "snake")
+adjective_animal(n = 1, n_adjectives = 1, style = "snake",
+  max_len = Inf)
 }
 \arguments{
 \item{n}{number of ids to return.  If \code{NULL}, it instead
@@ -15,6 +16,11 @@ returns the generating function}
 \item{style}{Style to join words with.  Can be one of "Pascal",
 "camel", "snake", "kebab", "title", "sentence", "lower",
 "upper", and "constant".}
+
+\item{max_len}{The maximum length of a word part to include (this
+may be useful because some of the names are rather long.  This
+stops you generating a
+\code{hexakosioihexekontahexaphobic_queenalexandrasbirdwingbutterfly})}
 }
 \description{
 Ids based on a number of adjectives and an animal
