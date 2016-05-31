@@ -38,4 +38,12 @@ vignettes: vignettes/ids.Rmd
 	${RSCRIPT} -e 'library(methods); devtools::build_vignettes()'
 
 
+staticdocs:
+	@mkdir -p inst/staticdocs
+	${RSCRIPT} -e "library(methods); staticdocs::build_site()"
+	rm -f vignettes/*.html
+	@rmdir inst/staticdocs
+website: staticdocs
+	./update_web.sh
+
 .PHONY: all test document install vignettes
