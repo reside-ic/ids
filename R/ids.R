@@ -12,7 +12,7 @@
 ##' @param vals A list of character vectors, \emph{instead} of \code{...}
 ##'
 ##' @param style Style to join words with.  Can be one of "Pascal",
-##'   "camel", "snake", "kebab", "title", "sentence", "lower",
+##'   "camel", "snake", "kebab", "dot", "title", "sentence", "lower",
 ##'   "upper", and "constant".
 ##'
 ##' @return Either a character vector of length \code{n}, or a

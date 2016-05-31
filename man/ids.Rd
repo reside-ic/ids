@@ -15,7 +15,7 @@ returns the generating function}
 \item{vals}{A list of character vectors, \emph{instead} of \code{...}}
 
 \item{style}{Style to join words with.  Can be one of "Pascal",
-"camel", "snake", "kebab", "title", "sentence", "lower",
+"camel", "snake", "kebab", "dot", "title", "sentence", "lower",
 "upper", and "constant".}
 }
 \value{

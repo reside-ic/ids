@@ -14,7 +14,7 @@ returns the generating function}
 \item{n_adjectives}{Number of adjectives to prefix the anmial with}
 
 \item{style}{Style to join words with.  Can be one of "Pascal",
-"camel", "snake", "kebab", "title", "sentence", "lower",
+"camel", "snake", "kebab", "dot", "title", "sentence", "lower",
 "upper", and "constant".}
 
 \item{max_len}{The maximum length of a word part to include (this

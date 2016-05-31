@@ -11,7 +11,7 @@ sentence(n = 1, style = "lower", past = FALSE)
 returns the generating function}
 
 \item{style}{Style to join words with.  Can be one of "Pascal",
-"camel", "snake", "kebab", "title", "sentence", "lower",
+"camel", "snake", "kebab", "dot", "title", "sentence", "lower",
 "upper", and "constant".}
 
 \item{past}{Use the past tense for verbs (e.g., slurped or jogged
