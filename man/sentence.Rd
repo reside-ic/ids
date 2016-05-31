@@ -4,7 +4,7 @@
 \alias{sentence}
 \title{Sentence style identifiers}
 \usage{
-sentence(n = 1, style = "lower", past = FALSE)
+sentence(n = 1, style = "snake", past = FALSE)
 }
 \arguments{
 \item{n}{number of ids to return.  If \code{NULL}, it instead

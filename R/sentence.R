@@ -16,7 +16,7 @@
 ##' @author Rich FitzJohn
 ##' sentence()
 ##' sentence(3, past=TRUE)
-sentence <- function(n=1, style="lower", past=FALSE) {
+sentence <- function(n=1, style="snake", past=FALSE) {
   verbs <- if (past) asana_verbs else asana_verbs_present
   ids(n, asana_ids, asana_adjectives, asana_nouns, verbs, asana_adverbs,
       style=style)
