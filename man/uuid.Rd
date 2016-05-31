@@ -4,13 +4,15 @@
 \alias{uuid}
 \title{Generate UUIDs}
 \usage{
-uuid(n = 1, drop_hyphens = FALSE)
+uuid(n = 1, drop_hyphens = FALSE, use_time = NA)
 }
 \arguments{
 \item{n}{number of ids to return.  If \code{NULL}, it instead
 returns the generating function}
 
 \item{drop_hyphens}{Drop the hyphens from the UUID?}
+
+\item{use_time}{Passed through to \code{UUIDgenerate} as \code{use.time}.}
 }
 \description{
 Generate UUIDs using the uuid package
