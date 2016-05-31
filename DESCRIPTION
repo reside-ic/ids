@@ -12,5 +12,8 @@ Imports:
     openssl,
     uuid
 Suggests:
+    knitr,
+    rmarkdown,
     testthat
 RoxygenNote: 5.0.1
+VignetteBuilder: knitr

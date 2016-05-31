@@ -32,4 +32,10 @@ README.md: README.Rmd
 	sed -i.bak 's/[[:space:]]*$$//' README.md
 	rm -f $@.bak myfile.json
 
-.PHONY: all test document install
+vignettes/%.Rmd: vignettes/src/%.R
+	${RSCRIPT} -e 'library(sowsear); sowsear("$<", output="$@")'
+vignettes: vignettes/ids.Rmd
+	${RSCRIPT} -e 'library(methods); devtools::build_vignettes()'
+
+
+.PHONY: all test document install vignettes
