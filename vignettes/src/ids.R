@@ -82,6 +82,35 @@ ids::adjective_animal(4)
 ## Use more than one adjective for very long idenfiers
 ids::adjective_animal(4, 3)
 
+##+ echo=FALSE, results="hide"
+n1 <- length(ids:::gfycat_animals)
+n2 <- length(ids:::gfycat_adjectives)
+
+## There are `r n1` animal names and `r n2` adjectives so each one you
+## add increases the idenfier space by a factor of `r n2`.  So for 1,
+## 2, and 3 adjectives there are about `r human_no(n1 * n2)`,
+## `r human_no(n1 * n2^2)` and `r human_no(n1 * n2^3)` possible combinations.
+
+## This is a much smaller space than the identifiers above, but these
+## are more readable and memorable.
+
+## Note that here, the random nunbers are coming from R's random
+## number stream so are affected by \code{set.seed}.
+
+## Because some of the animal and adjective names are very long
+## (e.g. a quasiextraterritorial hexakosioihexekontahexaphobic
+## queenalexandrasbirdwingbutterfly), in order to generate more
+## readable/memorable identifiers it may be useful to restrict the
+## length.  Pass `max_len` in to do this.
+ids::adjective_animal(4, max_len=6)
+
+## A vector of length 2 here can be used to apply to the adjectives
+## and animal respectively:
+ids::adjective_animal(20, max_len=c(5, Inf))
+
+## Note that this does decrease the pool size and increases the chance
+## of collisions.
+
 ## In addition to snake_case, the default, the punctuation between
 ## words can be changed to:
 ##
@@ -112,20 +141,12 @@ ids::adjective_animal(1, 2, style="sentence")
 ## Title Case
 ids::adjective_animal(1, 2, style="title")
 
-##+ echo=FALSE, results="hide"
-n1 <- length(ids:::gfycat_animals)
-n2 <- length(ids:::gfycat_adjectives)
+## Again, pass `n=NULL` here to create a generating function:
+aa3 <- ids::adjective_animal(NULL, 3, style="kebab", max_len=c(6, 8))
 
-## There are `r n1` animal names and `r n2` adjectives so each one you
-## add increases the idenfier space by a factor of `r n2`.  So for 1,
-## 2, and 3 adjectives there are about `r human_no(n1 * n2)`,
-## `r human_no(n1 * n2^2)` and `r human_no(n1 * n2^3)` possible combinations.
-
-## This is a much smaller space than the identifiers above, but these
-## are more readable and memorable.
-
-## Note that here, the random nunbers are coming from R's random
-## number stream so are affected by \code{set.seed}.
+## ...which can be used to generate ids on demand.
+aa3()
+aa3(4)
 
 ## ## Random sentences
 
