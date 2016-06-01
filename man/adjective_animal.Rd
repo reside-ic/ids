@@ -20,7 +20,10 @@ returns the generating function}
 \item{max_len}{The maximum length of a word part to include (this
 may be useful because some of the names are rather long.  This
 stops you generating a
-\code{hexakosioihexekontahexaphobic_queenalexandrasbirdwingbutterfly})}
+\code{hexakosioihexekontahexaphobic_queenalexandrasbirdwingbutterfly}).
+A vector of length 2 ca be passed in here in which case the
+first element will apply to the adjectives (all of them) and the
+second element will apply to the animals.}
 }
 \description{
 Ids based on a number of adjectives and an animal
@@ -34,5 +37,7 @@ turn from \url{gfycat.com}
 adjective_animal()
 adjective_animal(n_adjectives=3)
 adjective_animal(style="lower")
+adjective_animal(10, max_len=6)
+adjective_animal(10, max_len=c(6, Inf))
 }
 
