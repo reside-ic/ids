@@ -1,9 +1,9 @@
 Package: ids
-Title: ids
+Title: Generate Random Identifiers
 Version: 0.0.2
 Author: Rich FitzJohn
 Maintainer: Rich FitzJohn <rich.fitzjohn@gmail.com>
-Description: Generate human readable and pronounceable identifiers.
+Description: Generate random or human readable and pronounceable identifiers.
 License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/richfitz/ids
