@@ -1,6 +1,7 @@
 # ids
 
 [![Linux Build Status](https://travis-ci.org/richfitz/ids.svg?branch=master)](https://travis-ci.org/richfitz/ids)
+[![codecov.io](https://codecov.io/github/richfitz/ids/coverage.svg?branch=master)](https://codecov.io/github/richfitz/ids?branch=master)
 
 Generate random identifiers in a number of styles:
 

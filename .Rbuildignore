@@ -6,3 +6,4 @@
 ^appveyor.yml$
 ^bootstrap\.R$
 ^update_web\.sh$
+^notes\.md$
