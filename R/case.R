@@ -1,12 +1,12 @@
-## PascalCase
-## camelCase
-## snake_case
-## kebab-case
-## Title Case
-## lower case
-## upper case
-## CONSTANT_CASE
-## Sentence case
+# PascalCase
+# camelCase
+# snake_case
+# kebab-case
+# Title Case
+# lower case
+# upper case
+# CONSTANT_CASE
+# Sentence case
 check_style <- function(style) {
   if (!is.character(style)) {
     stop("style must be a character vector")
@@ -30,9 +30,9 @@ make_combine <- function(style) {
   tr <- dat$tr
   function(x) {
     if (is.matrix(x)) {
-      apply(tr(x), 1, paste, collapse=join)
+      apply(tr(x), 1, paste, collapse = join)
     } else {
-      paste(tr(x), collapse=join)
+      paste(tr(x), collapse = join)
     }
   }
 }
@@ -66,14 +66,14 @@ toupper_pascal <- function(x) {
 }
 
 cases <- function() {
-  list(snake=list(join="_",    tr=identity),
-       kebab=list(join="-",    tr=identity),
-       dot=list(join=".",      tr=identity),
-       camel=list(join="",     tr=toupper_camel),
-       pascal=list(join="",    tr=toupper_pascal),
-       lower=list(join=" ",    tr=identity), # lower case already
-       upper=list(join=" ",    tr=toupper),
-       title=list(join=" ",    tr=toupper_pascal),
-       sentence=list(join=" ", tr=toupper_sentence),
-       constant=list(join="_", tr=toupper))
+  list(snake    = list(join = "_", tr = identity),
+       kebab    = list(join = "-", tr = identity),
+       dot      = list(join = ".", tr = identity),
+       camel    = list(join = "",  tr = toupper_camel),
+       pascal   = list(join = "",  tr = toupper_pascal),
+       lower    = list(join = " ", tr = identity), # lower case already
+       upper    = list(join = " ", tr = toupper),
+       title    = list(join = " ", tr = toupper_pascal),
+       sentence = list(join = " ", tr = toupper_sentence),
+       constant = list(join = "_", tr = toupper))
 }
