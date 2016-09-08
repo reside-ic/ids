@@ -17,7 +17,7 @@
 #' sentence()
 #' sentence(3, past = TRUE)
 sentence <- function(n = 1, style = "snake", past = FALSE) {
-  verbs <- if (past) asana_verbs else asana_verbs_present
+  verbs <- if (past) asana_verbs_past else asana_verbs_present
   ids(n, asana_ids, asana_adjectives, asana_nouns, verbs, asana_adverbs,
       style = style)
 }
@@ -75,7 +75,7 @@ asana_nouns <- c(
   "unicorns", "walruses", "warthogs", "weasels", "wolves",
   "wolverines", "wombats", "woodchucks", "yaks", "zebras")
 
-asana_verbs <- c(
+asana_verbs_past <- c(
   "ambled", "assembled", "burst", "babbled", "charged", "chewed",
   "clamored", "coasted", "crawled", "crept", "danced", "dashed",
   "drove", "flopped", "galloped", "gathered", "glided", "hobbled",
