@@ -1,5 +1,10 @@
 context("adjective animal")
 
+test_that("data", {
+  expect_false(any(grepl("\\s", gfycat_animals)))
+  expect_false(any(grepl("\\s", gfycat_adjectives)))
+})
+
 test_that("basic", {
   res <- adjective_animal()
   expect_is(res, "character")
