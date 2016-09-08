@@ -35,9 +35,9 @@ turn from \url{gfycat.com}
 }
 \examples{
 adjective_animal()
-adjective_animal(n_adjectives=3)
-adjective_animal(style="lower")
-adjective_animal(10, max_len=6)
-adjective_animal(10, max_len=c(6, Inf))
+adjective_animal(n_adjectives = 3)
+adjective_animal(style = "lower")
+adjective_animal(10, max_len = 6)
+adjective_animal(10, max_len = c(6, Inf))
 }
 

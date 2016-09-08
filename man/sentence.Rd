@@ -28,6 +28,6 @@ really wanted to.
 \author{
 Rich FitzJohn
 sentence()
-sentence(3, past=TRUE)
+sentence(3, past = TRUE)
 }
 
