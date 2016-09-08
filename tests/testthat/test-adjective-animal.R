@@ -23,3 +23,37 @@ test_that("style", {
   expect_match(adjective_animal(style = "title"), "^[A-Z][a-z]+ [A-Z][a-z]+$")
   expect_match(adjective_animal(style = "sentence"), "^[A-Z][a-z]+ [a-z]+$")
 })
+
+test_that("restrict length", {
+  tmp <- strsplit(adjective_animal(200, max_len = 5), "_", fixed = TRUE)
+  expect_lte(max(sapply(tmp, nchar)), 5)
+
+  tmp <- strsplit(adjective_animal(200, max_len = c(5, 10)), "_", fixed = TRUE)
+  tmp <- apply(sapply(tmp, nchar), 1, max)
+  expect_lte(tmp[[1]], 5)
+  expect_lte(tmp[[2]], 10)
+  expect_gt(tmp[[2]], tmp[[1]])
+})
+
+test_that("restrict length error cases", {
+  expect_error(adjective_animal(max_len = 2),
+               "max_len must be at least 3")
+  expect_error(adjective_animal(max_len = -2),
+               "max_len must be at least 3")
+
+  ## This is ignored -- perhaps it should not be?
+  expect_silent(adjective_animal(max_len = numeric(0)))
+
+  expect_error(adjective_animal(max_len = c(5, 6, 7)),
+               "max_len must be length 1 or 2")
+  expect_error(adjective_animal(n_adjectives = 2, max_len = c(5, 6, 7)),
+               "max_len must be length 1 or 2")
+})
+
+test_that("functional interface", {
+  f <- adjective_animal(NULL, max_len = 10, style = "kebab", n_adjectives = 2)
+  expect_is(f, "function")
+  re <- "^[a-z]{3,10}-[a-z]{3,10}-[a-z]{3,10}$"
+  expect_match(f(), re)
+  expect_true(all(grepl(re, f(100))))
+})
