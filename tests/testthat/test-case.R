@@ -22,4 +22,16 @@ test_that("camel", {
 test_that("sentence", {
   tr <- make_combine("sentence")
   expect_equal(tr(c("foo", "bar")), "Foo bar")
+  expect_equal(tr(rbind(c("foo", "bar"),
+                        c("another", "sentence"))),
+               c("Foo bar",
+                 "Another sentence"))
+})
+
+test_that("error cases", {
+  expect_error(check_style(NULL), "must be a character vector")
+  expect_error(check_style(1), "must be a character vector")
+  expect_error(check_style(character(0)), "must be a scalar")
+  expect_error(check_style(c("camel", "upper")), "must be a scalar")
+  expect_error(check_style("unknown"), "Invalid style 'unknown'")
 })
