@@ -4,7 +4,7 @@
 \alias{random_id}
 \title{Cryptographically random identifiers}
 \usage{
-random_id(n = 1, bytes = 16)
+random_id(n = 1, bytes = 16, use_openssl = TRUE)
 }
 \arguments{
 \item{n}{number of ids to return.  If \code{NULL}, it instead
@@ -13,6 +13,13 @@ returns the generating function}
 \item{bytes}{The number of bytes to include for each identifier.
 The length of the returned identifiers will be twice this long
 with each pair of characters representing a single byte.}
+
+\item{use_openssl}{A logical, indicating if we should use the
+openssl for generating the random identifiers.  The openssl
+random bytestream is not affected by the state of the R random
+number generator (e.g., via \code{\link{set.seed}}) so may not be
+suitable for use where reproducibility is important.  The speed
+should be very similar for both approaches.}
 }
 \description{
 Cryptopgraphically random identifiers.  This uses the

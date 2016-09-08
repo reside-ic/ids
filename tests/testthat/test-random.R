@@ -25,3 +25,19 @@ test_that("bind args", {
   expect_match(f(), re_random(10))
   expect_equal(nchar(f()), 10)
 })
+
+test_that("r byte stream", {
+  set.seed(1)
+  id1 <- random_id()
+  set.seed(1)
+  expect_false(id1 == random_id())
+  set.seed(1)
+  expect_false(id1 == random_id(NULL)())
+
+  set.seed(1)
+  id1 <- random_id(use_openssl = FALSE)
+  set.seed(1)
+  expect_true(id1 == random_id(use_openssl = FALSE))
+  set.seed(1)
+  expect_true(id1 == random_id(NULL, use_openssl = FALSE)())
+})
