@@ -25,4 +25,7 @@ Either a character vector of length \code{n}, or a
 \description{
 Generic id generating function
 }
+\author{
+Rich FitzJohn
+}
 

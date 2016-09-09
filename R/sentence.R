@@ -14,8 +14,28 @@
 #'
 #' @export
 #' @author Rich FitzJohn
+#' @examples
+#' # Generate an identifier
 #' sentence()
-#' sentence(3, past = TRUE)
+#'
+#' # Generate a bunch
+#' sentence(10)
+#'
+#' # As with adjective_animal, use "style" to control punctuation
+#' sentence(style = "Camel")
+#' sentence(style = "dot")
+#' sentence(style = "Title")
+#'
+#' # Change the tense of the verb:
+#' set.seed(1)
+#' sentence()
+#' set.seed(1)
+#' sentence(past = TRUE)
+#'
+#' # Pass n = NULL to bind arguments to a function
+#' id <- sentence(NULL, past = TRUE, style = "dot")
+#' id()
+#' id(10)
 sentence <- function(n = 1, style = "snake", past = FALSE) {
   verbs <- if (past) asana_verbs_past else asana_verbs_present
   ids(n, asana_ids, asana_adjectives, asana_nouns, verbs, asana_adverbs,

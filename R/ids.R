@@ -19,6 +19,7 @@
 #'   function of one argument if \code{n} is \code{NULL}
 #'
 #' @export
+#' @author Rich FitzJohn
 ids <- function(n, ..., vals = list(...), style = "snake") {
   combine <- make_combine(style)
   gen <- function(n = 1) {

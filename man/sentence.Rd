@@ -25,9 +25,30 @@ This approach encodes 32 bits of information (so 2^32 ~= 4 billion
 possibilities) and in theory can be remapped to an integer if you
 really wanted to.
 }
+\examples{
+# Generate an identifier
+sentence()
+
+# Generate a bunch
+sentence(10)
+
+# As with adjective_animal, use "style" to control punctuation
+sentence(style = "Camel")
+sentence(style = "dot")
+sentence(style = "Title")
+
+# Change the tense of the verb:
+set.seed(1)
+sentence()
+set.seed(1)
+sentence(past = TRUE)
+
+# Pass n = NULL to bind arguments to a function
+id <- sentence(NULL, past = TRUE, style = "dot")
+id()
+id(10)
+}
 \author{
 Rich FitzJohn
-sentence()
-sentence(3, past = TRUE)
 }
 

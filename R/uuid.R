@@ -1,4 +1,7 @@
-#' Generate UUIDs using the uuid package
+#' Generate UUIDs using the uuid package.  This is simply a thin
+#' wrapper around \code{uuid::UUIDgenerate} that matches the interface
+#' in the rest of the ids package.
+#'
 #' @title Generate UUIDs
 #'
 #' @inheritParams ids
@@ -10,6 +13,16 @@
 #' @export
 #'
 #' @importFrom uuid UUIDgenerate
+#' @author Rich FitzJohn
+#' @examples
+#' # Generate one id
+#' uuid()
+#'
+#' # Or a bunch
+#' uuid(10)
+#'
+#' # More in the style of random_id()
+#' uuid(drop_hyphens = TRUE)
 uuid <- function(n = 1, drop_hyphens = FALSE, use_time = NA) {
   if (is.null(n)) {
     force(drop_hyphens)
