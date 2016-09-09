@@ -13,6 +13,7 @@ Imports:
     uuid
 Suggests:
     knitr,
+    rcorpora,
     rmarkdown,
     testthat
 RoxygenNote: 5.0.1

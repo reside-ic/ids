@@ -163,3 +163,73 @@ ids::sentence(2, "dot")
 
 ## If you would rather past tense for the verbs, then pass `past=TRUE`:
 ids::sentence(4, past=TRUE)
+
+## ## Roll your own identifiers
+
+## The `ids` functions can build identifiers in the style of
+## `adjective_animal` or `sentence`.  It takes as input a list of
+## strings.  This works particularly well with the `rcorpora` package
+## which includes lists of strings.
+
+## Here is a list of Pokemon names:
+pokemon <- tolower(rcorpora::corpora("games/pokemon")$pokemon$name)
+length(pokemon)
+
+## ...and here is a list of adjectives
+adjectives <- tolower(rcorpora::corpora("words/adjs")$adjs)
+length(adjectives)
+
+## So we have a total pool size of `r length(adjectives) *
+## length(pokemon)`, which is not huge, but it is at least topical.
+
+## To generate one identifier:
+ids::ids(1, adjectives, pokemon)
+
+## All the style-changing code is available:
+ids::ids(10, adjectives, pokemon, style = "dot")
+
+## Better would be to wrap this so that the constants are not passed
+## around the whole time:
+adjective_pokemon <- function(n = 1, style = "snake") {
+  pokemon <- tolower(rcorpora::corpora("games/pokemon")$pokemon$name)
+  adjectives <- tolower(rcorpora::corpora("words/adjs")$adjs)
+  ids::ids(n, adjectives, pokemon, style = style)
+}
+
+adjective_pokemon(10, "kebab")
+
+## Here we'll use the word lists in rcorpora to generate
+## identifiers in the form <mood>_<scientist>, like
+## "warlike_charles_darwin".  These are similar to the names of
+## docker containers.
+
+## First the lists of names themselves:
+moods <- tolower(rcorpora::corpora("humans/moods")$moods)
+scientists <- tolower(rcorpora::corpora("humans/scientists")$scientists)
+
+## Moods include:
+sample(moods, 10)
+
+## The scientists names contain spaces which is not going to work for
+## us because `ids` won't correctly translate all internal spaces to
+## the requested style.
+sample(scientists, 10)
+
+## To hack around this we'll just take the last name from the list and
+## remove all hyphens:
+scientists <- vapply(strsplit(sub("(-|jr\\.$)", "", scientists), " "),
+                     tail, character(1), 1)
+
+## Which gives strings that are just letters (though there are a few
+## non-ASCII characters here that may cause problems because string
+## handling is just a big pile of awful)
+sample(scientists, 10)
+
+## With the word lists, create an idenfier:
+ids::ids(1, moods, scientists)
+
+## Or pass `NULL` for `n` and create a function:
+sci_id <- ids::ids(NULL, moods, scientists, style = "kebab")
+
+## which takes just the number of identifiers to generate as an argument
+sci_id(10)

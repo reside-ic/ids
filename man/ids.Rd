@@ -25,6 +25,9 @@ Either a character vector of length \code{n}, or a
 \description{
 Generic id generating function
 }
+\examples{
+# For an example, please see the vignette
+}
 \author{
 Rich FitzJohn
 }

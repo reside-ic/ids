@@ -20,8 +20,11 @@
 #'
 #' @export
 #' @author Rich FitzJohn
+#' @examples
+#' # For an example, please see the vignette
 ids <- function(n, ..., vals = list(...), style = "snake") {
   combine <- make_combine(style)
+  force(vals)
   gen <- function(n = 1) {
     combine(vapply(vals, sample, character(n), n, replace = TRUE))
   }
