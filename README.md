@@ -6,15 +6,16 @@
 Generate random identifiers in a number of styles:
 
 * random ids of any number of bytes, such as `31f6d556fe2b303c`
+* UUIDs using the `uuid` package, sugh as `4f0efabf-0375-4a08-89ea-b8f162f07c44`
 * human readable identifiers in the style `<adjective>_<animal>` (following [gfycat.com](http://gfycat.com)), such as `misanthropic_lungfish`
 * human readable identifiers in the style of a sentence (following [Asana](https://blog.asana.com/2011/09/6-sad-squid-snuggle-softly), such as `33_enormous_chinchillas_tumbling_elegantly`
 
-These can all be tweaked with options for length, words that are used, and the case that joins words.
+These can all be tweaked with options for length, words that are used, and the case that joins words.  There is a function `ids` for creating your own human readable identifiers.
 
 ## Installation
 
 ```r
-devtools::install_github("richfitz/ids")
+devtools::install_github("richfitz/ids", upgrade = FALSE)
 ```
 
 or
