@@ -199,8 +199,8 @@ adjective_pokemon <- function(n = 1, style = "snake") {
 adjective_pokemon(10, "kebab")
 
 ## Here we'll use the word lists in rcorpora to generate
-## identifiers in the form <mood>_<scientist>, like
-## "warlike_charles_darwin".  These are similar to the names of
+## identifiers in the form `<mood>_<scientist>`, like
+## "melancholic_charles_darwin".  These are similar to the names of
 ## docker containers.
 
 ## First the lists of names themselves:
