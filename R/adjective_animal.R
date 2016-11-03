@@ -11,7 +11,7 @@
 #'   may be useful because some of the names are rather long.  This
 #'   stops you generating a
 #'   \code{hexakosioihexekontahexaphobic_queenalexandrasbirdwingbutterfly}).
-#'   A vector of length 2 ca be passed in here in which case the
+#'   A vector of length 2 can be passed in here in which case the
 #'   first element will apply to the adjectives (all of them) and the
 #'   second element will apply to the animals.
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/random.R
 \name{random_id}
 \alias{random_id}
-\title{Cryptographically random identifiers}
+\title{Cryptographically generated random identifiers}
 \usage{
 random_id(n = 1, bytes = 16, use_openssl = TRUE)
 }
@@ -22,10 +22,10 @@ suitable for use where reproducibility is important.  The speed
 should be very similar for both approaches.}
 }
 \description{
-Cryptopgraphically random identifiers.  This uses the
-\code{openssl} package to produce a random set of bytes, and
-expresses that as a hex character string.  This does not affect
-R's random number stream.
+Random identifiers.  By default this uses the \code{openssl}
+package to produce a random set of bytes, and expresses that as a
+hex character string.  This does not affect R's random number
+stream.
 }
 \examples{
 # Generate a random id:

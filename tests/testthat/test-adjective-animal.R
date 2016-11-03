@@ -58,7 +58,8 @@ test_that("restrict length error cases", {
 test_that("functional interface", {
   f <- adjective_animal(NULL, max_len = 10, style = "kebab", n_adjectives = 2)
   expect_is(f, "function")
-  re <- "^[a-z]{3,10}-[a-z]{3,10}-[a-z]{3,10}$"
+  re <- "^[a-z]{3,10}-[a-z]{3,10}-[a-z]{2,10}$"
   expect_match(f(), re)
-  expect_true(all(grepl(re, f(100))))
+  x <- f(100)
+  expect_true(all(grepl(re, x)))
 })

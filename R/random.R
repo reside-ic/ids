@@ -1,9 +1,9 @@
-#' Cryptopgraphically random identifiers.  This uses the
-#' \code{openssl} package to produce a random set of bytes, and
-#' expresses that as a hex character string.  This does not affect
-#' R's random number stream.
+#' Random identifiers.  By default this uses the \code{openssl}
+#' package to produce a random set of bytes, and expresses that as a
+#' hex character string.  This does not affect R's random number
+#' stream.
 #'
-#' @title Cryptographically random identifiers
+#' @title Cryptographically generated random identifiers
 #' @inheritParams ids
 #'
 #' @param bytes The number of bytes to include for each identifier.

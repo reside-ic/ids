@@ -9,11 +9,11 @@
 ##   %\VignetteEncoding{UTF-8}
 ## ---
 
-##+ echo=FALSE, results="hide"
-knitr::opts_chunk$set(error=FALSE)
+##+ echo = FALSE, results = "hide"
+knitr::opts_chunk$set(error = FALSE)
 human_no <- function(x) {
   s <- log10(floor(x + 1))
-  p <- c(0, thousand=3, million=6, billion=9, trillion=12)
+  p <- c(0, thousand = 3, million = 6, billion = 9, trillion = 12)
   i <- s > p
   j <- max(which(i))
   str <- names(p)[j]
@@ -30,19 +30,22 @@ human_no <- function(x) {
 ## ## Random bytes
 
 ## The `random_id` function generates random identifiers by generating
-## `bytes` random bytes and converting to hex.  Rather than use R's
-## random number stream we use `openssl` here.
+## `bytes` random bytes and converting to hexadecimal (so each byte
+## becomes a pair of characters).  Rather than use R's random number
+## stream we use the `openssl` package here.
 ids::random_id()
 
 ## All `ids` functions take `n` as the first argument to be the number
 ## of identifiers generated:
 ids::random_id(5)
 
-## The default here is 16 bytes (so 2^128 = 3.4e38 combinations).  You
-## can make these larger or smaller:
+## The default here is 16 bytes, each of which has 256 values (so
+## 256^16 = 2^128 = 3.4e38 combinations).  You can make these larger or
+## smaller with the `bytes` argument:
 ids::random_id(5, 8)
 
-## If `NULL` is provided as `n`, then a generating function is returned:
+## If `NULL` is provided as `n`, then a generating function is
+## returned (all ids functions do this):
 f <- ids::random_id(NULL, 8)
 f
 
@@ -61,10 +64,10 @@ ids::uuid()
 ids::uuid(4)
 
 ## Generate time-based UUIDs:
-ids::uuid(4, use_time=TRUE)
+ids::uuid(4, use_time = TRUE)
 
 ## and optionally drop the hyphens:
-ids::uuid(5, drop_hyphens=TRUE)
+ids::uuid(5, drop_hyphens = TRUE)
 
 ## ## Adjective animal
 
@@ -82,7 +85,7 @@ ids::adjective_animal(4)
 ## Use more than one adjective for very long idenfiers
 ids::adjective_animal(4, 3)
 
-##+ echo=FALSE, results="hide"
+##+ echo = FALSE, results = "hide"
 n1 <- length(ids:::gfycat_animals)
 n2 <- length(ids:::gfycat_adjectives)
 
@@ -91,58 +94,58 @@ n2 <- length(ids:::gfycat_adjectives)
 ## 2, and 3 adjectives there are about `r human_no(n1 * n2)`,
 ## `r human_no(n1 * n2^2)` and `r human_no(n1 * n2^3)` possible combinations.
 
-## This is a much smaller space than the identifiers above, but these
-## are more readable and memorable.
+## This is a much smaller space than the random identifiers above, but
+## these are more readable and memorable.
 
 ## Note that here, the random nunbers are coming from R's random
-## number stream so are affected by \code{set.seed}.
+## number stream so are affected by `set.seed()`.
 
 ## Because some of the animal and adjective names are very long
-## (e.g. a quasiextraterritorial hexakosioihexekontahexaphobic
-## queenalexandrasbirdwingbutterfly), in order to generate more
+## (e.g. a _quasiextraterritorial hexakosioihexekontahexaphobic
+## queenalexandrasbirdwingbutterfly_), in order to generate more
 ## readable/memorable identifiers it may be useful to restrict the
 ## length.  Pass `max_len` in to do this.
-ids::adjective_animal(4, max_len=6)
+ids::adjective_animal(4, max_len = 6)
 
 ## A vector of length 2 here can be used to apply to the adjectives
 ## and animal respectively:
-ids::adjective_animal(20, max_len=c(5, Inf))
+ids::adjective_animal(20, max_len = c(5, Inf))
 
-## Note that this does decrease the pool size and increases the chance
+## Note that this decreases the pool size and so increases the chance
 ## of collisions.
 
 ## In addition to snake_case, the default, the punctuation between
 ## words can be changed to:
 ##
 ## kebab-case:
-ids::adjective_animal(1, 2, style="kebab")
+ids::adjective_animal(1, 2, style = "kebab")
 
 ## dot.case:
-ids::adjective_animal(1, 2, style="dot")
+ids::adjective_animal(1, 2, style = "dot")
 
 ## camel-case:
-ids::adjective_animal(1, 2, style="camel")
+ids::adjective_animal(1, 2, style = "camel")
 
 ## PascalCase:
-ids::adjective_animal(1, 2, style="pascal")
+ids::adjective_animal(1, 2, style = "pascal")
 
-## CONSTANT_CASE
-ids::adjective_animal(1, 2, style="constant")
+## CONSTANT_CASE (aka SHOUTY_CASE)
+ids::adjective_animal(1, 2, style = "constant")
 
 ## or with spaces, lower case:
-ids::adjective_animal(1, 2, style="lower")
+ids::adjective_animal(1, 2, style = "lower")
 
 ## UPPER CASE
-ids::adjective_animal(1, 2, style="upper")
+ids::adjective_animal(1, 2, style = "upper")
 
 ## Sentence case
-ids::adjective_animal(1, 2, style="sentence")
+ids::adjective_animal(1, 2, style = "sentence")
 
 ## Title Case
-ids::adjective_animal(1, 2, style="title")
+ids::adjective_animal(1, 2, style = "title")
 
-## Again, pass `n=NULL` here to create a generating function:
-aa3 <- ids::adjective_animal(NULL, 3, style="kebab", max_len=c(6, 8))
+## Again, pass `n = NULL` here to create a generating function:
+aa3 <- ids::adjective_animal(NULL, 3, style = "kebab", max_len = c(6, 8))
 
 ## ...which can be used to generate ids on demand.
 aa3()
@@ -161,8 +164,8 @@ ids::sentence()
 ## As with `adjective_animal`, the case can be changed:
 ids::sentence(2, "dot")
 
-## If you would rather past tense for the verbs, then pass `past=TRUE`:
-ids::sentence(4, past=TRUE)
+## If you would rather past tense for the verbs, then pass `past = TRUE`:
+ids::sentence(4, past = TRUE)
 
 ## ## Roll your own identifiers
 
@@ -179,8 +182,8 @@ length(pokemon)
 adjectives <- tolower(rcorpora::corpora("words/adjs")$adjs)
 length(adjectives)
 
-## So we have a total pool size of `r length(adjectives) *
-## length(pokemon)`, which is not huge, but it is at least topical.
+## So we have a total pool size of about `r human_no(length(adjectives) *
+## length(pokemon))`, which is not huge, but it is at least topical.
 
 ## To generate one identifier:
 ids::ids(1, adjectives, pokemon)
@@ -198,9 +201,9 @@ adjective_pokemon <- function(n = 1, style = "snake") {
 
 adjective_pokemon(10, "kebab")
 
-## Here we'll use the word lists in rcorpora to generate
-## identifiers in the form `<mood>_<scientist>`, like
-## "melancholic_charles_darwin".  These are similar to the names of
+## As a second example we can use the word lists in rcorpora to
+## generate identifiers in the form `<mood>_<scientist>`, like
+## "melancholic_darwin".  These are similar to the names of
 ## docker containers.
 
 ## First the lists of names themselves:
@@ -225,7 +228,7 @@ scientists <- vapply(strsplit(sub("(-|jr\\.$)", "", scientists), " "),
 ## handling is just a big pile of awful)
 sample(scientists, 10)
 
-## With the word lists, create an idenfier:
+## With the word lists, create an identifier:
 ids::ids(1, moods, scientists)
 
 ## Or pass `NULL` for `n` and create a function:
