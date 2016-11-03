@@ -11,20 +11,3 @@ Generate random identifiers in a number of styles:
 * human readable identifiers in the style of a sentence (following [Asana](https://blog.asana.com/2011/09/6-sad-squid-snuggle-softly), such as `33_enormous_chinchillas_tumbling_elegantly`
 
 These can all be tweaked with options for length, words that are used, and the case that joins words.  There is a function `ids` for creating your own human readable identifiers.
-
-## Installation
-
-```r
-devtools::install_github("richfitz/ids", upgrade = FALSE)
-```
-
-or
-
-```
-drat:::add("richfitz")
-install.packages("ids")
-```
-
-## License
-
-MIT
