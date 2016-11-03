@@ -7,3 +7,4 @@
 ^bootstrap\.R$
 ^update_web\.sh$
 ^notes\.md$
+^ids_.*\.tar\.gz$

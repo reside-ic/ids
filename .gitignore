@@ -4,3 +4,5 @@
 inst/doc
 inst/web
 notes.md
+ids.Rcheck
+ids_*.tar.gz
