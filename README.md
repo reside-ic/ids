@@ -1,5 +1,6 @@
 # ids
 
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Linux Build Status](https://travis-ci.org/richfitz/ids.svg?branch=master)](https://travis-ci.org/richfitz/ids)
 [![codecov.io](https://codecov.io/github/richfitz/ids/coverage.svg?branch=master)](https://codecov.io/github/richfitz/ids?branch=master)
 [![](http://www.r-pkg.org/badges/version/ids)](http://cran.r-project.org/package=ids)
