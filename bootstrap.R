@@ -1,16 +1,19 @@
 #!/usr/bin/env Rscript
 read <- function(url) {
-  ## Not sure, and slightly disturbed, why trimws is not picking this
-  ## up correctly.
   strip_whitespace <- function(x) {
-    gsub("(^\\s|\\s*$)", "", x)
+    gsub("(^\\s|\\s*$|\xc2\xa0)", "", x, perl = TRUE)
   }
   f <- tempfile()
   download.file(url, f, method="curl")
   dat <- readChar(f, file.size(f))
-  dat <- sub(".+?=\\s*", "", dat)
-  dat <- sub(";\\s*", "", dat)
-  sort(unique(strip_whitespace(tolower(jsonlite::fromJSON(dat)))))
+  dat <- gsub("(^.+?=\\s*|;\\s*$)", "", dat)
+  res <- sort(unique(strip_whitespace(tolower(jsonlite::fromJSON(dat)))))
+  res <- setdiff(res, "mouse/mice")
+  ok <- grepl("^[a-z]+$", res)
+  if (!all(ok)) {
+    stop("Fix the names")
+  }
+  res
 }
 
 fmt <- "https://raw.githubusercontent.com/a-type/adjective-adjective-animal/master/lib/lists/%s.js"
