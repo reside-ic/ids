@@ -23,6 +23,7 @@ human_no <- function(x) {
     as.character(x)
   }
 }
+set.seed(1)
 
 ## The `ids` package provides randomly generated ids in a number of
 ## different forms with different readability and sizes.
@@ -166,6 +167,73 @@ ids::sentence(2, "dot")
 
 ## If you would rather past tense for the verbs, then pass `past = TRUE`:
 ids::sentence(4, past = TRUE)
+
+## ## proquints
+
+## "proquints" are an identifier that tries to be information dense
+## but still human readable and (somewhat) pronounceable; "proquint"
+## stands for *PRO*-nouncable *QUINT*-uplets.  They are introduced in
+## https://arxiv.org/html/0901.4016
+
+## `ids` can generate proquints:
+
+ids::proquint(10)
+
+## By default it generates two-word proquints but that can be changed:
+
+ids::proquint(5, 1)
+ids::proquint(2, 4)
+
+## Proquints are formed by alternating
+## consonant/vowel/consonant/vowel/consonant using a subset of both
+## (16 consonants and 4 vowels).  This yields 2^16 (65,536)
+## possibilities per word.  Words are always lower case and always
+## separated by a hyphen.  So with 4 words there are 2^64 combinations
+## in 23 characters.
+
+## Proquints are also useful in that they can be tranlated with
+## integers.  The proquint `kapop` has integer value 25258
+ids::proquint_to_int("kapop")
+ids::int_to_proquint(25258)
+
+## This makes proquints suitable for creating human-pronouncable
+## identifers out of things like ip addresses, integer primary keys,
+## etc.
+
+## The function `ids::int_to_proquint_word` will translate between
+## proquint words and integers (and are vectorised)
+w <- ids::int_to_proquint_word(sample(2^16, 10) - 1L)
+w
+
+## and `ids::proquint_word_to_int` does the reverse
+ids::proquint_word_to_int(w)
+
+## whille `ids::proquint_to_int` and `ids::int_to_proquint` allows
+## translation of multi-word proquints.  Overflow is a real
+## possibility; the maximum integer representable is only about `r
+## human_no(.Machine$integer.max)` and the maximum floating point
+## number of accuracy of 1 is about `r human_no(2 /
+## .Machine$double.eps)` -- these are big numbers but fairly small
+## proquints:
+ids::int_to_proquint(.Machine$integer.max - 1)
+ids::int_to_proquint(2 / .Machine$double.eps)
+
+## But if you had a 6 word proquint this would not work!
+p <- ids::proquint(1, 6)
+
+## Too big for an integer:
+##+ error = TRUE
+ids::proquint_to_int(p)
+
+## And too big for an numeric number:
+##+ error = TRUE
+ids::proquint_to_int(p, as = "numeric")
+
+## To allow this, we use `openssl`'s `bignum` support:
+ids::proquint_to_int(p, as = "bignum")
+
+## This returns a *list* with one bignum (this is required to allow
+## vectorisation).
 
 ## ## Roll your own identifiers
 
