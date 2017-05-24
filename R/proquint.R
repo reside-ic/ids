@@ -91,7 +91,7 @@ proquint <- function(n = 1, n_words = 2L, use_cache = TRUE,
 
 ##' Convert to and from proquints.
 ##'
-##' \These functions try to be type safe and predictable about what
+##' These functions try to be type safe and predictable about what
 ##' they will and will not return.
 ##'
 ##' For \code{proquint_to_int}, because numeric overflow is a
@@ -107,7 +107,7 @@ proquint <- function(n = 1, n_words = 2L, use_cache = TRUE,
 ##' proquint will translate as \code{NA_character_} and a missing
 ##' proquint will translate as \code{NA_integer_} (if \code{as =
 ##' "integer"}), \code{NA_real_}, if \code{as = "numeric"} or as
-##' \code{NULL} (if \code{as = "bignum").
+##' \code{NULL} (if \code{as = "bignum"}).
 ##'
 ##' Names are always discarded.  Future versions may gain an argument
 ##' \code{named} with a default of \code{FALSE}, but that setting to
