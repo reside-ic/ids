@@ -25,5 +25,5 @@ install.packages("ids")
 or install the development version with
 
 ```r
-remotes::install_github("richfitz/ids")
+remotes::install_github("richfitz/ids", upgrade = FALSE)
 ```
