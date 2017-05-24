@@ -4,7 +4,7 @@
 \alias{proquint}
 \title{Generate random proquint identifiers}
 \usage{
-proquint(n = 1, n_words = 2L, use_cache = TRUE)
+proquint(n = 1, n_words = 2L, use_cache = TRUE, use_openssl = FALSE)
 }
 \arguments{
 \item{n}{number of ids to return.  If \code{NULL}, it instead
@@ -25,6 +25,10 @@ time may take up to ~1/4 of a second and subsequent calls will
 be much faster.  The identifiers selected will not change with
 this option (i.e., given a particular random seed, changing this
 option will not affect the identifiers randomly selected).}
+
+\item{use_openssl}{Use openssl for random number generation, with
+the primary effect that the identifiers will not be affected by
+R's random seed (at a small speed cost).}
 }
 \description{
 Generate random "proquint" identifiers.  "proquint" stands for

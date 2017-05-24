@@ -69,6 +69,38 @@ test_that("sampled words do not depend on cache", {
   expect_identical(w1, w2)
 })
 
+test_that("generate openssl random numbers", {
+  i <- rand_i16(1, TRUE)
+  expect_is(i, "integer")
+  expect_gte(i, 0L)
+  expect_lt(i, 2^16)
+
+  j <- rand_i16(10, TRUE)
+  expect_is(j, "integer")
+  expect_equal(length(j), 10)
+  expect_true(all(j >= 0L))
+  expect_true(all(j < 2^16))
+
+  set.seed(1)
+  i <- rand_i16(100, TRUE)
+  set.seed(1)
+  j <- rand_i16(100, TRUE)
+  expect_false(identical(i, j))
+
+  i <- rand_i16(2^16 * 16, TRUE)
+  n <- tabulate(i + 1, 2^16)
+  expect_true(all(i >= 0L))
+  expect_true(all(i < 2^16))
+})
+
+test_that("openssl random identifiers", {
+  set.seed(1)
+  w1 <- proquint(100, use_openssl = TRUE)
+  set.seed(1)
+  w2 <- proquint(100, use_openssl = TRUE)
+  expect_false(identical(w1, w2))
+})
+
 test_that("bad type on conversion", {
   expect_error(int_to_proquint("one"), "Invalid type for 'x'")
   expect_error(int_to_proquint(TRUE), "Invalid type for 'x'")

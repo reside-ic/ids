@@ -61,6 +61,9 @@ PROQUINT_RE1 <- sprintf("^%s$", PROQUINT_RE_WORD)
 ##'   be much faster.  The identifiers selected will not change with
 ##'   this option (i.e., given a particular random seed, changing this
 ##'   option will not affect the identifiers randomly selected).
+##' @param use_openssl Use openssl for random number generation, with
+##'   the primary effect that the identifiers will not be affected by
+##'   R's random seed (at a small speed cost).
 ##' @export
 ##' @examples
 ##' # A single, two word, proquint
@@ -71,7 +74,8 @@ PROQUINT_RE1 <- sprintf("^%s$", PROQUINT_RE_WORD)
 ##'
 ##' # More identifiers
 ##' proquint(10)
-proquint <- function(n = 1, n_words = 2L, use_cache = TRUE) {
+proquint <- function(n = 1, n_words = 2L, use_cache = TRUE,
+                     use_openssl = FALSE) {
   ## Consider requiring something sane for 'n_words'?
   if (is.null(n)) {
     force(n_words)
@@ -80,8 +84,8 @@ proquint <- function(n = 1, n_words = 2L, use_cache = TRUE) {
       proquint(n, n_words, use_cache)
     }
   } else {
-    apply(matrix(proquint_sample_words(n * n_words, use_cache), n_words, n),
-          2L, paste, collapse = "-")
+    words <- proquint_sample_words(n * n_words, use_cache, use_openssl)
+    apply(matrix(words, n_words, n), 2L, paste, collapse = "-")
   }
 }
 
@@ -288,9 +292,8 @@ int_to_proquint_word <- function(i, use_cache = TRUE, validate = TRUE) {
 }
 
 ## Internal support functions:
-proquint_sample_words <- function(n, use_cache = TRUE) {
-  i <- sample(PROQUINT_WORD, n, replace = TRUE) - 1L
-  int_to_proquint_word(i, use_cache)
+proquint_sample_words <- function(n, use_cache = TRUE, use_openssl = FALSE) {
+  int_to_proquint_word(rand_i16(n, use_openssl), use_cache)
 }
 
 cache <- new.env(parent = emptyenv())
@@ -387,4 +390,14 @@ proquint_combine <- function(idx, len, as) {
     }
   }
   res
+}
+
+rand_i16 <- function(n, use_openssl = FALSE) {
+  if (use_openssl) {
+    r <- matrix(as.integer(openssl::rand_bytes(2 * n)), 2)
+    r[1L, ] <- r[1L, ] * 256L
+    as.integer(colSums(matrix(r, 2)))
+  } else {
+    sample(PROQUINT_WORD, n, replace = TRUE) - 1L
+  }
 }
