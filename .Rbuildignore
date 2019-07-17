@@ -4,7 +4,6 @@
 ^README.Rmd$
 ^.travis.yml$
 ^appveyor.yml$
-^bootstrap\.R$
-^update_web\.sh$
 ^notes\.md$
 ^ids_.*\.tar\.gz$
+^scripts$

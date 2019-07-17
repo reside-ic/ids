@@ -42,6 +42,6 @@ staticdocs:
 	rm -f vignettes/*.html
 	@rmdir inst/staticdocs
 website: staticdocs
-	./update_web.sh
+	./scripts/update_web.sh
 
 .PHONY: all test document install vignettes
