@@ -63,3 +63,19 @@ test_that("functional interface", {
   x <- f(100)
   expect_true(all(grepl(re, x)))
 })
+
+
+test_that("alliterate", {
+  res <- adjective_animal(10, alliterate = TRUE)
+  res <- strsplit(res, "_", fixed = TRUE)
+  m <- vapply(res, substr, character(2), 1, 1)
+  expect_equal(m[1, ], m[2, ])
+})
+
+
+test_that("alliterate: functional", {
+  res <- adjective_animal(NULL, n_adjective = 4, alliterate = TRUE)
+  expect_is(res, "function")
+  s <- strsplit(res(1), "_", fixed = TRUE)[[1]]
+  expect_equal(length(unique(substr(s, 1, 1))), 1)
+})
