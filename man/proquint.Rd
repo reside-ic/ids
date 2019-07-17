@@ -4,7 +4,8 @@
 \alias{proquint}
 \title{Generate random proquint identifiers}
 \usage{
-proquint(n = 1, n_words = 2L, use_cache = TRUE, use_openssl = FALSE)
+proquint(n = 1, n_words = 2L, use_cache = TRUE,
+  use_openssl = FALSE)
 }
 \arguments{
 \item{n}{number of ids to return.  If \code{NULL}, it instead
