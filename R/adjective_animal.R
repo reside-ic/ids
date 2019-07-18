@@ -104,7 +104,7 @@ aa_alliterate <- function(n, vals, style) {
     ids(n, vals = m[start, , drop = TRUE], style = style)
   }
 
-  gen <- function(n) {
+  gen <- function(n = 1) {
     start <- letters[sample.int(26, n, prob = p, replace = TRUE)]
     ret <- character(n)
     for (i in unique(start)) {
@@ -115,9 +115,7 @@ aa_alliterate <- function(n, vals, style) {
   }
 
   if (is.null(n)) {
-    function(n = 1) {
-      gen(n)
-    }
+    gen
   } else {
     gen(n)
   }
