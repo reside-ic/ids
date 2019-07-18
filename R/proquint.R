@@ -158,11 +158,11 @@ int_to_proquint <- function(x, use_cache = TRUE) {
     f <- function(el) {
       n_words <- big_log_ceil(el, PROQUINT_WORD)
       if (n_words == 1L) {
-        as_integer_bignum(el)
+        as.integer(el)
       } else {
         pow <- rsequence(n_words) - 1L
         vapply(n_words - seq_len(n_words),
-               function(pow) as_integer_bignum(el %/% (base^pow) %% base),
+               function(pow) as.integer(el %/% (base^pow) %% base),
                integer(1))
       }
     }
@@ -323,29 +323,6 @@ big_log_ceil <- function(x, base) {
 is_bignum_list <- function(x) {
   is.list(x) && all(vapply(x, function(el)
     inherits(el, "bignum") || is.null(el), logical(1)))
-}
-
-## This is a hack until openssl is updated; the development version
-## has a new as.integer method that should works nicely.
-##
-## TODO: before CRAN release, check that this does actually work!  See
-## the relevant test in test-proquint.R
-as_integer_bignum <- function(x) {
-  if (openssl_supports_as_integer()) {
-    as.integer(x) # nocov
-  } else {
-    x <- as.raw(x)
-    i <- length(x) - seq_along(x)
-    as.integer(sum(256^i * as.integer(x)))
-  }
-}
-
-openssl_supports_as_integer <- function() {
-  if (is.null(cache$openssl_supports_as_integer)) {
-    cache$openssl_supports_as_integer <-
-      utils::packageVersion("openssl") > "0.9.6"
-  }
-  cache$openssl_supports_as_integer
 }
 
 na_recall <- function(x, na, fun, ..., missing = is.na(x)) {

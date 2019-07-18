@@ -5,7 +5,7 @@
 \title{Ids based on a number of adjectives and an animal}
 \usage{
 adjective_animal(n = 1, n_adjectives = 1, style = "snake",
-  max_len = Inf)
+  max_len = Inf, alliterate = FALSE)
 }
 \arguments{
 \item{n}{number of ids to return.  If \code{NULL}, it instead
@@ -24,6 +24,12 @@ stops you generating a
 A vector of length 2 can be passed in here in which case the
 first element will apply to the adjectives (all of them) and the
 second element will apply to the animals.}
+
+\item{alliterate}{Produce "alliterative" adjective animals (e.g.,
+\code{hessian_hamster}).  Note that this cannot provide an equal
+probability of any particuilar combination because it forces a
+weighted sampling.  Adjectives may also be repeated if
+\code{n_adjectives} is more than 1.}
 }
 \description{
 Ids based on a number of adjectives and an animal
@@ -63,6 +69,9 @@ adjective_animal(10, max_len = c(6, Inf), n_adjectives = 2)
 id <- adjective_animal(NULL, n_adjectives = 2, style = "dot", max_len = 6)
 id()
 id(10)
+
+# Alliterated adjective animals aid awesomeness
+adjective_animal(10, n_adjectives = 3, alliterate = TRUE)
 }
 \author{
 Rich FitzJohn

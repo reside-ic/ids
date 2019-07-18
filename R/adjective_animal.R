@@ -15,6 +15,12 @@
 #'   first element will apply to the adjectives (all of them) and the
 #'   second element will apply to the animals.
 #'
+#' @param alliterate Produce "alliterative" adjective animals (e.g.,
+#'   \code{hessian_hamster}).  Note that this cannot provide an equal
+#'   probability of any particuilar combination because it forces a
+#'   weighted sampling.  Adjectives may also be repeated if
+#'   \code{n_adjectives} is more than 1.
+#'
 #' @inheritParams ids
 #' @export
 #' @author Rich FitzJohn
@@ -48,8 +54,11 @@
 #' id <- adjective_animal(NULL, n_adjectives = 2, style = "dot", max_len = 6)
 #' id()
 #' id(10)
+#'
+#' # Alliterated adjective animals aid awesomeness
+#' adjective_animal(10, n_adjectives = 3, alliterate = TRUE)
 adjective_animal <- function(n = 1, n_adjectives = 1, style = "snake",
-                             max_len = Inf) {
+                             max_len = Inf, alliterate = FALSE) {
   if (any(is.finite(max_len))) {
     if (any(max_len < 3)) {
       stop("max_len must be at least 3")
@@ -64,5 +73,50 @@ adjective_animal <- function(n = 1, n_adjectives = 1, style = "snake",
     gfycat_animals <- gfycat_animals[nchar(gfycat_animals) <= max_len[2]]
   }
   vals <- c(rep(list(gfycat_adjectives), n_adjectives), list(gfycat_animals))
-  ids(n, vals = vals, style = style)
+  if (alliterate) {
+    aa_alliterate(n, vals, style)
+  } else {
+    vals <- c(rep(list(gfycat_adjectives), n_adjectives), list(gfycat_animals))
+    ids(n, vals = vals, style = style)
+  }
+}
+
+
+## We can generate alliterative ids by either rejection sampling
+## (which will be hard with multiple adjectives) or by doing a
+## weighted sample of letters and then working with each letter
+## separately.  To do this properly we should compute the number of
+## distinct combinations and avoid duplications but that seems
+## excessive for this and is only an issue if the number of adjectives
+## is greater than one.  Practically we found the number of duplicated
+## names low enough when the max_len is not set too low and some were
+## quite amusing, such as "hot_hot_hot_hen".
+aa_alliterate <- function(n, vals, style) {
+  m <- lapply(vals, function(x) split(x, factor(substr(x, 1, 1), letters)))
+  m <- matrix(unlist(m, FALSE, FALSE), 26, length(vals),
+              dimnames = list(letters, NULL))
+
+  p <- rowSums(log(lengths(m)))
+  p <- exp(p - max(p))
+  p <- p / sum(p)
+
+  gen1 <- function(start, n) {
+    ids(n, vals = m[start, , drop = TRUE], style = style)
+  }
+
+  gen <- function(n = 1) {
+    start <- letters[sample.int(26, n, prob = p, replace = TRUE)]
+    ret <- character(n)
+    for (i in unique(start)) {
+      j <- start == i
+      ret[j] <- gen1(i, sum(j))
+    }
+    ret
+  }
+
+  if (is.null(n)) {
+    gen
+  } else {
+    gen(n)
+  }
 }
