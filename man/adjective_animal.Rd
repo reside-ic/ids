@@ -26,7 +26,7 @@ first element will apply to the adjectives (all of them) and the
 second element will apply to the animals.}
 
 \item{alliterate}{Produce "alliterative" adjective animals (e.g.,
-\code{hessian_hampster}).  Note that this cannot provide an equal
+\code{hessian_hamster}).  Note that this cannot provide an equal
 probability of any particuilar combination because it forces a
 weighted sampling.  Adjectives may also be repeated if
 \code{n_adjectives} is more than 1.}

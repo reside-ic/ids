@@ -16,7 +16,7 @@
 #'   second element will apply to the animals.
 #'
 #' @param alliterate Produce "alliterative" adjective animals (e.g.,
-#'   \code{hessian_hampster}).  Note that this cannot provide an equal
+#'   \code{hessian_hamster}).  Note that this cannot provide an equal
 #'   probability of any particuilar combination because it forces a
 #'   weighted sampling.  Adjectives may also be repeated if
 #'   \code{n_adjectives} is more than 1.
@@ -85,10 +85,12 @@ adjective_animal <- function(n = 1, n_adjectives = 1, style = "snake",
 ## We can generate alliterative ids by either rejection sampling
 ## (which will be hard with multiple adjectives) or by doing a
 ## weighted sample of letters and then working with each letter
-## separately.  Do do this properly we should compute the number of
+## separately.  To do this properly we should compute the number of
 ## distinct combinations and avoid duplications but that seems
 ## excessive for this and is only an issue if the number of adjectives
-## is greater than one.
+## is greater than one.  Practically we found the number of duplicated
+## names low enough when the max_len is not set too low and some were
+## quite amusing, such as "hot_hot_hot_hen".
 aa_alliterate <- function(n, vals, style) {
   m <- lapply(vals, function(x) split(x, factor(substr(x, 1, 1), letters)))
   m <- matrix(unlist(m, FALSE, FALSE), 26, length(vals),
