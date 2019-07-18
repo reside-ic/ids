@@ -319,11 +319,3 @@ test_that("numeric overflow", {
   expect_identical(proquint_to_int(pq, "bignum"),
                    list(openssl::bignum(big)))
 })
-
-## This supports my temporary as_integer_bignum function:
-test_that("as_integer_bignum", {
-  x <- c(0L, 255L, 256L, 1000L, 200000L, .Machine$integer.max)
-  for (i in x) {
-    expect_identical(as_integer_bignum(openssl::bignum(i)), i)
-  }
-})

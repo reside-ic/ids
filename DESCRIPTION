@@ -8,7 +8,7 @@ License: MIT + file LICENSE
 URL: https://github.com/richfitz/ids
 BugReports: https://github.com/richfitz/ids/issues
 Imports:
-    openssl,
+    openssl (>= 0.9.6),
     uuid
 Suggests:
     knitr,
