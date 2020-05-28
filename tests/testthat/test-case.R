@@ -35,3 +35,17 @@ test_that("error cases", {
   expect_error(check_style(c("camel", "upper")), "must be a scalar")
   expect_error(check_style("unknown"), "Invalid style 'unknown'")
 })
+
+
+test_that("spongemock copes when there are no letters", {
+  expect_identical(tospongemock("12"), "12")
+  expect_identical(tospongemock(""), "")
+})
+
+
+test_that("spongemock randomises the first letter", {
+  x <- rep("a", 100)
+  n <- table(tospongemock(rep("a", 1000)))
+  expect_setequal(names(n), c("A", "a"))
+  expect_true(min(n) > 400)
+})

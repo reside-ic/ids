@@ -193,6 +193,12 @@ Title Case
 ids::adjective_animal(1, 2, style = "title")
 ```
 
+MocKiNg sPoNgEbOb CaSe
+
+``` {r }
+ids::adjective_animal(1, 2, style = "spongemock")
+```
+
 Again, pass `n = NULL` here to create a generating function:
 ``` {r }
 aa3 <- ids::adjective_animal(NULL, 3, style = "kebab", max_len = c(6, 8))
@@ -219,6 +225,7 @@ ids::sentence()
 As with `adjective_animal`, the case can be changed:
 ``` {r }
 ids::sentence(2, "dot")
+ids::sentence(2, "spongemock")
 ```
 
 If you would rather past tense for the verbs, then pass `past = TRUE`:

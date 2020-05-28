@@ -74,8 +74,21 @@ test_that("alliterate", {
 
 
 test_that("alliterate: functional", {
-  res <- adjective_animal(NULL, n_adjective = 4, alliterate = TRUE)
+  res <- adjective_animal(NULL, n_adjectives = 4, alliterate = TRUE)
   expect_is(res, "function")
   s <- strsplit(res(1), "_", fixed = TRUE)[[1]]
   expect_equal(length(unique(substr(s, 1, 1))), 1)
+})
+
+
+test_that("mocking spongebob animals", {
+  ids <- adjective_animal(100, n_adjectives = 1, style = "spongemock")
+  expect_match(ids, "^[A-Za-z]+-[A-Za-z]+$", all = TRUE)
+  expect_match(ids, "[A-Z]+[a-z]+[A-Z]+|[a-z]+[A-Z]+[a-z]+")
+
+  skip_on_cran()
+  try_again(3, {
+    ids <- adjective_animal(100, n_adjectives = 1, style = "spongemock")
+    expect_true(sum(grepl("[A-Z]{4}|[a-z]{4}$", ids)) < 10)
+  })
 })

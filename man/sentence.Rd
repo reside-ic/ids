@@ -12,7 +12,7 @@ returns the generating function}
 
 \item{style}{Style to join words with.  Can be one of "Pascal",
 "camel", "snake", "kebab", "dot", "title", "sentence", "lower",
-"upper", and "constant".}
+"upper", "constant" or "spongemock"}
 
 \item{past}{Use the past tense for verbs (e.g., slurped or jogged
 rather than slurping or jogging)}
