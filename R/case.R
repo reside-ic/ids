@@ -70,6 +70,7 @@ tospongemock <- function(x) {
   x
 }
 
+##' @importFrom stats runif
 tospongemock1 <- function(x) {
   xx <- strsplit(x, NULL)[[1L]]
   is_letter <- xx %in% letters
