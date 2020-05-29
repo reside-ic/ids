@@ -54,7 +54,7 @@ set.seed(1)
 # This time they are the same:
 id1 == id2
 
-# Pass \\code{n = NULL} to generate a function that binds your arguments:
+# Pass \code{n = NULL} to generate a function that binds your arguments:
 id8 <- random_id(NULL, bytes = 8)
 id8(10)
 }

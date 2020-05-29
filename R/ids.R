@@ -13,7 +13,7 @@
 #'
 #' @param style Style to join words with.  Can be one of "Pascal",
 #'   "camel", "snake", "kebab", "dot", "title", "sentence", "lower",
-#'   "upper", and "constant".
+#'   "upper", "constant" or "spongemock"
 #'
 #' @return Either a character vector of length \code{n}, or a
 #'   function of one argument if \code{n} is \code{NULL}

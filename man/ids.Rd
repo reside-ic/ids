@@ -16,7 +16,7 @@ returns the generating function}
 
 \item{style}{Style to join words with.  Can be one of "Pascal",
 "camel", "snake", "kebab", "dot", "title", "sentence", "lower",
-"upper", and "constant".}
+"upper", "constant" or "spongemock"}
 }
 \value{
 Either a character vector of length \code{n}, or a

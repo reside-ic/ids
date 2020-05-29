@@ -1,8 +1,8 @@
 # ids
 
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Linux Build Status](https://travis-ci.org/richfitz/ids.svg?branch=master)](https://travis-ci.org/richfitz/ids)
-[![codecov.io](https://codecov.io/github/richfitz/ids/coverage.svg?branch=master)](https://codecov.io/github/richfitz/ids?branch=master)
+[![Linux Build Status](https://travis-ci.org/reside-ic/ids.svg?branch=master)](https://travis-ci.org/reside-ic/ids)
+[![codecov.io](https://codecov.io/github/reside-ic/ids/coverage.svg?branch=master)](https://codecov.io/github/reside-ic/ids?branch=master)
 [![](https://www.r-pkg.org/badges/version/ids)](https://cran.r-project.org/package=ids)
 
 Generate random identifiers in a number of styles:
@@ -26,5 +26,5 @@ install.packages("ids")
 or install the development version with
 
 ```r
-remotes::install_github("richfitz/ids", upgrade = FALSE)
+remotes::install_github("reside-ic/ids", upgrade = FALSE)
 ```

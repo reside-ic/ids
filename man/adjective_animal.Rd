@@ -4,8 +4,13 @@
 \alias{adjective_animal}
 \title{Ids based on a number of adjectives and an animal}
 \usage{
-adjective_animal(n = 1, n_adjectives = 1, style = "snake",
-  max_len = Inf, alliterate = FALSE)
+adjective_animal(
+  n = 1,
+  n_adjectives = 1,
+  style = "snake",
+  max_len = Inf,
+  alliterate = FALSE
+)
 }
 \arguments{
 \item{n}{number of ids to return.  If \code{NULL}, it instead
@@ -15,7 +20,7 @@ returns the generating function}
 
 \item{style}{Style to join words with.  Can be one of "Pascal",
 "camel", "snake", "kebab", "dot", "title", "sentence", "lower",
-"upper", and "constant".}
+"upper", "constant" or "spongemock"}
 
 \item{max_len}{The maximum length of a word part to include (this
 may be useful because some of the names are rather long.  This

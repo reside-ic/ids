@@ -65,15 +65,34 @@ toupper_pascal <- function(x) {
   x
 }
 
+tospongemock <- function(x) {
+  x[] <- vapply(x, tospongemock1, "")
+  x
+}
+
+##' @importFrom stats runif
+tospongemock1 <- function(x) {
+  xx <- strsplit(x, NULL)[[1L]]
+  is_letter <- xx %in% letters
+  if (!any(is_letter)) {
+    return(x)
+  }
+  i <- c(runif(1) < .5, runif(sum(is_letter) - 1) < 0.85)
+  to_upper <- cumsum(i) %% 2 == 0L
+  xx[is_letter][to_upper] <- toupper(xx[is_letter][to_upper])
+  paste(xx, collapse = "")
+}
+
 cases <- function() {
-  list(snake    = list(join = "_", tr = identity),
-       kebab    = list(join = "-", tr = identity),
-       dot      = list(join = ".", tr = identity),
-       camel    = list(join = "",  tr = toupper_camel),
-       pascal   = list(join = "",  tr = toupper_pascal),
-       lower    = list(join = " ", tr = identity), # lower case already
-       upper    = list(join = " ", tr = toupper),
-       title    = list(join = " ", tr = toupper_pascal),
-       sentence = list(join = " ", tr = toupper_sentence),
-       constant = list(join = "_", tr = toupper))
+  list(snake      = list(join = "_", tr = identity),
+       kebab      = list(join = "-", tr = identity),
+       dot        = list(join = ".", tr = identity),
+       camel      = list(join = "",  tr = toupper_camel),
+       pascal     = list(join = "",  tr = toupper_pascal),
+       lower      = list(join = " ", tr = identity), # lower case already
+       upper      = list(join = " ", tr = toupper),
+       title      = list(join = " ", tr = toupper_pascal),
+       sentence   = list(join = " ", tr = toupper_sentence),
+       constant   = list(join = "_", tr = toupper),
+       spongemock = list(join = "-", tr = tospongemock))
 }
