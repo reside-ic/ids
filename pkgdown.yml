@@ -1,0 +1,6 @@
+pandoc: '2.5'
+pkgdown: 1.4.1
+pkgdown_sha: ~
+articles:
+  ids: ids.html
+
