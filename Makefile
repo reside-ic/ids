@@ -28,10 +28,7 @@ check_all:
 README.md: README.Rmd
 	Rscript -e "options(warnPartialMatchArgs=FALSE); knitr::knit('$<')"
 	sed -i.bak 's/[[:space:]]*$$//' README.md
-	rm -f $@.bak myfile.json
 
-vignettes/%.Rmd: vignettes/src/%.R
-	${RSCRIPT} -e 'library(sowsear); sowsear("$<", output="$@")'
 vignettes: vignettes/ids.Rmd
 	${RSCRIPT} -e 'library(methods); devtools::build_vignettes()'
 
