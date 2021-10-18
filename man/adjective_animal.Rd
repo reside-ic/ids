@@ -16,7 +16,7 @@ adjective_animal(
 \item{n}{number of ids to return.  If \code{NULL}, it instead
 returns the generating function}
 
-\item{n_adjectives}{Number of adjectives to prefix the anmial with}
+\item{n_adjectives}{Number of adjectives to prefix the animal with}
 
 \item{style}{Style to join words with.  Can be one of "Pascal",
 "camel", "snake", "kebab", "dot", "title", "sentence", "lower",
@@ -32,7 +32,7 @@ second element will apply to the animals.}
 
 \item{alliterate}{Produce "alliterative" adjective animals (e.g.,
 \code{hessian_hamster}).  Note that this cannot provide an equal
-probability of any particuilar combination because it forces a
+probability of any particular combination because it forces a
 weighted sampling.  Adjectives may also be repeated if
 \code{n_adjectives} is more than 1.}
 }

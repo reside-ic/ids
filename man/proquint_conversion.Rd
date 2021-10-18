@@ -60,11 +60,11 @@ they will and will not return.
 
 For \code{proquint_to_int}, because numeric overflow is a
 possibility, it is important to consider whether a proquint can be
-meaninfully translated into an integer or a numeric and the
+meaningfully translated into an integer or a numeric and the
 functions will throw an error rather than failing in a more
 insidious way (promoting the type or returning NA).
 
-\code{proquint_word_to_int} always retuns an integer vector of the
+\code{proquint_word_to_int} always returns an integer vector of the
 same length as the input.
 
 Missing values are allowed; a missing integer representation of a
@@ -75,6 +75,6 @@ proquint will translate as \code{NA_integer_} (if \code{as =
 
 Names are always discarded.  Future versions may gain an argument
 \code{named} with a default of \code{FALSE}, but that setting to
-\code{TRUE} would preseve names.  Let me know if this would be
+\code{TRUE} would preserve names.  Let me know if this would be
 useful.
 }

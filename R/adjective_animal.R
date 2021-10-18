@@ -5,7 +5,7 @@
 #' turn from \url{gfycat.com}
 #'
 #' @title Ids based on a number of adjectives and an animal
-#' @param n_adjectives Number of adjectives to prefix the anmial with
+#' @param n_adjectives Number of adjectives to prefix the animal with
 #'
 #' @param max_len The maximum length of a word part to include (this
 #'   may be useful because some of the names are rather long.  This
@@ -17,7 +17,7 @@
 #'
 #' @param alliterate Produce "alliterative" adjective animals (e.g.,
 #'   \code{hessian_hamster}).  Note that this cannot provide an equal
-#'   probability of any particuilar combination because it forces a
+#'   probability of any particular combination because it forces a
 #'   weighted sampling.  Adjectives may also be repeated if
 #'   \code{n_adjectives} is more than 1.
 #'
