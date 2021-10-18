@@ -1,31 +1,31 @@
 ## We need a bunch of constants here to keep things from being totally
 ## infected with magic numbers.  There are still a lot of references
 ## to '5' and '16' below.
-PROQUINT_CONSONANT <- c("b", "d", "f", "g",
+proquint_consonant <- c("b", "d", "f", "g",
                         "h", "j", "k", "l",
                         "m", "n", "p", "r",
                         "s", "t", "v", "z")
-PROQUINT_VOWEL <- c("a", "i", "o", "u")
-PROQUINT_POOL <- c(PROQUINT_CONSONANT, PROQUINT_VOWEL)
-PROQUINT_WORD <- 2^16 # 65536
-PROQUINT_MULT <- c(16 * 4 * 16 * 4,
+proquint_vowel <- c("a", "i", "o", "u")
+proquint_pool <- c(proquint_consonant, proquint_vowel)
+proquint_word <- 2^16 # 65536
+proquint_mult <- c(16 * 4 * 16 * 4,
                    16 * 4 * 16,
                    16 * 4,
                    16,
                    1)
-PROQUINT_MOD <- c(PROQUINT_WORD, PROQUINT_MULT[-5L])
+proquint_mod <- c(proquint_word, proquint_mult[-5L])
 
-PROQUINT_IDX_V <- c(2L, 4L)
-PROQUINT_IDX_C <- c(1L, 3L, 5L)
+proquint_idx_v <- c(2L, 4L)
+proquint_idx_c <- c(1L, 3L, 5L)
 
-PROQUINT_RE_WORD <- sprintf("[%s][%s][%s][%s][%s]",
-                            paste(PROQUINT_CONSONANT, collapse = ""),
-                            paste(PROQUINT_VOWEL, collapse = ""),
-                            paste(PROQUINT_CONSONANT, collapse = ""),
-                            paste(PROQUINT_VOWEL, collapse = ""),
-                            paste(PROQUINT_CONSONANT, collapse = ""))
-PROQUINT_RE <- sprintf("^%s(-%s)*$", PROQUINT_RE_WORD, PROQUINT_RE_WORD)
-PROQUINT_RE1 <- sprintf("^%s$", PROQUINT_RE_WORD)
+proquint_re_word <- sprintf("[%s][%s][%s][%s][%s]",
+                            paste(proquint_consonant, collapse = ""),
+                            paste(proquint_vowel, collapse = ""),
+                            paste(proquint_consonant, collapse = ""),
+                            paste(proquint_vowel, collapse = ""),
+                            paste(proquint_consonant, collapse = ""))
+proquint_re <- sprintf("^%s(-%s)*$", proquint_re_word, proquint_re_word)
+proquint_re1 <- sprintf("^%s$", proquint_re_word)
 
 ##' Generate random "proquint" identifiers.  "proquint" stands for
 ##' PRO-nouncable QUINT-uplets and were described by Daniel Wilkerson
@@ -132,10 +132,11 @@ int_to_proquint <- function(x, use_cache = TRUE) {
     if (anyNA(x)) {
       return(na_recall(x, NA_character_, int_to_proquint, use_cache))
     }
-    n_words <- ceiling(log(x + 1L, PROQUINT_WORD))
+    n_words <- ceiling(log(x + 1L, proquint_word))
     if (any(n_words > 1L)) {
-      scal <- PROQUINT_WORD^(rsequence(n_words) - 1L)
-      idx <- rep(x, n_words) %/% scal %% PROQUINT_WORD
+      pow <- rsequence(n_words) - 1L
+      scal <- proquint_word^pow
+      idx <- rep(x, n_words) %/% scal %% proquint_word
     } else {
       idx <- x
     }
@@ -154,13 +155,12 @@ int_to_proquint <- function(x, use_cache = TRUE) {
       return(na_recall(x, NA_character_, int_to_proquint, use_cache,
                        missing = is_na))
     }
-    base <- openssl::bignum(PROQUINT_WORD)
+    base <- openssl::bignum(proquint_word)
     f <- function(el) {
-      n_words <- big_log_ceil(el, PROQUINT_WORD)
+      n_words <- big_log_ceil(el, proquint_word)
       if (n_words == 1L) {
         as.integer(el)
       } else {
-        pow <- rsequence(n_words) - 1L
         vapply(n_words - seq_len(n_words),
                function(pow) as.integer(el %/% (base^pow) %% base),
                integer(1))
@@ -213,7 +213,7 @@ proquint_to_int <- function(p, as = "numeric", use_cache = TRUE) {
     stop("Expected a character vector for 'p'")
   }
 
-  err <- !grepl(PROQUINT_RE, p)
+  err <- !grepl(proquint_re, p)
   if (any(err)) {
     stop("Invalid identifier: ",
          paste(sprintf("'%s'", p[err]), collapse = ", "))
@@ -239,7 +239,7 @@ proquint_word_to_int <- function(w, use_cache = TRUE, validate = TRUE) {
                      use_cache, validate))
   }
   if (validate) {
-    err <- !grepl(PROQUINT_RE1, w)
+    err <- !grepl(proquint_re1, w)
     if (any(err)) {
       stop(sprintf("Invalid proquint word: %s",
                    paste(sprintf("'%s'", w[err]), collapse = ", ")))
@@ -251,11 +251,11 @@ proquint_word_to_int <- function(w, use_cache = TRUE, validate = TRUE) {
     sx <- matrix(unlist(strsplit(unlist(w, use.names = FALSE), NULL)),
                  ncol = 5L, byrow = TRUE)
     i <- array(0L, dim(sx))
-    i[, PROQUINT_IDX_C] <-
-      match(sx[, PROQUINT_IDX_C], PROQUINT_CONSONANT) - 1L
-    i[, PROQUINT_IDX_V] <-
-      match(sx[, PROQUINT_IDX_V], PROQUINT_VOWEL) - 1L
-    idx <- as.integer(drop(i %*% PROQUINT_MULT))
+    i[, proquint_idx_c] <-
+      match(sx[, proquint_idx_c], proquint_consonant) - 1L
+    i[, proquint_idx_v] <-
+      match(sx[, proquint_idx_v], proquint_vowel) - 1L
+    idx <- as.integer(drop(i %*% proquint_mult))
   }
   idx
 }
@@ -274,7 +274,7 @@ int_to_proquint_word <- function(i, use_cache = TRUE, validate = TRUE) {
     if (!is.numeric(i)) {
       stop("Invalid proquint word index (not numeric)")
     }
-    err <- i < 0 | i >= PROQUINT_WORD
+    err <- i < 0 | i >= proquint_word
     if (any(err)) {
       stop(sprintf("Invalid proquint word index (out of range): %s",
                    paste(i[err], collapse = ", ")))
@@ -283,9 +283,9 @@ int_to_proquint_word <- function(i, use_cache = TRUE, validate = TRUE) {
   if (use_cache) {
     word <- proquint_word_cache()[i + 1L]
   } else {
-    j <- t(outer(i, PROQUINT_MOD, `%%`)) %/% PROQUINT_MULT
-    j[PROQUINT_IDX_V, ] <- j[PROQUINT_IDX_V, ] + 16L
-    word <- apply(matrix(PROQUINT_POOL[c(j) + 1L], 5L, length(i)), 2, paste0,
+    j <- t(outer(i, proquint_mod, `%%`)) %/% proquint_mult
+    j[proquint_idx_v, ] <- j[proquint_idx_v, ] + 16L
+    word <- apply(matrix(proquint_pool[c(j) + 1L], 5L, length(i)), 2, paste0,
                   collapse = "")
   }
   word
@@ -301,7 +301,7 @@ proquint_word_cache <- function() {
   if (is.null(cache$proquint_words)) {
     ## This takes ~0.25s, but would be paid across all words anyway
     idx <- as.matrix(expand.grid(1:16, 17:20, 1:16, 17:20, 1:16))[, 5:1]
-    let <- array(PROQUINT_POOL[c(idx)], dim(idx))
+    let <- array(proquint_pool[c(idx)], dim(idx))
     cache$proquint_words <- apply(let, 1, paste, collapse = "")
   }
   cache$proquint_words
@@ -340,17 +340,19 @@ proquint_combine <- function(idx, len, as) {
   if (as == "bignum") {
     big_combine1 <- function(x) {
       n <- length(x)
-      base <- openssl::bignum(PROQUINT_WORD)
+      base <- openssl::bignum(proquint_word)
       res <- openssl::bignum(0)
       for (i in seq_along(x)) {
-        res <- res + x[[i]] * base^(n - i)
+        m <- n - i
+        res <- res + x[[i]] * base^m
       }
       res
     }
     res <- tapply(idx, grp, big_combine1)
     attributes(res) <- NULL
   } else {
-    scal <- PROQUINT_WORD^(rsequence(len) - 1L)
+    pow <- rsequence(len) - 1L
+    scal <- proquint_word^pow
     res <- tapply(scal * idx, rep(seq_along(len), len), sum)
     if (as == "integer") {
       i <- res > .Machine$integer.max
@@ -375,6 +377,6 @@ rand_i16 <- function(n, use_openssl = FALSE) {
     r[1L, ] <- r[1L, ] * 256L
     as.integer(colSums(matrix(r, 2)))
   } else {
-    sample(PROQUINT_WORD, n, replace = TRUE) - 1L
+    sample(proquint_word, n, replace = TRUE) - 1L
   }
 }

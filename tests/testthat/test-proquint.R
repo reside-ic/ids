@@ -1,7 +1,7 @@
 context("proquint")
 
 test_that("word conversions", {
-  i <- 10^(0:4)
+  i <- c(1e0, 1e1, 1e2, 1e3, 1e4)
   ## From Python:
   cmp <- c("babad", "babap", "badoh", "bazom", "fisib")
   ## Ours
@@ -19,11 +19,11 @@ test_that("word conversions", {
 
 ## This is exhaustive, because it's not that slow to do everything:
 test_that("word conversions - exhaustive", {
-  i <- seq_len(PROQUINT_WORD) - 1L
+  i <- seq_len(proquint_word) - 1L
   w <- int_to_proquint_word(i)
   expect_equal(w, cache$proquint_words)
   expect_equal(int_to_proquint_word(i, FALSE), cache$proquint_words)
-  ## word -> index
+  ## word to index
   expect_equal(proquint_word_to_int(w), i)
   expect_equal(proquint_word_to_int(w, FALSE), i)
 })
@@ -53,7 +53,7 @@ test_that("proquint conversions", {
 
 ## Around the transition:
 test_that("1-2 word transition corner cases", {
-  i <- (PROQUINT_WORD - 2):(PROQUINT_WORD + 2)
+  i <- (proquint_word - 2):(proquint_word + 2)
   expected <- c("zuzuv", "zuzuz", "babad-babab", "babad-babad", "babad-babaf")
   expect_equal(int_to_proquint(i), expected)
   expect_equal(int_to_proquint(i, FALSE), expected)
@@ -104,7 +104,7 @@ test_that("openssl random identifiers", {
 test_that("bad type on conversion", {
   expect_error(int_to_proquint("one"), "Invalid type for 'x'")
   expect_error(int_to_proquint(TRUE), "Invalid type for 'x'")
-  expect_error(int_to_proquint(1+4i), "Invalid type for 'x'")
+  expect_error(int_to_proquint(1 + 4i), "Invalid type for 'x'")
 })
 
 test_that("word -> int translation: missing values", {
@@ -185,7 +185,7 @@ test_that("identifier: 1", {
   x <- proquint(1)
   expect_is(x, "character")
   expect_equal(length(x), 1)
-  re <- sprintf("^%s-%s$", PROQUINT_RE_WORD, PROQUINT_RE_WORD)
+  re <- sprintf("^%s-%s$", proquint_re_word, proquint_re_word)
   expect_match(x, re)
 })
 
@@ -194,20 +194,20 @@ test_that("identifier: n", {
   x <- proquint(n)
   expect_is(x, "character")
   expect_equal(length(x), n)
-  re <- sprintf("^%s-%s$", PROQUINT_RE_WORD, PROQUINT_RE_WORD)
+  re <- sprintf("^%s-%s$", proquint_re_word, proquint_re_word)
   expect_match(x, re, all = TRUE)
 })
 
 test_that("vary word length", {
   re3 <- sprintf("^%s-%s-%s$",
-                 PROQUINT_RE_WORD, PROQUINT_RE_WORD, PROQUINT_RE_WORD)
+                 proquint_re_word, proquint_re_word, proquint_re_word)
   expect_match(proquint(1, 3), re3)
-  expect_match(proquint(1, 1), PROQUINT_RE1)
+  expect_match(proquint(1, 1), proquint_re1)
 })
 
 test_that("functional interface", {
   re3 <- sprintf("^%s-%s-%s$",
-                 PROQUINT_RE_WORD, PROQUINT_RE_WORD, PROQUINT_RE_WORD)
+                 proquint_re_word, proquint_re_word, proquint_re_word)
   f <- proquint(NULL, 3)
   expect_is(f, "function")
   expect_match(f(), re3)
@@ -221,9 +221,9 @@ test_that("functional interface", {
 test_that("invalid word -> int", {
   expect_error(proquint_word_to_int("hello!"),
                "Invalid proquint word: 'hello!'")
-  expect_error(proquint_word_to_int(c("hello!", "babad"),),
+  expect_error(proquint_word_to_int(c("hello!", "babad")),
                "Invalid proquint word: 'hello!'")
-  expect_error(proquint_word_to_int(c("hello!", "babad", "yo!"),),
+  expect_error(proquint_word_to_int(c("hello!", "babad", "yo!")),
                "Invalid proquint word: 'hello!', 'yo!'")
   expect_error(proquint_word_to_int(1),
                "Invalid proquint word: '1'")
@@ -307,7 +307,7 @@ test_that("integer overflow", {
 })
 
 test_that("numeric overflow", {
-  pow <- log2(2/.Machine$double.eps) + 1
+  pow <- log2(2 / .Machine$double.eps) + 1
   big <- openssl::bignum(2)^pow + 1
 
   pq <- int_to_proquint(big)
