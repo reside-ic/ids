@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="Ids based on a number of adjectives and an animal — adjective_animal" />
 <meta property="og:description" content="Ids based on a number of adjectives and an animal" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -77,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -93,8 +96,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/reside-ic/ids">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/reside-ic/ids/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -120,13 +123,13 @@
     <p>Ids based on a number of adjectives and an animal</p>
     </div>
 
-    <pre class="usage"><span class='fu'>adjective_animal</span>(
-  <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>n_adjectives</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"snake"</span>,
-  <span class='kw'>max_len</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
-  <span class='kw'>alliterate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>adjective_animal</span><span class='op'>(</span>
+  n <span class='op'>=</span> <span class='fl'>1</span>,
+  n_adjectives <span class='op'>=</span> <span class='fl'>1</span>,
+  style <span class='op'>=</span> <span class='st'>"snake"</span>,
+  max_len <span class='op'>=</span> <span class='cn'>Inf</span>,
+  alliterate <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -171,38 +174,54 @@ weighted sampling.  Adjectives may also be repeated if
     <p>The list of adjectives and animals comes from
 <a href='https://github.com/a-type/adjective-adjective-animal'>https://github.com/a-type/adjective-adjective-animal</a>, and in
 turn from <a href='gfycat.com'>gfycat.com</a></p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Rich FitzJohn</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Generate a random identifier:</span>
-<span class='fu'>adjective_animal</span>()</div><div class='output co'>#&gt; [1] "nonspheric_siberiantiger"</div><div class='input'>
+<span class='fu'>adjective_animal</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "nonspheric_siberiantiger"</div><div class='input'>
 <span class='co'># Generate a bunch all at once:</span>
-<span class='fu'>adjective_animal</span>(<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] "sacred_pachyderm"        "artsycraftsy_astarte"   
+<span class='fu'>adjective_animal</span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "sacred_pachyderm"        "artsycraftsy_astarte"   
 #&gt; [3] "eccentric_doe"           "compassionless_drever"  
 #&gt; [5] "unfeared_americancicada"</div><div class='input'>
 <span class='co'># Control the style of punctuation with the style argument:</span>
-<span class='fu'>adjective_animal</span>(<span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"lower"</span>)</div><div class='output co'>#&gt; [1] "ecological snake"</div><div class='input'><span class='fu'>adjective_animal</span>(<span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"CONSTANT"</span>)</div><div class='output co'>#&gt; [1] "FROSTED_DUNGBEETLE"</div><div class='input'><span class='fu'>adjective_animal</span>(<span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"camel"</span>)</div><div class='output co'>#&gt; [1] "deferentialCopepod"</div><div class='input'><span class='fu'>adjective_animal</span>(<span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"kebab"</span>)</div><div class='output co'>#&gt; [1] "frantic-grub"</div><div class='input'>
+<span class='fu'>adjective_animal</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"lower"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "ecological snake"</div><div class='input'><span class='fu'>adjective_animal</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"CONSTANT"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "FROSTED_DUNGBEETLE"</div><div class='input'><span class='fu'>adjective_animal</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"camel"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "deferentialCopepod"</div><div class='input'><span class='fu'>adjective_animal</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"kebab"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "frantic-grub"</div><div class='input'>
 <span class='co'># Control the number of adjectives used</span>
-<span class='fu'>adjective_animal</span>(<span class='kw'>n_adjectives</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; [1] "raging_carnauba_civillaw_skink"</div><div class='input'>
+<span class='fu'>adjective_animal</span><span class='op'>(</span>n_adjectives <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "raging_carnauba_civillaw_skink"</div><div class='input'>
 <span class='co'># This can get out of hand quickly though:</span>
-<span class='fu'>adjective_animal</span>(<span class='kw'>n_adjectives</span> <span class='kw'>=</span> <span class='fl'>7</span>)</div><div class='output co'>#&gt; [1] "intercorporate_deiform_curt_intercontradictory_semimonarchical_mirthful_congenial_dassierat"</div><div class='input'>
+<span class='fu'>adjective_animal</span><span class='op'>(</span>n_adjectives <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "intercorporate_deiform_curt_intercontradictory_semimonarchical_mirthful_congenial_dassierat"</div><div class='input'>
 <span class='co'># Limit the length of adjectives and animals used:</span>
-<span class='fu'>adjective_animal</span>(<span class='fl'>10</span>, <span class='kw'>max_len</span> <span class='kw'>=</span> <span class='fl'>6</span>)</div><div class='output co'>#&gt;  [1] "brown_thrush" "corny_godwit" "idled_eyas"   "lardy_titi"   "myrtle_anole"
+<span class='fu'>adjective_animal</span><span class='op'>(</span><span class='fl'>10</span>, max_len <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "brown_thrush" "corny_godwit" "idled_eyas"   "lardy_titi"   "myrtle_anole"
 #&gt;  [6] "great_swift"  "postal_bird"  "turbid_cow"   "bored_xeme"   "mutual_liger"</div><div class='input'>
 <span class='co'># The lengths can be controlled for adjectives and animals</span>
 <span class='co'># separately, with Inf meaning no limit:</span>
-<span class='fu'>adjective_animal</span>(<span class='fl'>10</span>, <span class='kw'>max_len</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>6</span>, <span class='fl'>Inf</span>), <span class='kw'>n_adjectives</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt;  [1] "lionly_chaste_xinjiangovenator" "webby_mature_iguanodon"        
+<span class='fu'>adjective_animal</span><span class='op'>(</span><span class='fl'>10</span>, max_len <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='cn'>Inf</span><span class='op'>)</span>, n_adjectives <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "lionly_chaste_xinjiangovenator" "webby_mature_iguanodon"        
 #&gt;  [3] "legal_terse_ballpython"         "mucky_fierce_dromaeosaur"      
 #&gt;  [5] "acrid_fussy_northernspottedowl" "public_faulty_marmoset"        
 #&gt;  [7] "wroth_mid_australiancurlew"     "golden_united_chimpanzee"      
 #&gt;  [9] "poetic_wary_nuthatch"           "cream_pebbly_abyssiniancat"    </div><div class='input'>
 <span class='co'># Pass n = NULL to bind arguments to a function</span>
-<span class='no'>id</span> <span class='kw'>&lt;-</span> <span class='fu'>adjective_animal</span>(<span class='kw'>NULL</span>, <span class='kw'>n_adjectives</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"dot"</span>, <span class='kw'>max_len</span> <span class='kw'>=</span> <span class='fl'>6</span>)
-<span class='fu'>id</span>()</div><div class='output co'>#&gt; [1] "elfish.mad.civet"</div><div class='input'><span class='fu'>id</span>(<span class='fl'>10</span>)</div><div class='output co'>#&gt;  [1] "green.chatty.turkey"  "strict.tidal.barb"    "united.cruel.vixen"  
+<span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'>adjective_animal</span><span class='op'>(</span><span class='cn'>NULL</span>, n_adjectives <span class='op'>=</span> <span class='fl'>2</span>, style <span class='op'>=</span> <span class='st'>"dot"</span>, max_len <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>
+<span class='fu'>id</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "elfish.mad.civet"</div><div class='input'><span class='fu'>id</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "green.chatty.turkey"  "strict.tidal.barb"    "united.cruel.vixen"  
 #&gt;  [4] "dreary.duckie.eft"    "brashy.ambery.tick"   "leafed.almond.turkey"
 #&gt;  [7] "cosmic.lethal.possum" "even.bleary.bovine"   "sudden.fleecy.moray" 
 #&gt; [10] "intact.tan.urchin"   </div><div class='input'>
 <span class='co'># Alliterated adjective animals aid awesomeness</span>
-<span class='fu'>adjective_animal</span>(<span class='fl'>10</span>, <span class='kw'>n_adjectives</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>alliterate</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;  [1] "somniphobic_selfsatisfied_stoned_seahorse"            
+<span class='fu'>adjective_animal</span><span class='op'>(</span><span class='fl'>10</span>, n_adjectives <span class='op'>=</span> <span class='fl'>3</span>, alliterate <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "somniphobic_selfsatisfied_stoned_seahorse"            
 #&gt;  [2] "inexperienced_impervious_impressed_ibisbill"          
 #&gt;  [3] "suede_sour_suboceanic_siamesecat"                     
 #&gt;  [4] "apidological_apian_aware_altiplanochinchillamouse"    
@@ -213,16 +232,10 @@ turn from <a href='gfycat.com'>gfycat.com</a></p>
 #&gt;  [9] "carnivallike_censorious_creatural_cheetah"            
 #&gt; [10] "aweinspiring_antidotical_atrocious_anhinga"           </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Rich FitzJohn</p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -233,7 +246,7 @@ turn from <a href='gfycat.com'>gfycat.com</a></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -42,7 +46,6 @@ https://blog.asana.com/2011/09/6-sad-squid-snuggle-softly/.
 This approach encodes 32 bits of information (so 2^32 ~= 4 billion
 possibilities) and in theory can be remapped to an integer if you
 really wanted to." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -60,7 +63,7 @@ really wanted to." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -74,7 +77,7 @@ really wanted to." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -82,7 +85,7 @@ really wanted to." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -98,8 +101,8 @@ really wanted to." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/reside-ic/ids">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/reside-ic/ids/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -130,7 +133,7 @@ possibilities) and in theory can be remapped to an integer if you
 really wanted to.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sentence</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"snake"</span>, <span class='kw'>past</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>sentence</span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1</span>, style <span class='op'>=</span> <span class='st'>"snake"</span>, past <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,12 +156,17 @@ rather than slurping or jogging)</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Rich FitzJohn</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Generate an identifier</span>
-<span class='fu'>sentence</span>()</div><div class='output co'>#&gt; [1] "23_remarkable_moles_clamoring_mockingly"</div><div class='input'>
+<span class='fu'>sentence</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "23_remarkable_moles_clamoring_mockingly"</div><div class='input'>
 <span class='co'># Generate a bunch</span>
-<span class='fu'>sentence</span>(<span class='fl'>10</span>)</div><div class='output co'>#&gt;  [1] "16_whimsical_ferrets_wading_gallantly"        
+<span class='fu'>sentence</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "16_whimsical_ferrets_wading_gallantly"        
 #&gt;  [2] "22_joyous_sphinxes_skipping_bashfully"        
 #&gt;  [3] "6_eager_chickens_sprinting_courageously"      
 #&gt;  [4] "10_happy_crickets_laughing_drudgingly"        
@@ -169,14 +177,21 @@ rather than slurping or jogging)</p></td>
 #&gt;  [9] "3_gorgeous_peacocks_scurriing_colorfully"     
 #&gt; [10] "11_delightful_lizards_swimming_oddly"         </div><div class='input'>
 <span class='co'># As with adjective_animal, use "style" to control punctuation</span>
-<span class='fu'>sentence</span>(<span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"Camel"</span>)</div><div class='output co'>#&gt; [1] "7FunnyTigersSwimmingSheepishly"</div><div class='input'><span class='fu'>sentence</span>(<span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"dot"</span>)</div><div class='output co'>#&gt; [1] "7.jazzy.yaks.sprinting.madly"</div><div class='input'><span class='fu'>sentence</span>(<span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"Title"</span>)</div><div class='output co'>#&gt; [1] "9 Pretty Mongooses Gliding Sadly"</div><div class='input'>
+<span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"Camel"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "7FunnyTigersSwimmingSheepishly"</div><div class='input'><span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"dot"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "7.jazzy.yaks.sprinting.madly"</div><div class='input'><span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"Title"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "9 Pretty Mongooses Gliding Sadly"</div><div class='input'>
 <span class='co'># Change the tense of the verb:</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1</span>)
-<span class='fu'>sentence</span>()</div><div class='output co'>#&gt; [1] "26_gaudy_flamingos_ambling_effortlessly"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1</span>)
-<span class='fu'>sentence</span>(<span class='kw'>past</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "26_gaudy_flamingos_ambled_effortlessly"</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='fu'>sentence</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "26_gaudy_flamingos_ambling_effortlessly"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='fu'>sentence</span><span class='op'>(</span>past <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "26_gaudy_flamingos_ambled_effortlessly"</div><div class='input'>
 <span class='co'># Pass n = NULL to bind arguments to a function</span>
-<span class='no'>id</span> <span class='kw'>&lt;-</span> <span class='fu'>sentence</span>(<span class='kw'>NULL</span>, <span class='kw'>past</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"dot"</span>)
-<span class='fu'>id</span>()</div><div class='output co'>#&gt; [1] "30.jazzy.giraffes.flopped.owlishly"</div><div class='input'><span class='fu'>id</span>(<span class='fl'>10</span>)</div><div class='output co'>#&gt;  [1] "28.goofy.skunks.slurped.madly"            
+<span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'>sentence</span><span class='op'>(</span><span class='cn'>NULL</span>, past <span class='op'>=</span> <span class='cn'>TRUE</span>, style <span class='op'>=</span> <span class='st'>"dot"</span><span class='op'>)</span>
+<span class='fu'>id</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "30.jazzy.giraffes.flopped.owlishly"</div><div class='input'><span class='fu'>id</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "28.goofy.skunks.slurped.madly"            
 #&gt;  [2] "20.happy.woodchucks.scampered.urgently"   
 #&gt;  [3] "2.incredible.phoenixes.squirmed.foolishly"
 #&gt;  [4] "22.daffy.gnomes.hurried.gladly"           
@@ -187,15 +202,10 @@ rather than slurping or jogging)</p></td>
 #&gt;  [9] "11.daffy.lizards.wade.vainly"             
 #&gt; [10] "8.cuddly.moles.juggled.fervently"         </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Rich FitzJohn</p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -206,7 +216,7 @@ rather than slurping or jogging)</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

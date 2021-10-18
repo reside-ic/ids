@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -40,7 +44,6 @@
 package to produce a random set of bytes, and expresses that as a
 hex character string.  This does not affect R's random number
 stream." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -58,7 +61,7 @@ stream." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -72,7 +75,7 @@ stream." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -80,7 +83,7 @@ stream." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -96,8 +99,8 @@ stream." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/reside-ic/ids">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/reside-ic/ids/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -126,7 +129,7 @@ hex character string.  This does not affect R's random number
 stream.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>random_id</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>bytes</span> <span class='kw'>=</span> <span class='fl'>16</span>, <span class='kw'>use_openssl</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>random_id</span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1</span>, bytes <span class='op'>=</span> <span class='fl'>16</span>, use_openssl <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,44 +156,52 @@ should be very similar for both approaches.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Rich FitzJohn</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Generate a random id:</span>
-<span class='fu'>random_id</span>()</div><div class='output co'>#&gt; [1] "93e846a0df54df32cea4ba8c10c29e52"</div><div class='input'>
+<span class='fu'>random_id</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "75e1e39c79feecd04a0f03e99d4abd67"</div><div class='input'>
 <span class='co'># Generate 10 of them!</span>
-<span class='fu'>random_id</span>(<span class='fl'>10</span>)</div><div class='output co'>#&gt;  [1] "ee50de477d07c94770c75fd033acebdb" "be714d4ddc1a57ed73db0171e6ed39d2"
-#&gt;  [3] "ebd710fb1f2f1df3d52acd42b27cf6cf" "e0528e84c0c342b67cd63e52dbbee60c"
-#&gt;  [5] "6e83985137b297be07bd4b726ad75e4a" "d53206f66c05948c249ccd20dcd1e4ce"
-#&gt;  [7] "e809fe7fa83abde7ad4ca3ff356349fa" "9312224b06b9f74508ad73ea8526489c"
-#&gt;  [9] "c2806858af3f37435dcd9961830e8c7e" "3ec882872f2500e375256202fc4d99a3"</div><div class='input'>
+<span class='fu'>random_id</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "37f977cdc1c317f4abe93422742a67d9" "ba4548dd77287dcda0823e74ac41890e"
+#&gt;  [3] "b84be0a3c0ec16ed66cb0a31e78c24f4" "a9ed9120f1c6f97feef433c00171cf4c"
+#&gt;  [5] "7809d320bdad1bc5bbb72fc3115203eb" "6e48be6e40e7bc61a7dcd139766cce6c"
+#&gt;  [7] "7344f21913e0a382461b2bdfdae9ae5a" "0216d749cc84ed493075626f52899997"
+#&gt;  [9] "f4b4c30e5571d5e1d25a72d76f9dd566" "716197ada4cac20fe40bb95e0a76c489"</div><div class='input'>
 <span class='co'># Different length ids</span>
-<span class='fu'>random_id</span>(<span class='kw'>bytes</span> <span class='kw'>=</span> <span class='fl'>8</span>)</div><div class='output co'>#&gt; [1] "67ae4ee84a41db13"</div><div class='input'><span class='co'># (note that the number of characters is twice the number of bytes)</span>
+<span class='fu'>random_id</span><span class='op'>(</span>bytes <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "47cd964de39ab57f"</div><div class='input'><span class='co'># (note that the number of characters is twice the number of bytes)</span>
 
 <span class='co'># The ids are not affected by R's RNG state:</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1</span>)
-(<span class='no'>id1</span> <span class='kw'>&lt;-</span> <span class='fu'>random_id</span>())</div><div class='output co'>#&gt; [1] "eff762f5723be6e38cf61018c8db5fcb"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1</span>)
-(<span class='no'>id2</span> <span class='kw'>&lt;-</span> <span class='fu'>random_id</span>())</div><div class='output co'>#&gt; [1] "91c35375b90eee3820019929ec37a5e6"</div><div class='input'><span class='co'># The generated identifiers are different, despite the seed being the same:</span>
-<span class='no'>id1</span> <span class='kw'>==</span> <span class='no'>id2</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='op'>(</span><span class='va'>id1</span> <span class='op'>&lt;-</span> <span class='fu'>random_id</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "46e6fc0a2eb6885d2ad684a30b86eacc"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='op'>(</span><span class='va'>id2</span> <span class='op'>&lt;-</span> <span class='fu'>random_id</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "60ab13b66349dff74032662654023099"</div><div class='input'><span class='co'># The generated identifiers are different, despite the seed being the same:</span>
+<span class='va'>id1</span> <span class='op'>==</span> <span class='va'>id2</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
 <span class='co'># If you need these identifiers to be reproducible, pass use_openssl = FALSE</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1</span>)
-(<span class='no'>id1</span> <span class='kw'>&lt;-</span> <span class='fu'>random_id</span>(<span class='kw'>use_openssl</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; [1] "f843a680a1fcd62a0dd1ba32e0541469"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1</span>)
-(<span class='no'>id2</span> <span class='kw'>&lt;-</span> <span class='fu'>random_id</span>(<span class='kw'>use_openssl</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; [1] "f843a680a1fcd62a0dd1ba32e0541469"</div><div class='input'><span class='co'># This time they are the same:</span>
-<span class='no'>id1</span> <span class='kw'>==</span> <span class='no'>id2</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='op'>(</span><span class='va'>id1</span> <span class='op'>&lt;-</span> <span class='fu'>random_id</span><span class='op'>(</span>use_openssl <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "f843a680a1fcd62a0dd1ba32e0541469"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='op'>(</span><span class='va'>id2</span> <span class='op'>&lt;-</span> <span class='fu'>random_id</span><span class='op'>(</span>use_openssl <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "f843a680a1fcd62a0dd1ba32e0541469"</div><div class='input'><span class='co'># This time they are the same:</span>
+<span class='va'>id1</span> <span class='op'>==</span> <span class='va'>id2</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='co'># Pass \code{n = NULL} to generate a function that binds your arguments:</span>
-<span class='no'>id8</span> <span class='kw'>&lt;-</span> <span class='fu'>random_id</span>(<span class='kw'>NULL</span>, <span class='kw'>bytes</span> <span class='kw'>=</span> <span class='fl'>8</span>)
-<span class='fu'>id8</span>(<span class='fl'>10</span>)</div><div class='output co'>#&gt;  [1] "393b5d58ec2e0135" "9e9c4cc59078a946" "1ef9042b28f9ca4f" "8fd04b0920ebaabb"
-#&gt;  [5] "f54dabeed4e6d427" "a348887235983dc0" "7888942cc22900a9" "3c9b65d4f4eaa6fe"
-#&gt;  [9] "18d8c1a9187c8278" "8743a802a64ed721"</div></pre>
+<span class='va'>id8</span> <span class='op'>&lt;-</span> <span class='fu'>random_id</span><span class='op'>(</span><span class='cn'>NULL</span>, bytes <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>
+<span class='fu'>id8</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "dcea41551c902791" "26186ce95bc9bd14" "1b250ab61c476589" "0183d76d2a7fa52d"
+#&gt;  [5] "a51cc58ea119ab79" "4bb4648d7277c8fc" "8356b0de3295bfaf" "e451a520c1ae8159"
+#&gt;  [9] "4f3763808c11c950" "2f4d646529e6754c"</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Rich FitzJohn</p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -201,7 +212,7 @@ should be very similar for both approaches.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
