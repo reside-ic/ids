@@ -1,9 +1,10 @@
 # ids
 
-[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Linux Build Status](https://travis-ci.org/reside-ic/ids.svg?branch=master)](https://travis-ci.org/reside-ic/ids)
+<!-- badges: start -->
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)  [![R-CMD-check](https://github.com/richfitz/ids/workflows/R-CMD-check/badge.svg)](https://github.com/richfitz/ids/actions)
 [![codecov.io](https://codecov.io/github/reside-ic/ids/coverage.svg?branch=master)](https://codecov.io/github/reside-ic/ids?branch=master)
 [![](https://www.r-pkg.org/badges/version/ids)](https://cran.r-project.org/package=ids)
+<!-- badges: end -->
 
 Generate random identifiers in a number of styles:
 
