@@ -7,3 +7,4 @@
 ^notes\.md$
 ^ids_.*\.tar\.gz$
 ^scripts$
+^\.github$
