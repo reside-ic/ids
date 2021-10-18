@@ -7,7 +7,7 @@ Authors@R: c(person("Rich", "FitzJohn", role = c("aut", "cre"),
                     role = "cph"))
 Description: Generate random or human readable and pronounceable identifiers.
 License: MIT + file LICENSE
-URL: https://github.com/reside-ic/ids
+URL: https://github.com/reside-ic/ids, https://reside-ic.github.io/ids/
 BugReports: https://github.com/reside-ic/ids/issues
 Imports:
     openssl (>= 0.9.6),
