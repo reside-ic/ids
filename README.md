@@ -2,6 +2,7 @@
 
 <!-- badges: start -->
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)  [![R-CMD-check](https://github.com/richfitz/ids/workflows/R-CMD-check/badge.svg)](https://github.com/richfitz/ids/actions)
+[![CodeFactor](https://www.codefactor.io/repository/github/reside-ic/ids/badge)](https://www.codefactor.io/repository/github/reside-ic/ids)
 [![codecov.io](https://codecov.io/github/reside-ic/ids/coverage.svg?branch=master)](https://codecov.io/github/reside-ic/ids?branch=master)
 [![](https://www.r-pkg.org/badges/version/ids)](https://cran.r-project.org/package=ids)
 <!-- badges: end -->
