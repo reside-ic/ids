@@ -29,10 +29,10 @@ test_that("style", {
 
 test_that("restrict length", {
   tmp <- strsplit(adjective_animal(200, max_len = 5), "_", fixed = TRUE)
-  expect_lte(max(sapply(tmp, nchar)), 5)
+  expect_lte(max(vapply(tmp, nchar, numeric(2))), 5)
 
   tmp <- strsplit(adjective_animal(200, max_len = c(5, 10)), "_", fixed = TRUE)
-  tmp <- apply(sapply(tmp, nchar), 1, max)
+  tmp <- apply(vapply(tmp, nchar, numeric(2)), 1, max)
   expect_lte(tmp[[1]], 5)
   expect_lte(tmp[[2]], 10)
   expect_gt(tmp[[2]], tmp[[1]])
