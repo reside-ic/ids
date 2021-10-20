@@ -106,7 +106,7 @@ Generate more than one identifier:
 ids::adjective_animal(4)
 ```
 
-Use more than one adjective for very long idenfiers
+Use more than one adjective for very long identifier
 ``` {r }
 ids::adjective_animal(4, 3)
 ```
@@ -117,14 +117,14 @@ n2 <- length(ids:::gfycat_adjectives)
 ```
 
 There are `r n1` animal names and `r n2` adjectives so each one you
-add increases the idenfier space by a factor of `r n2`.  So for 1,
+add increases the identifier space by a factor of `r n2`.  So for 1,
 2, and 3 adjectives there are about `r human_no(n1 * n2)`,
 `r human_no(n1 * n2^2)` and `r human_no(n1 * n2^3)` possible combinations.
 
 This is a much smaller space than the random identifiers above, but
 these are more readable and memorable.
 
-Note that here, the random nunbers are coming from R's random
+Note that here, the random numbers are coming from R's random
 number stream so are affected by `set.seed()`.
 
 Because some of the animal and adjective names are very long
@@ -260,15 +260,15 @@ possibilities per word.  Words are always lower case and always
 separated by a hyphen.  So with 4 words there are 2^64 combinations
 in 23 characters.
 
-Proquints are also useful in that they can be tranlated with
+Proquints are also useful in that they can be translated with
 integers.  The proquint `kapop` has integer value 25258
 ``` {r }
 ids::proquint_to_int("kapop")
 ids::int_to_proquint(25258)
 ```
 
-This makes proquints suitable for creating human-pronouncable
-identifers out of things like ip addresses, integer primary keys,
+This makes proquints suitable for creating human-pronounceable
+identifiers out of things like ip addresses, integer primary keys,
 etc.
 
 The function `ids::int_to_proquint_word` will translate between
@@ -283,7 +283,7 @@ and `ids::proquint_word_to_int` does the reverse
 ids::proquint_word_to_int(w)
 ```
 
-whille `ids::proquint_to_int` and `ids::int_to_proquint` allows
+while `ids::proquint_to_int` and `ids::int_to_proquint` allows
 translation of multi-word proquints.  Overflow is a real
 possibility; the maximum integer representable is only about `r
 human_no(.Machine$integer.max)` and the maximum floating point

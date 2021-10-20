@@ -1,5 +1,3 @@
-context("ids")
-
 test_that("animals", {
   re_snake2 <- "^([a-z]+)_([a-z]+)$"
   re_camel2 <- "^([a-z]+)([A-Z][a-z]+)$"
@@ -17,6 +15,6 @@ test_that("animals", {
 
   ## Smoke test:
   for (s in names(cases())) {
-    expect_is(adjective_animal(style = s), "character")
+    expect_type(adjective_animal(style = s), "character")
   }
 })

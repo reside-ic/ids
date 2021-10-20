@@ -4,7 +4,7 @@ read <- function(url) {
     gsub("(^\\s|\\s*$|\xc2\xa0)", "", x, perl = TRUE)
   }
   f <- tempfile()
-  download.file(url, f, method="curl")
+  download.file(url, f, method = "curl")
   dat <- readChar(f, file.size(f))
   dat <- gsub("(^.+?=\\s*|;\\s*$)", "", dat)
   res <- sort(unique(strip_whitespace(tolower(jsonlite::fromJSON(dat)))))
@@ -16,9 +16,11 @@ read <- function(url) {
   res
 }
 
-fmt <- "https://raw.githubusercontent.com/a-type/adjective-adjective-animal/master/lib/lists/%s.js"
+fmt <- file.path(
+  "https://raw.githubusercontent.com/a-type/adjective-adjective-animal",
+  "master/lib/lists/%s.js")
 
 gfycat_animals <- read(sprintf(fmt, "animals"))
 gfycat_adjectives <- read(sprintf(fmt, "adjectives"))
 
-save(gfycat_animals, gfycat_adjectives, file="R/sysdata.rda")
+save(gfycat_animals, gfycat_adjectives, file = "R/sysdata.rda")
