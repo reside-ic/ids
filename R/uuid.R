@@ -1,4 +1,4 @@
-#' Generate UUIDs using the uuid package.  In previous versions this
+#' Generate UUIDs.  In previous versions this
 #' was simply a thin wrapper around \code{uuid::UUIDgenerate}, however
 #' this was subject to collisions on windows where relatively small
 #' numbers of UUIDs generated at the same time could return values
