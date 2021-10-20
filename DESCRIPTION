@@ -13,6 +13,7 @@ Imports:
     openssl (>= 0.9.6)
 Suggests:
     knitr,
+    mockery,
     rcorpora,
     rmarkdown,
     testthat (>= 3.0.0)
