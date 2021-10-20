@@ -16,7 +16,7 @@ test_that("uuid", {
   expect_true(all(grepl("^[[:xdigit:]]{32}$", uuid(10, drop_hyphens = TRUE))))
 
   expect_equal(substr(x10, 15, 15), rep("4", 10))
-  expect_equal(all(substr(x10, 20, 20) %in% c("8", "9", "a", "b")))
+  expect_true(all(substr(x10, 20, 20) %in% c("8", "9", "a", "b")))
 })
 
 test_that("bind args", {
