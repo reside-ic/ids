@@ -22,3 +22,11 @@ test_that("bind args", {
   expect_equal(as.list(formals(f)), list(n = 1))
   expect_match(f(), re_uuid)
 })
+
+
+test_that("warn if using old arguments", {
+  expect_warning(
+    ans <- uuid(1, FALSE, TRUE),
+    "The 'use_time' argument is now ignored")
+  expect_match(ans, re_uuid)
+})
