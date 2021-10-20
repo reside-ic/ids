@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
       </span>
     </div>
 
@@ -191,10 +191,10 @@ range 0:65535)</p></td>
 they will and will not return.</p>
 <p>For <code>proquint_to_int</code>, because numeric overflow is a
 possibility, it is important to consider whether a proquint can be
-meaninfully translated into an integer or a numeric and the
+meaningfully translated into an integer or a numeric and the
 functions will throw an error rather than failing in a more
 insidious way (promoting the type or returning NA).</p>
-<p><code>proquint_word_to_int</code> always retuns an integer vector of the
+<p><code>proquint_word_to_int</code> always returns an integer vector of the
 same length as the input.</p>
 <p>Missing values are allowed; a missing integer representation of a
 proquint will translate as <code>NA_character_</code> and a missing
@@ -203,7 +203,7 @@ proquint will translate as <code>NA_integer_</code> (if <code>as =
 <code>NULL</code> (if <code>as = "bignum"</code>).</p>
 <p>Names are always discarded.  Future versions may gain an argument
 <code>named</code> with a default of <code>FALSE</code>, but that setting to
-<code>TRUE</code> would preseve names.  Let me know if this would be
+<code>TRUE</code> would preserve names.  Let me know if this would be
 useful.</p>
 
   </div>

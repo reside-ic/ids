@@ -75,7 +75,7 @@ stream." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
       </span>
     </div>
 
@@ -163,24 +163,24 @@ should be very similar for both approaches.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Generate a random id:</span>
 <span class='fu'>random_id</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "75e1e39c79feecd04a0f03e99d4abd67"</div><div class='input'>
+</div><div class='output co'>#&gt; [1] "ae2d1b88949ec4123bc8dcba738a6129"</div><div class='input'>
 <span class='co'># Generate 10 of them!</span>
 <span class='fu'>random_id</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "37f977cdc1c317f4abe93422742a67d9" "ba4548dd77287dcda0823e74ac41890e"
-#&gt;  [3] "b84be0a3c0ec16ed66cb0a31e78c24f4" "a9ed9120f1c6f97feef433c00171cf4c"
-#&gt;  [5] "7809d320bdad1bc5bbb72fc3115203eb" "6e48be6e40e7bc61a7dcd139766cce6c"
-#&gt;  [7] "7344f21913e0a382461b2bdfdae9ae5a" "0216d749cc84ed493075626f52899997"
-#&gt;  [9] "f4b4c30e5571d5e1d25a72d76f9dd566" "716197ada4cac20fe40bb95e0a76c489"</div><div class='input'>
+</div><div class='output co'>#&gt;  [1] "92269b56ae4b9a8eaa9b4a565b284ae1" "f941ca77475610851f75b415f94dd2ab"
+#&gt;  [3] "6fb41004ff2e00c3df9a3a9f519f9fda" "e2635d2e7e9bb800b3519300f68bd0a3"
+#&gt;  [5] "cb12a1478025740ae1a1f2ad2ef99924" "7a04349321082286491f9000cc26204d"
+#&gt;  [7] "fa46a024368d049d1edfd1f4d2e584a1" "b0f2a63bd92660910450c8c15390f0d2"
+#&gt;  [9] "81002bac7640222ce212aa74cdb44e45" "f6aca58319ec4f39b713ede0a76fc4a4"</div><div class='input'>
 <span class='co'># Different length ids</span>
 <span class='fu'>random_id</span><span class='op'>(</span>bytes <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "47cd964de39ab57f"</div><div class='input'><span class='co'># (note that the number of characters is twice the number of bytes)</span>
+</div><div class='output co'>#&gt; [1] "e050c620b4ff3876"</div><div class='input'><span class='co'># (note that the number of characters is twice the number of bytes)</span>
 
 <span class='co'># The ids are not affected by R's RNG state:</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
 <span class='op'>(</span><span class='va'>id1</span> <span class='op'>&lt;-</span> <span class='fu'>random_id</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "46e6fc0a2eb6885d2ad684a30b86eacc"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "ca8aef57b53e66992c65df434395e588"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
 <span class='op'>(</span><span class='va'>id2</span> <span class='op'>&lt;-</span> <span class='fu'>random_id</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "60ab13b66349dff74032662654023099"</div><div class='input'><span class='co'># The generated identifiers are different, despite the seed being the same:</span>
+</div><div class='output co'>#&gt; [1] "81fedc87977d230e4f58e0dbbf613c2e"</div><div class='input'><span class='co'># The generated identifiers are different, despite the seed being the same:</span>
 <span class='va'>id1</span> <span class='op'>==</span> <span class='va'>id2</span>
 </div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
 <span class='co'># If you need these identifiers to be reproducible, pass use_openssl = FALSE</span>
@@ -194,9 +194,9 @@ should be very similar for both approaches.</p></td>
 <span class='co'># Pass \code{n = NULL} to generate a function that binds your arguments:</span>
 <span class='va'>id8</span> <span class='op'>&lt;-</span> <span class='fu'>random_id</span><span class='op'>(</span><span class='cn'>NULL</span>, bytes <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>
 <span class='fu'>id8</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "dcea41551c902791" "26186ce95bc9bd14" "1b250ab61c476589" "0183d76d2a7fa52d"
-#&gt;  [5] "a51cc58ea119ab79" "4bb4648d7277c8fc" "8356b0de3295bfaf" "e451a520c1ae8159"
-#&gt;  [9] "4f3763808c11c950" "2f4d646529e6754c"</div></pre>
+</div><div class='output co'>#&gt;  [1] "5d28e4f0169ceea8" "e7230520a6c62c58" "72a6e6bb8074c6d6" "824968d221d6dee2"
+#&gt;  [5] "166b2d23c73e6001" "f89169414ea3b448" "b6fef1671fe84b46" "a68e8a4b0b2eb2e9"
+#&gt;  [9] "cb7c5cbc68d5cfe0" "a7b89c835725d3a7"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
