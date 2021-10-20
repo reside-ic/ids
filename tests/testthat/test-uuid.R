@@ -14,8 +14,6 @@ test_that("uuid", {
   expect_true(all(grepl(re_uuid, x10)))
 
   expect_true(all(grepl("^[[:xdigit:]]{32}$", uuid(10, drop_hyphens = TRUE))))
-
-  expect_match(uuid(use_time = TRUE), re_uuid)
 })
 
 test_that("bind args", {
@@ -23,7 +21,4 @@ test_that("bind args", {
   expect_true(is.function(f))
   expect_equal(as.list(formals(f)), list(n = 1))
   expect_match(f(), re_uuid)
-
-  g <- uuid(NULL, TRUE)
-  expect_match(g(), "^[[:xdigit:]]{32}$")
 })

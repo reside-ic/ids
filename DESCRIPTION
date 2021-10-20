@@ -10,8 +10,7 @@ License: MIT + file LICENSE
 URL: https://github.com/reside-ic/ids, https://reside-ic.github.io/ids/
 BugReports: https://github.com/reside-ic/ids/issues
 Imports:
-    openssl (>= 0.9.6),
-    uuid
+    openssl (>= 0.9.6)
 Suggests:
     knitr,
     rcorpora,

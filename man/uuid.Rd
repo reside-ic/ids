@@ -12,12 +12,15 @@ returns the generating function}
 
 \item{drop_hyphens}{Drop the hyphens from the UUID?}
 
-\item{use_time}{Passed through to \code{UUIDgenerate} as \code{use.time}.}
+\item{use_time}{Unused.}
 }
 \description{
-Generate UUIDs using the uuid package.  This is simply a thin
-wrapper around \code{uuid::UUIDgenerate} that matches the interface
-in the rest of the ids package.
+Generate UUIDs using the uuid package.  In previous versions this
+was simply a thin wrapper around \code{uuid::UUIDgenerate}, however
+this was subject to collisions on windows where relatively small
+numbers of UUIDs generated at the same time could return values
+that were identical. We now generate only version 4 UUIDs (i.e.,
+random though with particular bits set).
 }
 \examples{
 # Generate one id
