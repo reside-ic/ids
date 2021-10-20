@@ -1,5 +1,3 @@
-context("adjective animal")
-
 test_that("data", {
   expect_false(any(grepl("\\s", gfycat_animals)))
   expect_false(any(grepl("\\s", gfycat_adjectives)))
@@ -7,7 +5,7 @@ test_that("data", {
 
 test_that("basic", {
   res <- adjective_animal()
-  expect_is(res, "character")
+  expect_type(res, "character")
   expect_equal(length(res), 1)
   expect_match(res, "^[a-z]+_[a-z]+$")
 })
@@ -57,7 +55,7 @@ test_that("restrict length error cases", {
 
 test_that("functional interface", {
   f <- adjective_animal(NULL, max_len = 10, style = "kebab", n_adjectives = 2)
-  expect_is(f, "function")
+  expect_true(is.function(f))
   re <- "^[a-z]{2,10}-[a-z]{2,10}-[a-z]{2,10}$"
   expect_match(f(), re)
   x <- f(100)
@@ -75,7 +73,7 @@ test_that("alliterate", {
 
 test_that("alliterate: functional", {
   res <- adjective_animal(NULL, n_adjectives = 4, alliterate = TRUE)
-  expect_is(res, "function")
+  expect_true(is.function(res))
   s <- strsplit(res(1), "_", fixed = TRUE)[[1]]
   expect_equal(length(unique(substr(s, 1, 1))), 1)
 })

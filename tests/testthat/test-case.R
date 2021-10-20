@@ -1,5 +1,3 @@
-context("case")
-
 test_that("style match", {
   expect_equal(check_style("p")$name, "pascal")
   expect_equal(check_style("pascal")$name, "pascal")

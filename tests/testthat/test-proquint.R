@@ -1,5 +1,3 @@
-context("proquint")
-
 test_that("word conversions", {
   i <- c(1e0, 1e1, 1e2, 1e3, 1e4)
   ## From Python:
@@ -10,11 +8,11 @@ test_that("word conversions", {
 
   j <- proquint_word_to_int(w, TRUE)
   expect_equal(j, i)
-  expect_is(j, "integer")
+  expect_type(j, "integer")
 
   k <- proquint_word_to_int(w, FALSE)
   expect_identical(j, k)
-  expect_is(k, "integer")
+  expect_type(k, "integer")
 })
 
 ## This is exhaustive, because it's not that slow to do everything:
@@ -71,12 +69,12 @@ test_that("sampled words do not depend on cache", {
 
 test_that("generate openssl random numbers", {
   i <- rand_i16(1, TRUE)
-  expect_is(i, "integer")
+  expect_type(i, "integer")
   expect_gte(i, 0L)
   expect_lt(i, 2^16)
 
   j <- rand_i16(10, TRUE)
-  expect_is(j, "integer")
+  expect_type(j, "integer")
   expect_equal(length(j), 10)
   expect_true(all(j >= 0L))
   expect_true(all(j < 2^16))
@@ -183,7 +181,7 @@ test_that("identifier: 0", {
 
 test_that("identifier: 1", {
   x <- proquint(1)
-  expect_is(x, "character")
+  expect_type(x, "character")
   expect_equal(length(x), 1)
   re <- sprintf("^%s-%s$", proquint_re_word, proquint_re_word)
   expect_match(x, re)
@@ -192,7 +190,7 @@ test_that("identifier: 1", {
 test_that("identifier: n", {
   n <- 10
   x <- proquint(n)
-  expect_is(x, "character")
+  expect_type(x, "character")
   expect_equal(length(x), n)
   re <- sprintf("^%s-%s$", proquint_re_word, proquint_re_word)
   expect_match(x, re, all = TRUE)
@@ -209,7 +207,7 @@ test_that("functional interface", {
   re3 <- sprintf("^%s-%s-%s$",
                  proquint_re_word, proquint_re_word, proquint_re_word)
   f <- proquint(NULL, 3)
-  expect_is(f, "function")
+  expect_true(is.function(f))
   expect_match(f(), re3)
   expect_equal(length(f()), 1)
   expect_equal(length(f(10)), 10)
@@ -298,7 +296,7 @@ test_that("int to proquint, varying formats", {
 test_that("integer overflow", {
   big <- .Machine$integer.max * 2
   pq <- int_to_proquint(big)
-  expect_is(pq, "character")
+  expect_type(pq, "character")
   expect_error(proquint_to_int(pq, "integer"),
                "Integer overflow: cannot represent proquint as integer")
   expect_identical(proquint_to_int(pq, "numeric"), big)
@@ -311,7 +309,7 @@ test_that("numeric overflow", {
   big <- openssl::bignum(2)^pow + 1
 
   pq <- int_to_proquint(big)
-  expect_is(pq, "character")
+  expect_type(pq, "character")
   expect_error(proquint_to_int(pq, "integer"),
                "Integer overflow: cannot represent proquint as integer")
   expect_error(proquint_to_int(pq, "numeric"),

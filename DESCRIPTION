@@ -16,8 +16,9 @@ Suggests:
     knitr,
     rcorpora,
     rmarkdown,
-    testthat
+    testthat (>= 3.0.0)
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 Encoding: UTF-8
 Language: en-GB
+Config/testthat/edition: 3
