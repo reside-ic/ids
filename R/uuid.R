@@ -35,11 +35,14 @@ uuid <- function(n = 1, drop_hyphens = FALSE, use_time = NA) {
       uuid(n, drop_hyphens)
     }
   } else {
+    ## For details on generating v4 uuids, see
+    ## https://www.cryptosys.net/pki/uuid-rfc4122.html
+    ## https://www.ietf.org/rfc/rfc4122.txt
     bytes <- matrix(random_bytes(n * 16), 16, n)
     ## (a) set the high nibble of the 7th byte equal to 4 and
     bytes[7, ] <- as.raw(0x40) | (bytes[7, ] & as.raw(0xf))
     ## (b) set the two most significant bits of the 9th byte to 10'B,
-    ##     so the high nibble will be one of {8,9,A,B}.
+    ##     so the high nibble will be one of {8,9,a,b}.
     bytes[9, ] <- as.raw(0x80) | (bytes[9, ] & as.raw(0x3f))
 
     if (drop_hyphens) {
