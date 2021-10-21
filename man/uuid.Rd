@@ -7,20 +7,21 @@
 uuid(n = 1, drop_hyphens = FALSE, use_time = NA)
 }
 \arguments{
-\item{n}{number of ids to return.  If \code{NULL}, it instead
-returns the generating function}
+\item{n}{number of ids to return.  If \code{NULL}, it instead returns
+the generating function}
 
 \item{drop_hyphens}{Drop the hyphens from the UUID?}
 
 \item{use_time}{Unused.}
 }
 \description{
-Generate UUIDs.  In previous versions this
-was simply a thin wrapper around \code{uuid::UUIDgenerate}, however
-this was subject to collisions on windows where relatively small
-numbers of UUIDs generated at the same time could return values
-that were identical. We now generate only version 4 UUIDs (i.e.,
-random though with particular bits set).
+Generate UUIDs (Universally Unique IDentifiers).  In previous
+versions this was simply a thin wrapper around
+\code{uuid::UUIDgenerate}, however this was subject to collisions on
+windows where relatively small numbers of UUIDs generated at the
+same time could return values that were identical. We now generate
+only version 4 UUIDs (i.e., random though with particular bits
+set).
 }
 \examples{
 # Generate one id

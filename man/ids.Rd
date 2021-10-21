@@ -7,8 +7,8 @@
 ids(n, ..., vals = list(...), style = "snake")
 }
 \arguments{
-\item{n}{number of ids to return.  If \code{NULL}, it instead
-returns the generating function}
+\item{n}{number of ids to return.  If \code{NULL}, it instead returns
+the generating function}
 
 \item{...}{A number of character vectors}
 
@@ -19,8 +19,8 @@ returns the generating function}
 "upper", "constant" or "spongemock"}
 }
 \value{
-Either a character vector of length \code{n}, or a
-  function of one argument if \code{n} is \code{NULL}
+Either a character vector of length \code{n}, or a function of
+one argument if \code{n} is \code{NULL}
 }
 \description{
 Generic id generating function

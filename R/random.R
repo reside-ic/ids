@@ -1,39 +1,35 @@
 #' Random hexadecimal identifiers.  If possible, by default this uses
-#' the \code{openssl} package to produce a random set of bytes, and
+#' the `openssl` package to produce a random set of bytes, and
 #' expresses that as a hex character string, creating
 #' cryptographically secure (unpredictable) identifiers.  If that is
 #' unavailable, fall back on the xoshiro128+ algorithm to produce
-#' random numbers that are not cryptograpically secure, but which do
+#' random numbers that are not cryptographically secure, but which do
 #' not affect the global random number stream (see Details). If
 #' desired, you can produce "predictable" random identifiers that
 #' respect the value of the global random number stream via
-#' \code{set.seed}.
+#' `set.seed`.
 #'
 #' Since ids version 1.2.0, the openssl package is optional, and this
 #' affects non-global random number drawing.  If you have openssl
 #' installed your random numbers will be ~50x faster than the
 #' implementation we include here.
 #'
-#' If \code{global = TRUE} we always use a simple \code{link{sample}}
+#' If `global = TRUE` we always use a simple [sample]
 #' based algorithm that is driven from the global random number
-#' stream. However, when \code{global = FALSE} the behaviour depends
-#' on the value of \code{use_openssl} and whether that package is
+#' stream. However, when `global = FALSE` the behaviour depends
+#' on the value of `use_openssl` and whether that package is
 #' installed, either using the openssl generators, using an internal
 #' algorithm based on xoshiro128+ or erroring.
 #'
-#' \itemize{
+#' * `use_openssl = NULL` and openssl installed: openssl
 #'
-#' \item{\code{use_openssl = NULL} and openssl installed: openssl}
+#' * `use_openssl = NULL` and openssl missing: internal
 #'
-#' \item{\code{use_openssl = NULL} and openssl missing: internal}
+#' * `use_openssl = TRUE` and openssl installed: openssl
 #'
-#' \item{\code{use_openssl = TRUE} and openssl installed: openssl}
+#' * `use_openssl = TRUE` and openssl missing: error
 #'
-#' \item{\code{use_openssl = TRUE} and openssl missing: error}
-#'
-#' \item{\code{use_openssl = FALSE}: internal}
-#'
-#' }
+#' * `use_openssl = FALSE`: internal
 #'
 #' @title Random hexadecimal identifiers
 #'
@@ -49,8 +45,8 @@
 #'   is available but fall back on R (See Details).
 #'
 #' @param global Logical, indicating if random numbers should be
-#'   global (given R's global random number seed). If \code{TRUE},
-#'   then ids generated will be predicatable.
+#'   global (given R's global random number seed). If `TRUE`,
+#'   then ids generated will be predictable.
 #'
 #' @export
 #' @author Rich FitzJohn
@@ -81,7 +77,7 @@
 #' # This time they are the same:
 #' id1 == id2
 #'
-#' # Pass \code{n = NULL} to generate a function that binds your arguments:
+#' # Pass `n = NULL` to generate a function that binds your arguments:
 #' id8 <- ids::random_id(NULL, bytes = 8)
 #' id8(10)
 random_id <- function(n = 1, bytes = 16, use_openssl = NULL,

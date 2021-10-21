@@ -32,13 +32,11 @@ option will not affect the identifiers randomly selected).}
 \item{p}{A character vector representing a proquint}
 
 \item{as}{The target data type for conversion from proquint.  The
-options are \code{integer}, \code{numeric} and \code{bignum}.
-The first two will overflow given sufficiently large input -
-this will throw an error (overflow is at
-\code{.Machine$integer.max} and \code{2 / .Machine$double.eps - 1}
-for \code{integer} and \code{numeric} respectively).  For
-\code{bignum} this will return a \emph{list} of \code{bignum}
-elements \emph{even if \code{p} is of length 1}.}
+options are \code{integer}, \code{numeric} and \code{bignum}.  The first two
+will overflow given sufficiently large input - this will throw
+an error (overflow is at \code{.Machine$integer.max} and \code{2 / .Machine$double.eps - 1} for \code{integer} and \code{numeric}
+respectively).  For \code{bignum} this will return a \emph{list} of
+\code{bignum} elements \emph{even if \code{p} is of length 1}.}
 
 \item{w}{A proquint \emph{word} (five letter string)}
 
@@ -68,13 +66,11 @@ insidious way (promoting the type or returning NA).
 same length as the input.
 
 Missing values are allowed; a missing integer representation of a
-proquint will translate as \code{NA_character_} and a missing
-proquint will translate as \code{NA_integer_} (if \code{as =
-"integer"}), \code{NA_real_}, if \code{as = "numeric"} or as
-\code{NULL} (if \code{as = "bignum"}).
+proquint will translate as \code{NA_character_} and a missing proquint
+will translate as \code{NA_integer_} (if \code{as = "integer"}), \code{NA_real_},
+if \code{as = "numeric"} or as \code{NULL} (if \code{as = "bignum"}).
 
 Names are always discarded.  Future versions may gain an argument
-\code{named} with a default of \code{FALSE}, but that setting to
-\code{TRUE} would preserve names.  Let me know if this would be
-useful.
+\code{named} with a default of \code{FALSE}, but that setting to \code{TRUE}
+would preserve names.  Let me know if this would be useful.
 }

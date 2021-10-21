@@ -1,8 +1,8 @@
 #' Ids based on a number of adjectives and an animal
 #'
 #' The list of adjectives and animals comes from
-#' \url{https://github.com/a-type/adjective-adjective-animal}, and in
-#' turn from \url{gfycat.com}
+#' <https://github.com/a-type/adjective-adjective-animal>, and in turn
+#' from <gfycat.com>
 #'
 #' @title Ids based on a number of adjectives and an animal
 #' @param n_adjectives Number of adjectives to prefix the animal with
@@ -10,16 +10,16 @@
 #' @param max_len The maximum length of a word part to include (this
 #'   may be useful because some of the names are rather long.  This
 #'   stops you generating a
-#'   \code{hexakosioihexekontahexaphobic_queenalexandrasbirdwingbutterfly}).
+#'   `hexakosioihexekontahexaphobic_queenalexandrasbirdwingbutterfly`).
 #'   A vector of length 2 can be passed in here in which case the
 #'   first element will apply to the adjectives (all of them) and the
 #'   second element will apply to the animals.
 #'
 #' @param alliterate Produce "alliterative" adjective animals (e.g.,
-#'   \code{hessian_hamster}).  Note that this cannot provide an equal
+#'   `hessian_hamster`).  Note that this cannot provide an equal
 #'   probability of any particular combination because it forces a
 #'   weighted sampling.  Adjectives may also be repeated if
-#'   \code{n_adjectives} is more than 1.
+#'   `n_adjectives` is more than 1.
 #'
 #' @inheritParams ids
 #' @export

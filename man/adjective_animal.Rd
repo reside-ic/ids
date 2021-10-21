@@ -13,8 +13,8 @@ adjective_animal(
 )
 }
 \arguments{
-\item{n}{number of ids to return.  If \code{NULL}, it instead
-returns the generating function}
+\item{n}{number of ids to return.  If \code{NULL}, it instead returns
+the generating function}
 
 \item{n_adjectives}{Number of adjectives to prefix the animal with}
 
@@ -41,8 +41,8 @@ Ids based on a number of adjectives and an animal
 }
 \details{
 The list of adjectives and animals comes from
-\url{https://github.com/a-type/adjective-adjective-animal}, and in
-turn from \url{gfycat.com}
+\url{https://github.com/a-type/adjective-adjective-animal}, and in turn
+from <gfycat.com>
 }
 \examples{
 # Generate a random identifier:

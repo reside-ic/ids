@@ -29,12 +29,12 @@ proquint_re1 <- sprintf("^%s$", proquint_re_word)
 
 ##' Generate random "proquint" identifiers.  "proquint" stands for
 ##' PRO-nouncable QUINT-uplets and were described by Daniel Wilkerson
-##' in \url{https://arxiv.org/html/0901.4016}.  Each "word" takes one
-##' of \eqn{2^16} possibilities.  A four word proquint has a keyspace
-##' of \eqn{10^19} possibilities but takes only 23 characters.
-##' Proquint identifiers can be interchanged with integers (though
-##' this is totally optional); see \code{\link{proquint_to_int}} and
-##' the other functions documented on that page.
+##' in <https://arxiv.org/html/0901.4016>.  Each "word" takes one of
+##' `2^16` possibilities.  A four word proquint has a keyspace of
+##' `10^19` possibilities but takes only 23 characters.  Proquint
+##' identifiers can be interchanged with integers (though this is
+##' totally optional); see [ids::proquint_to_int] and the other
+##' functions documented on that page.
 ##'
 ##' In the abstract of their paper, Wilkerson introduces proquints:
 ##'
@@ -49,15 +49,14 @@ proquint_re1 <- sprintf("^%s$", proquint_re_word)
 ##' @inheritParams ids
 ##'
 ##' @param n_words The number of words for each identifier; each word
-##'   has \code{2^16} (65536) possible combinations, a two-word
-##'   proquint has \code{2^32} possible combinations and an
-##'   \code{k}-word proquint has \code{2^(k * 16)} possible
-##'   combinations.
+##'   has `2^16` (65536) possible combinations, a two-word proquint
+##'   has `2^32` possible combinations and an `k`-word proquint has
+##'   `2^(k * 16)` possible combinations.
 ##'
 ##' @param use_cache Because there are relatively few combinations per
 ##'   word, and because constructing short strings is relatively
 ##'   expensive in R, it may be useful to cache all 65536 possible
-##'   words.  If \code{TRUE} then the first time that this function is
+##'   words.  If `TRUE` then the first time that this function is
 ##'   used all words will be cached and the results used - the first
 ##'   time may take up to ~1/4 of a second and subsequent calls will
 ##'   be much faster.  The identifiers selected will not change with
@@ -65,11 +64,11 @@ proquint_re1 <- sprintf("^%s$", proquint_re_word)
 ##'   option will not affect the identifiers randomly selected).
 ##'
 ##' @param use_openssl Use openssl for random number generation when
-##'   using a non-global generator (see \code{\link{random_id}} for
+##'   using a non-global generator (see [ids::random_id] for
 ##'   details)
 ##'
 ##' @param global Use global random number generator that responds to
-##'   \code{set.seed} (see \code{\link{random_id}} for details, but
+##'   `set.seed` (see [ids::random_id] for details, but
 ##'   note that the default here is different).
 ##'
 ##' @export
@@ -102,34 +101,38 @@ proquint <- function(n = 1, n_words = 2L, use_cache = TRUE,
 ##' These functions try to be type safe and predictable about what
 ##' they will and will not return.
 ##'
-##' For \code{proquint_to_int}, because numeric overflow is a
+##' For `proquint_to_int`, because numeric overflow is a
 ##' possibility, it is important to consider whether a proquint can be
 ##' meaningfully translated into an integer or a numeric and the
 ##' functions will throw an error rather than failing in a more
 ##' insidious way (promoting the type or returning NA).
 ##'
-##' \code{proquint_word_to_int} always returns an integer vector of the
+##' `proquint_word_to_int` always returns an integer vector of the
 ##' same length as the input.
 ##'
 ##' Missing values are allowed; a missing integer representation of a
-##' proquint will translate as \code{NA_character_} and a missing
-##' proquint will translate as \code{NA_integer_} (if \code{as =
-##' "integer"}), \code{NA_real_}, if \code{as = "numeric"} or as
-##' \code{NULL} (if \code{as = "bignum"}).
+##' proquint will translate as `NA_character_` and a missing proquint
+##' will translate as `NA_integer_` (if `as = "integer"`), `NA_real_`,
+##' if `as = "numeric"` or as `NULL` (if `as = "bignum"`).
 ##'
 ##' Names are always discarded.  Future versions may gain an argument
-##' \code{named} with a default of \code{FALSE}, but that setting to
-##' \code{TRUE} would preserve names.  Let me know if this would be
-##' useful.
+##' `named` with a default of `FALSE`, but that setting to `TRUE`
+##' would preserve names.  Let me know if this would be useful.
 ##'
 ##' @rdname proquint_conversion
+##'
 ##' @title Convert to and from proquints
+##'
 ##' @param x An integer (or integer-like) value to convert to a
 ##'   proquint
+##'
 ##' @param p A character vector representing a proquint
+##'
 ##' @param i An integer representing a single proquint word (in the
 ##'   range 0:65535)
-##' @param w A proquint \emph{word} (five letter string)
+##'
+##' @param w A proquint *word* (five letter string)
+##'
 ##' @inheritParams proquint
 ##' @export
 int_to_proquint <- function(x, use_cache = TRUE) {
@@ -194,13 +197,13 @@ int_to_proquint <- function(x, use_cache = TRUE) {
 }
 
 ##' @param as The target data type for conversion from proquint.  The
-##'   options are \code{integer}, \code{numeric} and \code{bignum}.
-##'   The first two will overflow given sufficiently large input -
-##'   this will throw an error (overflow is at
-##'   \code{.Machine$integer.max} and \code{2 / .Machine$double.eps - 1}
-##'   for \code{integer} and \code{numeric} respectively).  For
-##'   \code{bignum} this will return a \emph{list} of \code{bignum}
-##'   elements \emph{even if \code{p} is of length 1}.
+##'   options are `integer`, `numeric` and `bignum`.  The first two
+##'   will overflow given sufficiently large input - this will throw
+##'   an error (overflow is at `.Machine$integer.max` and `2 /
+##'   .Machine$double.eps - 1` for `integer` and `numeric`
+##'   respectively).  For `bignum` this will return a *list* of
+##'   `bignum` elements *even if `p` is of length 1*.
+##'
 ##' @rdname proquint_conversion
 ##' @export
 proquint_to_int <- function(p, as = "numeric", use_cache = TRUE) {
