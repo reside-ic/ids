@@ -57,7 +57,7 @@ bits_add <- function(a, b) {
 ## integers without overflowing.
 uint_to_bits <- function(x, width = 32L) {
   pow <- seq_len(width)
-  as.logical((x %% 2^pow) %/% 2^(pow - 1))
+  as.logical((x %% 2^pow) %/% 2^(pow - 1)) # nolint
 }
 
 
