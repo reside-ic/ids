@@ -54,7 +54,7 @@ test_that("Control used generator", {
   mockery::stub(random_bytes, "openssl::rand_bytes", mock_openssl_rand_bytes)
   set.seed(1)
   bytes_global <- random_bytes_global(100)
-  state <- internals$random_bytes_internal_generator$state()
+  state <- internals$random_bytes_generator$state()
 
   ## Global random number state does not use openssl or our internal
   ## generator:
@@ -64,7 +64,7 @@ test_that("Control used generator", {
   expect_identical(random_bytes(100, TRUE, FALSE), bytes_global)
   mockery::expect_called(mock_openssl_rand_bytes, 0)
   mockery::expect_called(internals$random_bytes_nonglobal, 0)
-  expect_identical(internals$random_bytes_internal_generator$state(), state)
+  expect_identical(internals$random_bytes_generator$state(), state)
 
   ## Non-global, depends on the ternary use_openssl
   ##
@@ -79,14 +79,14 @@ test_that("Control used generator", {
   mockery::expect_called(mock_openssl_rand_bytes, 1)
   expect_equal(mockery::mock_args(mock_openssl_rand_bytes)[[1]],
                list(100))
-  expect_identical(internals$random_bytes_internal_generator$state(), state)
+  expect_identical(internals$random_bytes_generator$state(), state)
 
   ## If TRUE, we always never openssl:
   random_bytes(100, FALSE, FALSE)
   mockery::expect_called(mock_openssl_rand_bytes, 1)
   mockery::expect_called(internals$random_bytes_nonglobal, 1)
   expect_false(
-    identical(internals$random_bytes_internal_generator$state(), state))
+    identical(internals$random_bytes_generator$state(), state))
 })
 
 
@@ -105,7 +105,7 @@ test_that("Select appropriate nonglobal generator based on openssl avail", {
   initialise_random(env2)
   expect_identical(env2$random_bytes_nonglobal, env2$random_bytes_internal)
 
-  cmp <- xoshiro128(env2$random_bytes_internal_generator$state())
+  cmp <- xoshiro128(env2$random_bytes_generator$state())
   expect_identical(
     env2$random_bytes_internal(100),
     random_bytes_from_generator(100, cmp))

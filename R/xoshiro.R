@@ -1,6 +1,3 @@
-## We might be better off with 64 bit state here using xoroshiro128+
-## as that is fewer operations and we get 64 bits of state out the
-## other end (so half the total cycles).
 xoshiro128 <- function(state = NULL) {
   env <- new.env(parent = emptyenv())
   env$state <- random_state(state, 32, 4)
@@ -31,7 +28,7 @@ xoshiro128_advance <- function(state) {
 
 
 xoshiro128_scramble <- function(state) {
-  bits_add(state[, 1L], state[, 4L]) # s1 + s4
+  bits_add(state[, 1L], state[, 4L])
 }
 
 

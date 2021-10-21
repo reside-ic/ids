@@ -47,9 +47,8 @@ random_bytes_from_generator <- function(n, gen) {
 
 initialise_random <- function(env) {
   env$has_openssl <- requireNamespace("openssl", quietly = TRUE)
-  env$random_bytes_internal_generator <- xoshiro128(NULL)
-  env$random_bytes_internal <-
-    random_bytes_internal(env$random_bytes_internal_generator)
+  env$random_bytes_generator <- xoshiro128(NULL)
+  env$random_bytes_internal <- random_bytes_internal(env$random_bytes_generator)
   if (env$has_openssl) {
     env$random_bytes_nonglobal <- openssl::rand_bytes
   } else {
