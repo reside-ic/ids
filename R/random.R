@@ -33,6 +33,8 @@
 #'
 #' \item{\code{use_openssl = FALSE}: internal}
 #'
+#' }
+#'
 #' @title Random hexadecimal identifiers
 #'
 #' @inheritParams ids
@@ -87,8 +89,9 @@ random_id <- function(n = 1, bytes = 16, use_openssl = NULL,
   if (is.null(n)) {
     force(bytes)
     force(use_openssl)
+    force(global)
     function(n = 1) {
-      random_id(n, bytes, use_openssl)
+      random_id(n, bytes, use_openssl, global)
     }
   } else {
     bytes <- random_bytes(n * bytes, global, use_openssl)

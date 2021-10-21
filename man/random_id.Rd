@@ -36,7 +36,31 @@ respect the value of the global random number stream via
 \code{set.seed}.
 }
 \details{
+Since ids version 1.1.0, the openssl package is optional, and this
+affects non-global random number drawing.  If you have openssl
+installed your random numbers will be ~50x faster than the
+implementation we include here.
 
+If \code{global = TRUE} we always use a simple \code{link{sample}}
+based algorithm that is driven from the global random number
+stream. However, when \code{global = FALSE} the behaviour depends
+on the value of \code{use_openssl} and whether that package is
+installed, either using the openssl generators, using an internal
+algorithm based on xoshiro128+ or erroring.
+
+\itemize{
+
+\item{\code{use_openssl = NULL} and openssl installed: openssl}
+
+\item{\code{use_openssl = NULL} and openssl missing: internal}
+
+\item{\code{use_openssl = TRUE} and openssl installed: openssl}
+
+\item{\code{use_openssl = TRUE} and openssl missing: error}
+
+\item{\code{use_openssl = FALSE}: internal}
+
+}
 }
 \examples{
 # Generate a random id:
