@@ -12,7 +12,7 @@ random_bytes <- function(n, global, use_openssl) {
 
 
 random_bytes_global <- function(n) {
-  as.raw(sample.int(n, 256L, replace = TRUE) - 1L)
+  as.raw(sample.int(256L, n, replace = TRUE) - 1L)
 }
 
 

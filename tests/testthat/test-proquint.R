@@ -68,6 +68,7 @@ test_that("sampled words do not depend on cache", {
 })
 
 test_that("generate openssl random numbers", {
+  skip_if_not_installed("openssl")
   i <- rand_i16(1, TRUE)
   expect_type(i, "integer")
   expect_gte(i, 0L)
@@ -91,11 +92,11 @@ test_that("generate openssl random numbers", {
   expect_true(all(i < 2^16))
 })
 
-test_that("openssl random identifiers", {
+test_that("non-global random identifiers", {
   set.seed(1)
-  w1 <- proquint(100, use_openssl = TRUE)
+  w1 <- proquint(100, global = FALSE)
   set.seed(1)
-  w2 <- proquint(100, use_openssl = TRUE)
+  w2 <- proquint(100, global = FALSE)
   expect_false(identical(w1, w2))
 })
 
@@ -128,6 +129,7 @@ test_that("int -> word translation: missing values", {
 })
 
 test_that("identifier -> int translation: missing values", {
+  skip_if_not_installed("openssl")
   i <- 12345L
   w <- int_to_proquint_word(i)
   ib <- openssl::bignum(i)
@@ -154,6 +156,7 @@ test_that("identifier -> int translation: missing values", {
 })
 
 test_that("int -> identifier translation: missing values", {
+  skip_if_not_installed("openssl")
   i <- 12345L
   w <- int_to_proquint_word(i)
   ib <- openssl::bignum(i)
@@ -277,6 +280,7 @@ test_that("invalid identifier", {
 })
 
 test_that("proquint to int, varying formats", {
+  skip_if_not_installed("openssl")
   i <- c(1, 10, 100, 1000, 10000)
   w <- int_to_proquint_word(i)
   expect_identical(proquint_to_int(w, "integer"), as.integer(i))
@@ -286,6 +290,7 @@ test_that("proquint to int, varying formats", {
 })
 
 test_that("int to proquint, varying formats", {
+  skip_if_not_installed("openssl")
   i <- c(1, 10, 100, 1000, 10000)
   w <- int_to_proquint_word(i)
   expect_identical(int_to_proquint(as.integer(i)), w)
@@ -294,6 +299,7 @@ test_that("int to proquint, varying formats", {
 })
 
 test_that("integer overflow", {
+  skip_if_not_installed("openssl")
   big <- .Machine$integer.max * 2
   pq <- int_to_proquint(big)
   expect_type(pq, "character")
@@ -305,6 +311,7 @@ test_that("integer overflow", {
 })
 
 test_that("numeric overflow", {
+  skip_if_not_installed("openssl")
   pow <- log2(2 / .Machine$double.eps) + 1
   big <- openssl::bignum(2)^pow + 1
 

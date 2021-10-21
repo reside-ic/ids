@@ -110,3 +110,14 @@ test_that("Select appropriate nonglobal generator based on openssl avail", {
     env2$random_bytes_internal(100),
     random_bytes_from_generator(100, cmp))
 })
+
+
+test_that("global random number generator returns correct number of bytes", {
+  res <- random_bytes_global(42)
+  expect_type(res, "raw")
+  expect_length(res, 42)
+  skip_on_cran()
+  res <- random_bytes_global(1e6)
+  expect_equal(
+    sort(unique(as.integer(res))), 0:255)
+})
