@@ -26,37 +26,39 @@
 #' @author Rich FitzJohn
 #' @examples
 #' # Generate a random identifier:
-#' adjective_animal()
+#' ids::adjective_animal()
 #'
 #' # Generate a bunch all at once:
-#' adjective_animal(5)
+#' ids::adjective_animal(5)
 #'
 #' # Control the style of punctuation with the style argument:
-#' adjective_animal(style = "lower")
-#' adjective_animal(style = "CONSTANT")
-#' adjective_animal(style = "camel")
-#' adjective_animal(style = "kebab")
+#' ids::adjective_animal(style = "lower")
+#' ids::adjective_animal(style = "CONSTANT")
+#' ids::adjective_animal(style = "camel")
+#' ids::adjective_animal(style = "kebab")
+#' ids::adjective_animal(style = "spongemock")
 #'
 #' # Control the number of adjectives used
-#' adjective_animal(n_adjectives = 3)
+#' ids::adjective_animal(n_adjectives = 3)
 #'
 #' # This can get out of hand quickly though:
-#' adjective_animal(n_adjectives = 7)
+#' ids::adjective_animal(n_adjectives = 7)
 #'
 #' # Limit the length of adjectives and animals used:
-#' adjective_animal(10, max_len = 6)
+#' ids::adjective_animal(10, max_len = 6)
 #'
 #' # The lengths can be controlled for adjectives and animals
 #' # separately, with Inf meaning no limit:
-#' adjective_animal(10, max_len = c(6, Inf), n_adjectives = 2)
+#' ids::adjective_animal(10, max_len = c(6, Inf), n_adjectives = 2)
 #'
 #' # Pass n = NULL to bind arguments to a function
-#' id <- adjective_animal(NULL, n_adjectives = 2, style = "dot", max_len = 6)
+#' id <- ids::adjective_animal(NULL, n_adjectives = 2,
+#'                             style = "dot", max_len = 6)
 #' id()
 #' id(10)
 #'
-#' # Alliterated adjective animals aid awesomeness
-#' adjective_animal(10, n_adjectives = 3, alliterate = TRUE)
+#' # Alliterated adjective animals always aid added awesomeness
+#' ids::adjective_animal(10, n_adjectives = 3, alliterate = TRUE)
 adjective_animal <- function(n = 1, n_adjectives = 1, style = "snake",
                              max_len = Inf, alliterate = FALSE) {
   if (any(is.finite(max_len))) {

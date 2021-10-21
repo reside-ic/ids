@@ -25,13 +25,13 @@ set).
 }
 \examples{
 # Generate one id
-uuid()
+ids::uuid()
 
 # Or a bunch
-uuid(10)
+ids::uuid(10)
 
 # More in the style of random_id()
-uuid(drop_hyphens = TRUE)
+ids::uuid(drop_hyphens = TRUE)
 }
 \author{
 Rich FitzJohn

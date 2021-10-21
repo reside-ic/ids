@@ -19,13 +19,13 @@
 #' @author Rich FitzJohn
 #' @examples
 #' # Generate one id
-#' uuid()
+#' ids::uuid()
 #'
 #' # Or a bunch
-#' uuid(10)
+#' ids::uuid(10)
 #'
 #' # More in the style of random_id()
-#' uuid(drop_hyphens = TRUE)
+#' ids::uuid(drop_hyphens = TRUE)
 uuid <- function(n = 1, drop_hyphens = FALSE, use_time = NA) {
   if (!missing(use_time)) {
     warning("The 'use_time' argument is now ignored")

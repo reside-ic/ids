@@ -74,13 +74,13 @@ proquint_re1 <- sprintf("^%s$", proquint_re_word)
 ##' @export
 ##' @examples
 ##' # A single, two word, proquint
-##' proquint()
+##' ids::proquint()
 ##'
 ##' # Longer identifier:
-##' proquint(n_words = 5)
+##' ids::proquint(n_words = 5)
 ##'
 ##' # More identifiers
-##' proquint(10)
+##' ids::proquint(10)
 proquint <- function(n = 1, n_words = 2L, use_cache = TRUE,
                      use_openssl = NULL, global = TRUE) {
   ## Consider requiring something sane for 'n_words'?

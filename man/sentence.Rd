@@ -27,24 +27,24 @@ really wanted to.
 }
 \examples{
 # Generate an identifier
-sentence()
+ids::sentence()
 
 # Generate a bunch
-sentence(10)
+ids::sentence(10)
 
 # As with adjective_animal, use "style" to control punctuation
-sentence(style = "Camel")
-sentence(style = "dot")
-sentence(style = "Title")
+ids::sentence(style = "Camel")
+ids::sentence(style = "dot")
+ids::sentence(style = "Title")
 
 # Change the tense of the verb:
 set.seed(1)
-sentence()
+ids::sentence()
 set.seed(1)
-sentence(past = TRUE)
+ids::sentence(past = TRUE)
 
 # Pass n = NULL to bind arguments to a function
-id <- sentence(NULL, past = TRUE, style = "dot")
+id <- ids::sentence(NULL, past = TRUE, style = "dot")
 id()
 id(10)
 }

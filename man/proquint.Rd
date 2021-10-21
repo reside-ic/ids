@@ -61,11 +61,11 @@ and vowels: proquints."
 }
 \examples{
 # A single, two word, proquint
-proquint()
+ids::proquint()
 
 # Longer identifier:
-proquint(n_words = 5)
+ids::proquint(n_words = 5)
 
 # More identifiers
-proquint(10)
+ids::proquint(10)
 }
