@@ -1,3 +1,8 @@
+# ids 1.2.0
+
+* The `openssl` package is now optional, with `ids` now shipping with an internal random number generator which can be used for identifiers that do not depend on R's global random number state (used by `ids::random_id`, `ids::proquint` and `ids::uuid`). If openssl is found it will still be used. (#11)
+* The `uuid` package is no longer used by `ids::uuid` and we instead generate version 4 uuids. As before these do not depend on R's global random number state (#4)
+
 # ids 1.1.1
 
 * The `adjective_animal` and `sentence` generators now support [MocKiNg sPoNgEbOb CaSe](https://knowyourmeme.com/memes/mocking-spongebob) in addition to usual case conversions.
