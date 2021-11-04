@@ -40,12 +40,13 @@
 
 
 <meta property="og:title" content="Generate UUIDs — uuid" />
-<meta property="og:description" content="Generate UUIDs.  In previous versions this
-was simply a thin wrapper around uuid::UUIDgenerate, however
-this was subject to collisions on windows where relatively small
-numbers of UUIDs generated at the same time could return values
-that were identical. We now generate only version 4 UUIDs (i.e.,
-random though with particular bits set)." />
+<meta property="og:description" content="Generate UUIDs (Universally Unique IDentifiers).  In previous
+versions this was simply a thin wrapper around
+uuid::UUIDgenerate, however this was subject to collisions on
+windows where relatively small numbers of UUIDs generated at the
+same time could return values that were identical. We now generate
+only version 4 UUIDs (i.e., random though with particular bits
+set)." />
 
 
 
@@ -77,7 +78,7 @@ random though with particular bits set)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.1</span>
       </span>
     </div>
 
@@ -125,12 +126,13 @@ random though with particular bits set)." />
     </div>
 
     <div class="ref-description">
-    <p>Generate UUIDs.  In previous versions this
-was simply a thin wrapper around <code>uuid::UUIDgenerate</code>, however
-this was subject to collisions on windows where relatively small
-numbers of UUIDs generated at the same time could return values
-that were identical. We now generate only version 4 UUIDs (i.e.,
-random though with particular bits set).</p>
+    <p>Generate UUIDs (Universally Unique IDentifiers).  In previous
+versions this was simply a thin wrapper around
+<code>uuid::UUIDgenerate</code>, however this was subject to collisions on
+windows where relatively small numbers of UUIDs generated at the
+same time could return values that were identical. We now generate
+only version 4 UUIDs (i.e., random though with particular bits
+set).</p>
     </div>
 
     <pre class="usage"><span class='fu'>uuid</span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1</span>, drop_hyphens <span class='op'>=</span> <span class='cn'>FALSE</span>, use_time <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span></pre>
@@ -140,8 +142,8 @@ random though with particular bits set).</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>n</th>
-      <td><p>number of ids to return.  If <code>NULL</code>, it instead
-returns the generating function</p></td>
+      <td><p>number of ids to return.  If <code>NULL</code>, it instead returns
+the generating function</p></td>
     </tr>
     <tr>
       <th>drop_hyphens</th>
@@ -159,25 +161,25 @@ returns the generating function</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='co'># Generate one id</span></span>
-<span class='r-in'><span class='fu'>uuid</span><span class='op'>(</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "2b568491-e178-469c-a364-fdc5b9fd65ec"</span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>uuid</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "d7c2b795-d411-419c-a28f-90bbdd44ee9c"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Or a bunch</span></span>
-<span class='r-in'><span class='fu'>uuid</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "e9c9729d-1ed1-4d9d-930c-85ba424a3a89"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [2] "6a930495-bac2-4daf-9326-b3e2743abc81"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "7ae7d9ae-8a87-438a-b7e8-52a75d8f25a3"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [4] "435d6aef-37b4-43e5-979d-3113f3ea8cc6"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "6bacaa71-0427-4a2f-a285-af0ce4dc8d95"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] "46f37492-0afc-40f5-97c7-0b8a90bbd405"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "9b630595-921b-495c-a551-c7664d509d5f"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [8] "d4418eba-c139-465e-87f7-75fa883b2327"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "55ef0226-bc30-4e87-85d2-0ef7cd5a0db8"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [10] "0bd719df-2ace-4071-bf63-69ef3792bda4"</span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>uuid</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "e28fcc20-22fc-4a32-9508-363c88457824"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [2] "3bf2160a-a6c9-4846-a0dd-2351cab1627c"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "ad4a7d84-ef25-4b61-9bc3-015b8083d130"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [4] "e772ccb1-fd70-4cab-945d-178035653885"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "02e6b59a-23de-4373-bc8d-8d550d4d280d"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] "f73d4776-2796-4dea-bc6b-9d1996c5131c"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "240734de-9192-4af4-a4cd-ae9e0786c5f1"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [8] "8ee8a8d0-96ba-4a19-86e2-5e9eaa1d97ae"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "af3d1eec-8f71-4704-a3a1-953fecf43750"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [10] "7de885d2-d462-4352-adf6-0148b0ab03d8"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># More in the style of random_id()</span></span>
-<span class='r-in'><span class='fu'>uuid</span><span class='op'>(</span>drop_hyphens <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "32cd08ba51bf45ebb24872533ece3aba"</span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>uuid</span><span class='op'>(</span>drop_hyphens <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "57b707108b5644b9bec10b819c09c6b1"</span>
 </pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

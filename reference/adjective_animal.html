@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.1</span>
       </span>
     </div>
 
@@ -136,8 +136,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>n</th>
-      <td><p>number of ids to return.  If <code>NULL</code>, it instead
-returns the generating function</p></td>
+      <td><p>number of ids to return.  If <code>NULL</code>, it instead returns
+the generating function</p></td>
     </tr>
     <tr>
       <th>n_adjectives</th>
@@ -172,77 +172,81 @@ weighted sampling.  Adjectives may also be repeated if
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The list of adjectives and animals comes from
-<a href='https://github.com/a-type/adjective-adjective-animal'>https://github.com/a-type/adjective-adjective-animal</a>, and in
-turn from <a href='gfycat.com'>gfycat.com</a></p>
+<a href='https://github.com/a-type/adjective-adjective-animal'>https://github.com/a-type/adjective-adjective-animal</a>, and in turn
+from &lt;gfycat.com&gt;</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Rich FitzJohn</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='co'># Generate a random identifier:</span></span>
-<span class='r-in'><span class='fu'>adjective_animal</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>adjective_animal</span><span class='op'>(</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "nonspheric_siberiantiger"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Generate a bunch all at once:</span></span>
-<span class='r-in'><span class='fu'>adjective_animal</span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>adjective_animal</span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "sacred_pachyderm"        "artsycraftsy_astarte"   </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [3] "eccentric_doe"           "compassionless_drever"  </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [5] "unfeared_americancicada"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Control the style of punctuation with the style argument:</span></span>
-<span class='r-in'><span class='fu'>adjective_animal</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"lower"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>adjective_animal</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"lower"</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "ecological snake"</span>
-<span class='r-in'><span class='fu'>adjective_animal</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"CONSTANT"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>adjective_animal</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"CONSTANT"</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "FROSTED_DUNGBEETLE"</span>
-<span class='r-in'><span class='fu'>adjective_animal</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"camel"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>adjective_animal</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"camel"</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "deferentialCopepod"</span>
-<span class='r-in'><span class='fu'>adjective_animal</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"kebab"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>adjective_animal</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"kebab"</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "frantic-grub"</span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>adjective_animal</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"spongemock"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "RAGiNg-lLaMa"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Control the number of adjectives used</span></span>
-<span class='r-in'><span class='fu'>adjective_animal</span><span class='op'>(</span>n_adjectives <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "raging_carnauba_civillaw_skink"</span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>adjective_animal</span><span class='op'>(</span>n_adjectives <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "intercontradictory_semimonarchical_mirthful_toucan"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># This can get out of hand quickly though:</span></span>
-<span class='r-in'><span class='fu'>adjective_animal</span><span class='op'>(</span>n_adjectives <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "intercorporate_deiform_curt_intercontradictory_semimonarchical_mirthful_congenial_dassierat"</span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>adjective_animal</span><span class='op'>(</span>n_adjectives <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "libertarian_parochialist_rash_engaged_evileyed_crystallitic_unangry_krill"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Limit the length of adjectives and animals used:</span></span>
-<span class='r-in'><span class='fu'>adjective_animal</span><span class='op'>(</span><span class='fl'>10</span>, max_len <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "brown_thrush" "corny_godwit" "idled_eyas"   "lardy_titi"   "myrtle_anole"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] "great_swift"  "postal_bird"  "turbid_cow"   "bored_xeme"   "mutual_liger"</span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>adjective_animal</span><span class='op'>(</span><span class='fl'>10</span>, max_len <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "turbid_godwit" "bored_eyas"    "mutual_titi"   "hilly_anole"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "fast_swift"    "lead_bird"     "glassy_cow"    "lax_xeme"     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "nonfat_liger"  "rainy_walrus" </span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># The lengths can be controlled for adjectives and animals</span></span>
 <span class='r-in'><span class='co'># separately, with Inf meaning no limit:</span></span>
-<span class='r-in'><span class='fu'>adjective_animal</span><span class='op'>(</span><span class='fl'>10</span>, max_len <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='cn'>Inf</span><span class='op'>)</span>, n_adjectives <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "lionly_chaste_xinjiangovenator" "webby_mature_iguanodon"        </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "legal_terse_ballpython"         "mucky_fierce_dromaeosaur"      </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "acrid_fussy_northernspottedowl" "public_faulty_marmoset"        </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "wroth_mid_australiancurlew"     "golden_united_chimpanzee"      </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "poetic_wary_nuthatch"           "cream_pebbly_abyssiniancat"    </span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>adjective_animal</span><span class='op'>(</span><span class='fl'>10</span>, max_len <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='cn'>Inf</span><span class='op'>)</span>, n_adjectives <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "webby_mature_ballpython"         "legal_terse_dromaeosaur"        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "mucky_fierce_northernspottedowl" "acrid_fussy_marmoset"           </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "public_faulty_australiancurlew"  "wroth_mid_chimpanzee"           </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "golden_united_nuthatch"          "poetic_wary_abyssiniancat"      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "cream_pebbly_civet"              "chaste_naggy_hippopotamus"      </span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Pass n = NULL to bind arguments to a function</span></span>
-<span class='r-in'><span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'>adjective_animal</span><span class='op'>(</span><span class='cn'>NULL</span>, n_adjectives <span class='op'>=</span> <span class='fl'>2</span>, style <span class='op'>=</span> <span class='st'>"dot"</span>, max_len <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>adjective_animal</span><span class='op'>(</span><span class='cn'>NULL</span>, n_adjectives <span class='op'>=</span> <span class='fl'>2</span>,</span>
+<span class='r-in'>                            style <span class='op'>=</span> <span class='st'>"dot"</span>, max_len <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'>id</span><span class='op'>(</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "elfish.mad.civet"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "bardic.green.hake"</span>
 <span class='r-in'><span class='fu'>id</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "green.chatty.turkey"  "strict.tidal.barb"    "united.cruel.vixen"  </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [4] "dreary.duckie.eft"    "brashy.ambery.tick"   "leafed.almond.turkey"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "cosmic.lethal.possum" "even.bleary.bovine"   "sudden.fleecy.moray" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [10] "intact.tan.urchin"   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "united.cruel.barb"    "dreary.duckie.vixen"  "brashy.ambery.eft"   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [4] "leafed.almond.tick"   "cosmic.lethal.turkey" "even.bleary.possum"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "sudden.fleecy.bovine" "intact.tan.moray"     "chatty.front.urchin" </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [10] "tidal.maize.urva"    </span>
 <span class='r-in'></span>
-<span class='r-in'><span class='co'># Alliterated adjective animals aid awesomeness</span></span>
-<span class='r-in'><span class='fu'>adjective_animal</span><span class='op'>(</span><span class='fl'>10</span>, n_adjectives <span class='op'>=</span> <span class='fl'>3</span>, alliterate <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "somniphobic_selfsatisfied_stoned_seahorse"            </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [2] "inexperienced_impervious_impressed_ibisbill"          </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "suede_sour_suboceanic_siamesecat"                     </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [4] "apidological_apian_aware_altiplanochinchillamouse"    </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "streetsmart_satisfactory_super_serval"                </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] "dispellable_degrading_dermographic_daddylonglegs"     </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "sulfuryl_scholarless_swallowable_swallowtailbutterfly"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [8] "technological_taxexempt_tsarist_tayra"                </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "carnivallike_censorious_creatural_cheetah"            </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [10] "aweinspiring_antidotical_atrocious_anhinga"           </span>
+<span class='r-in'><span class='co'># Alliterated adjective animals always aid added awesomeness</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>adjective_animal</span><span class='op'>(</span><span class='fl'>10</span>, n_adjectives <span class='op'>=</span> <span class='fl'>3</span>, alliterate <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "streetsmart_sour_stoned_seahorse"                          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [2] "agitable_apidological_antidotical_altiplanochinchillamouse"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "sulfuryl_satisfactory_suboceanic_siamesecat"               </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [4] "degrading_dermographic_deceased_dormouse"                  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "selfsatisfied_scholarless_super_serval"                    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] "tsarist_tame_termitic_turkey"                              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "censorious_creatural_camoflage_cormorant"                  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [8] "adobe_aweinspiring_aware_anhinga"                          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "phantasmagoric_pseudoliberal_pseudohistoric_pharaohhound"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [10] "adventurous_apian_atrocious_arctichare"                    </span>
 </pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

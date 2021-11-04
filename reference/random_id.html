@@ -45,7 +45,7 @@ the openssl package to produce a random set of bytes, and
 expresses that as a hex character string, creating
 cryptographically secure (unpredictable) identifiers.  If that is
 unavailable, fall back on the xoshiro128+ algorithm to produce
-random numbers that are not cryptograpically secure, but which do
+random numbers that are not cryptographically secure, but which do
 not affect the global random number stream (see Details). If
 desired, you can produce &quot;predictable&quot; random identifiers that
 respect the value of the global random number stream via
@@ -81,7 +81,7 @@ set.seed." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.1</span>
       </span>
     </div>
 
@@ -134,7 +134,7 @@ the <code>openssl</code> package to produce a random set of bytes, and
 expresses that as a hex character string, creating
 cryptographically secure (unpredictable) identifiers.  If that is
 unavailable, fall back on the xoshiro128+ algorithm to produce
-random numbers that are not cryptograpically secure, but which do
+random numbers that are not cryptographically secure, but which do
 not affect the global random number stream (see Details). If
 desired, you can produce "predictable" random identifiers that
 respect the value of the global random number stream via
@@ -148,8 +148,8 @@ respect the value of the global random number stream via
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>n</th>
-      <td><p>number of ids to return.  If <code>NULL</code>, it instead
-returns the generating function</p></td>
+      <td><p>number of ids to return.  If <code>NULL</code>, it instead returns
+the generating function</p></td>
     </tr>
     <tr>
       <th>bytes</th>
@@ -168,7 +168,7 @@ is available but fall back on R (See Details).</p></td>
       <th>global</th>
       <td><p>Logical, indicating if random numbers should be
 global (given R's global random number seed). If <code>TRUE</code>,
-then ids generated will be predicatable.</p></td>
+then ids generated will be predictable.</p></td>
     </tr>
     </table>
 
@@ -178,13 +178,12 @@ then ids generated will be predicatable.</p></td>
 affects non-global random number drawing.  If you have openssl
 installed your random numbers will be ~50x faster than the
 implementation we include here.</p>
-<p>If <code>global = TRUE</code> we always use a simple <code>link{sample}</code>
+<p>If <code>global = TRUE</code> we always use a simple <a href='https://rdrr.io/r/base/sample.html'>sample</a>
 based algorithm that is driven from the global random number
 stream. However, when <code>global = FALSE</code> the behaviour depends
 on the value of <code>use_openssl</code> and whether that package is
 installed, either using the openssl generators, using an internal
-algorithm based on xoshiro128+ or erroring.</p>
-<ul>
+algorithm based on xoshiro128+ or erroring.</p><ul>
 <li><p><code>use_openssl = NULL</code> and openssl installed: openssl</p></li>
 <li><p><code>use_openssl = NULL</code> and openssl missing: internal</p></li>
 <li><p><code>use_openssl = TRUE</code> and openssl installed: openssl</p></li>
@@ -199,28 +198,28 @@ algorithm based on xoshiro128+ or erroring.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='co'># Generate a random id:</span></span>
 <span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>random_id</span><span class='op'>(</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "deff66240407034f25e7f416bca0795b"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "f37f0104eb3ed652297da0584e79d33c"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Generate 10 of them!</span></span>
 <span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>random_id</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "d38906608dace531cb2681f42204cbde" "657921b26fcf22ce37f1bea0600a5e39"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "ac8c8074c9e45be83e277a2cadcd1cff" "ba2d5ec764e9723069eb26486b78f452"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "171bf6caf9e9b0e53a2138501edefcc3" "17f865eca4cc028d1ab8d2949dcd1590"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "b6108c866ae771f930851b8ffd261925" "a0af3632f687eddbba5d43670ebdc877"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "0a38d345ab53e020c90df61f4322335e" "384867badd5841e275f6737111eb9f03"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "29aa916979c04ed05a9c5743d22ec47f" "6647e6c4cc744dd8002e1265b487b31b"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "00a4a67d7a0e017d1e09ddbd2c2f0728" "54d37fdef71f0797e8507e7d4d84407b"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "ce3a4f86336839ba691aea29609e6e00" "474742da49c196111e48235a126ad8a7"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "86a9f23e77fb5d575523bf4d36b1ff47" "793146361f9ee062660258086d45fcaf"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "26403fec825f108f3d0670c480721154" "aa3ba5ec47b0fc6c1e199891069dbd92"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Different length ids</span></span>
 <span class='r-in'><span class='fu'>random_id</span><span class='op'>(</span>bytes <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "819751feec8e5c6b"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "e2f76f9fbe8a3ce2"</span>
 <span class='r-in'><span class='co'># (note that the number of characters is twice the number of bytes)</span></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># The ids are not affected by R's RNG state:</span></span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>(</span><span class='va'>id1</span> <span class='op'>&lt;-</span> <span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>random_id</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "c647cb4010c2fd684f26b4d3f4c75e0b"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "e9c52ccedf3da4b8b486e605f9e1d58e"</span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>(</span><span class='va'>id2</span> <span class='op'>&lt;-</span> <span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>random_id</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "b0116d4a085226e1900498eed4d8dc66"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "a2e185060dd2c8a2cda9c66ddc3cc3e5"</span>
 <span class='r-in'><span class='co'># The generated identifiers are different, despite the seed being the same:</span></span>
 <span class='r-in'><span class='va'>id1</span> <span class='op'>==</span> <span class='va'>id2</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] FALSE</span>
@@ -228,20 +227,20 @@ algorithm based on xoshiro128+ or erroring.</p>
 <span class='r-in'><span class='co'># If you need these identifiers to be reproducible, pass use_openssl = FALSE</span></span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>(</span><span class='va'>id1</span> <span class='op'>&lt;-</span> <span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>random_id</span><span class='op'>(</span>use_openssl <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "32d4848f567f69bd51909c6dec72b0bb"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "fb35149c4a5ca1367dff80499a8fb082"</span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>(</span><span class='va'>id2</span> <span class='op'>&lt;-</span> <span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>random_id</span><span class='op'>(</span>use_openssl <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "fdee8bad7b6c773dd6555d2f8857e405"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "1d9efda9c4604cbc0e304cb6f7fff5ec"</span>
 <span class='r-in'><span class='co'># This time they are the same:</span></span>
 <span class='r-in'><span class='va'>id1</span> <span class='op'>==</span> <span class='va'>id2</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] FALSE</span>
 <span class='r-in'></span>
-<span class='r-in'><span class='co'># Pass \code{n = NULL} to generate a function that binds your arguments:</span></span>
+<span class='r-in'><span class='co'># Pass `n = NULL` to generate a function that binds your arguments:</span></span>
 <span class='r-in'><span class='va'>id8</span> <span class='op'>&lt;-</span> <span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>random_id</span><span class='op'>(</span><span class='cn'>NULL</span>, bytes <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'>id8</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "2883ed110dccf09b" "9052e9ac6f60ff4e" "3aef7392f3ec63f5" "5eef95dff155395d"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "141aa50e3a8c6486" "2b0584572e5c3dbc" "816881100bd48e94" "ce08d4f2b86474ac"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "7799a6677e451028" "ee5c75ffff28d703"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "48e3806d978995c0" "3d78d711052c3ea5" "3daa587985031541" "1d09f03296f75371"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "bb3cec3dcd128a4f" "1af0f51c12680f3b" "a9d6e8e750cc2921" "f6741b0f92018e9b"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "852d9c3138fd6fea" "75e8f62817e16a18"</span>
 </pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

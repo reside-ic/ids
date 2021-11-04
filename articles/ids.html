@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.1</span>
       </span>
     </div>
 
@@ -92,18 +92,18 @@
 <p>The <code>random_id</code> function generates random identifiers by generating <code>bytes</code> random bytes and converting to hexadecimal (so each byte becomes a pair of characters). Rather than use R’s random number stream we use the <code>openssl</code> package here.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "3721fd6e63ce7b6d2f2faa5c6efd289a"</code></pre>
+<pre><code>## [1] "b4329a5b5cfbef99056cccfbf37e0244"</code></pre>
 <p>All <code>ids</code> functions take <code>n</code> as the first argument to be the number of identifiers generated:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "6d6896a8e191f21b1e9bca15c1194bb7" "319aa914ab6c20dabf7b9f255ef9f1b4"
-## [3] "a239a3cd6d6e4739df2a85522de9704e" "0c5fddf6ae65f020aa8f349441f8021f"
-## [5] "7455e62c235f7e12a2b11af4a57d47fe"</code></pre>
+<pre><code>## [1] "73c22c9420fd295c01590a5ba363ca74" "168e964b4fb27ed7c8f6ccf866500e49"
+## [3] "89748844128fb636a0dec0afb7f0c8f2" "eba5b55d641225e1595d85f858c3a436"
+## [5] "cb76c15f74f6917f2bb7703d507a660b"</code></pre>
 <p>The default here is 16 bytes, each of which has 256 values (so 256^16 = 2^128 = 3.4e38 combinations). You can make these larger or smaller with the <code>bytes</code> argument:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">8</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "3598579eb2a0820c" "54009bc6645a508c" "e8f60848749c2cf4" "895fac95bd507c3a"
-## [5] "fbabcb72e90c55d9"</code></pre>
+<pre><code>## [1] "88302a1542ad65f9" "bf9eda4b90a80a99" "b269cb38aac22acb" "6551628c8f0ff665"
+## [5] "a5f5fb276a77fd47"</code></pre>
 <p>If <code>NULL</code> is provided as <code>n</code>, then a generating function is returned (all ids functions do this):</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="fl">8</span><span class="op">)</span>
@@ -112,15 +112,15 @@
 ## {
 ##     random_id(n, bytes, use_openssl, global)
 ## }
-## &lt;bytecode: 0x55e7fbbb4d68&gt;
-## &lt;environment: 0x55e7fd660758&gt;</code></pre>
+## &lt;bytecode: 0x55a45cb7c330&gt;
+## &lt;environment: 0x55a45e9a2d18&gt;</code></pre>
 <p>This function sets all arguments except for <code>n</code></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "03adeeec0d6223bb"</code></pre>
+<pre><code>## [1] "188dd78dc5432171"</code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "fc7c7d45367b2942" "b65e2e750b2e1c8b" "2806bcac3f474f17" "78fdbf2f82c74d9a"</code></pre>
+<pre><code>## [1] "afb833af33a063dc" "11a2c8fe9133ffda" "3b0d1b6c8140f39b" "b456690ea4b6479e"</code></pre>
 </div>
 <div id="uuids" class="section level2">
 <h2 class="hasAnchor">
@@ -128,28 +128,28 @@
 <p>The above look a lot like UUIDs but they are not actually UUIDs. The <code>uuid</code> package provides real UUIDs generated with libuuid, and the <code><a href="../reference/uuid.html">ids::uuid</a></code> function provides an interface to that:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/uuid.html">uuid</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "0d6ecc28-3f5c-4443-8152-83dbeb0832f9"</code></pre>
+<pre><code>## [1] "575dc56b-ffbf-4a39-b5dd-ea23ec9d9df8"</code></pre>
 <p>As above, generate more than one UUID:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/uuid.html">uuid</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "a8655f77-7c74-4168-8e3d-7c75c9b792d6"
-## [2] "097ce110-fe84-4e35-84d4-efcef15e3d34"
-## [3] "95c97c9b-e630-4b09-8189-4eb03212b26f"
-## [4] "f0c1cae0-5fb9-4a9f-8fbc-f28ff2a10518"</code></pre>
+<pre><code>## [1] "e97ed04e-f00d-4fad-ac01-75dd8d523d83"
+## [2] "f19cd0fd-792d-4c57-972c-c00be1361925"
+## [3] "1a1b9c77-4398-4092-a971-d5ee3f65731c"
+## [4] "bd1fb4d8-54b6-4f59-9bb6-58bedaf34a24"</code></pre>
 <p>Generate time-based UUIDs:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/uuid.html">uuid</a></span><span class="op">(</span><span class="fl">4</span>, use_time <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning in ids::uuid(4, use_time = TRUE): The 'use_time' argument is now ignored</code></pre>
-<pre><code>## [1] "9bc14e66-564b-482a-a850-fccf51966aa3"
-## [2] "e9735fef-9cd6-44c4-a4eb-0c3e3b3618ca"
-## [3] "25dc4e13-afd1-4adc-a7b6-175774b4501e"
-## [4] "7ab69d6f-7fce-4a08-b470-1981d3deb42c"</code></pre>
+<pre><code>## [1] "cde3a0d0-ee3a-4449-bace-dcb6e915c2af"
+## [2] "43da0271-27ee-4300-952d-7db6eeb40fa5"
+## [3] "f4e8397a-958d-4501-a4d0-6b6157740fe4"
+## [4] "ab343b9a-f486-42fc-a9cb-f16587e429e4"</code></pre>
 <p>and optionally drop the hyphens:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/uuid.html">uuid</a></span><span class="op">(</span><span class="fl">5</span>, drop_hyphens <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "06761150024949e7ba4854f0c163ae91" "6a589e22d7314e20ae8cc8ac5cea00d3"
-## [3] "a9560fc8a6304ee19c2042c89b63222c" "dc6a4c98122943eaaab24d7b3b75be24"
-## [5] "102dde40909f418aa9ef99ea818095c9"</code></pre>
+<pre><code>## [1] "2f56ae8fa690495fa46ea7cf05cb7fe5" "5c46b9d925f44b419bb7eafdaa0671c9"
+## [3] "40400559342645ad9b0518c76e09d9aa" "d94d13ba10aa4e23803e90e1418e9ef0"
+## [5] "6268e51e6c134be7aa979953200cc15a"</code></pre>
 </div>
 <div id="adjective-animal" class="section level2">
 <h2 class="hasAnchor">
@@ -414,7 +414,7 @@
 <div id="relationship-to-random-number-generation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#relationship-to-random-number-generation" class="anchor"></a>Relationship to random number generation</h2>
-<p>Creating <em>random</em> idenfiers requires some source of random numbers. There are a couple of competing needs here:</p>
+<p>Creating <em>random</em> identifiers requires some source of random numbers. There are a couple of competing needs here:</p>
 <ol style="list-style-type: decimal">
 <li>You might want the identifiers to be repeatable, so that setting the seed will ensure the same stream of random identifiers:</li>
 </ol>
@@ -432,11 +432,11 @@
 <div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "57ccbf09" "e9c6656a" "cefb3934"</code></pre>
+<pre><code>## [1] "d80a1e3a" "97ff5258" "6576fd91"</code></pre>
 <div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "733b52f7" "3e32d913" "aedd483d"</code></pre>
+<pre><code>## [1] "0e9358cc" "1983b2ab" "ce318d0a"</code></pre>
 <p>To support this, <code>ids</code> uses two different types of sources of random numbers:</p>
 <ul>
 <li>

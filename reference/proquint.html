@@ -42,12 +42,12 @@
 <meta property="og:title" content="Generate random proquint identifiers — proquint" />
 <meta property="og:description" content="Generate random &quot;proquint&quot; identifiers.  &quot;proquint&quot; stands for
 PRO-nouncable QUINT-uplets and were described by Daniel Wilkerson
-in https://arxiv.org/html/0901.4016.  Each &quot;word&quot; takes one
-of \(2^16\) possibilities.  A four word proquint has a keyspace
-of \(10^19\) possibilities but takes only 23 characters.
-Proquint identifiers can be interchanged with integers (though
-this is totally optional); see proquint_to_int and
-the other functions documented on that page." />
+in https://arxiv.org/html/0901.4016.  Each &quot;word&quot; takes one of
+2^16 possibilities.  A four word proquint has a keyspace of
+10^19 possibilities but takes only 23 characters.  Proquint
+identifiers can be interchanged with integers (though this is
+totally optional); see proquint_to_int and the other
+functions documented on that page." />
 
 
 
@@ -79,7 +79,7 @@ the other functions documented on that page." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.1</span>
       </span>
     </div>
 
@@ -129,12 +129,12 @@ the other functions documented on that page." />
     <div class="ref-description">
     <p>Generate random "proquint" identifiers.  "proquint" stands for
 PRO-nouncable QUINT-uplets and were described by Daniel Wilkerson
-in <a href='https://arxiv.org/html/0901.4016'>https://arxiv.org/html/0901.4016</a>.  Each "word" takes one
-of \(2^16\) possibilities.  A four word proquint has a keyspace
-of \(10^19\) possibilities but takes only 23 characters.
-Proquint identifiers can be interchanged with integers (though
-this is totally optional); see <code><a href='int_to_proquint.html'>proquint_to_int</a></code> and
-the other functions documented on that page.</p>
+in <a href='https://arxiv.org/html/0901.4016'>https://arxiv.org/html/0901.4016</a>.  Each "word" takes one of
+<code>2^16</code> possibilities.  A four word proquint has a keyspace of
+<code>10^19</code> possibilities but takes only 23 characters.  Proquint
+identifiers can be interchanged with integers (though this is
+totally optional); see <a href='int_to_proquint.html'>proquint_to_int</a> and the other
+functions documented on that page.</p>
     </div>
 
     <pre class="usage"><span class='fu'>proquint</span><span class='op'>(</span>
@@ -150,16 +150,15 @@ the other functions documented on that page.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>n</th>
-      <td><p>number of ids to return.  If <code>NULL</code>, it instead
-returns the generating function</p></td>
+      <td><p>number of ids to return.  If <code>NULL</code>, it instead returns
+the generating function</p></td>
     </tr>
     <tr>
       <th>n_words</th>
       <td><p>The number of words for each identifier; each word
-has <code>2^16</code> (65536) possible combinations, a two-word
-proquint has <code>2^32</code> possible combinations and an
-<code>k</code>-word proquint has <code>2^(k * 16)</code> possible
-combinations.</p></td>
+has <code>2^16</code> (65536) possible combinations, a two-word proquint
+has <code>2^32</code> possible combinations and an <code>k</code>-word proquint has
+<code>2^(k * 16)</code> possible combinations.</p></td>
     </tr>
     <tr>
       <th>use_cache</th>
@@ -176,13 +175,13 @@ option will not affect the identifiers randomly selected).</p></td>
     <tr>
       <th>use_openssl</th>
       <td><p>Use openssl for random number generation when
-using a non-global generator (see <code><a href='random_id.html'>random_id</a></code> for
+using a non-global generator (see <a href='random_id.html'>random_id</a> for
 details)</p></td>
     </tr>
     <tr>
       <th>global</th>
       <td><p>Use global random number generator that responds to
-<code>set.seed</code> (see <code><a href='random_id.html'>random_id</a></code> for details, but
+<code>set.seed</code> (see <a href='random_id.html'>random_id</a> for details, but
 note that the default here is different).</p></td>
     </tr>
     </table>
@@ -199,17 +198,17 @@ and vowels: proquints."</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='co'># A single, two word, proquint</span></span>
-<span class='r-in'><span class='fu'>proquint</span><span class='op'>(</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "hagig-gozip"</span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>proquint</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "fonus-tupan"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Longer identifier:</span></span>
-<span class='r-in'><span class='fu'>proquint</span><span class='op'>(</span>n_words <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "turum-lasim-lijus-kupan-gosop"</span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>proquint</span><span class='op'>(</span>n_words <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "gunug-rojuj-gunov-ruhur-falud"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># More identifiers</span></span>
-<span class='r-in'><span class='fu'>proquint</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "tizud-pisuv" "tukun-tihuv" "sivut-muhod" "zuzun-hamon" "dahud-vupoh"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] "mumif-jotig" "nuzit-lozat" "vonod-dizuh" "pinoh-jokaj" "gibuf-hitub"</span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>proquint</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "zuzun-hamon" "dahud-vupoh" "mumif-jotig" "nuzit-lozat" "vonod-dizuh"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] "pinoh-jokaj" "gibuf-hitub" "dolil-vupol" "pigit-muzij" "garal-kavat"</span>
 </pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

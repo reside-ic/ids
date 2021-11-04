@@ -77,7 +77,7 @@ really wanted to." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.1</span>
       </span>
     </div>
 
@@ -140,8 +140,8 @@ really wanted to.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>n</th>
-      <td><p>number of ids to return.  If <code>NULL</code>, it instead
-returns the generating function</p></td>
+      <td><p>number of ids to return.  If <code>NULL</code>, it instead returns
+the generating function</p></td>
     </tr>
     <tr>
       <th>style</th>
@@ -162,11 +162,11 @@ rather than slurping or jogging)</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='co'># Generate an identifier</span></span>
-<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>sentence</span><span class='op'>(</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "26_gaudy_flamingos_ambling_effortlessly"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Generate a bunch</span></span>
-<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>sentence</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "30_puzzled_phoenixes_racing_clumsily"        </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  [2] "24_exotic_snakes_hurrying_vainly"            </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "12_remarkable_reindeers_sailing_gladly"      </span>
@@ -179,23 +179,23 @@ rather than slurping or jogging)</p></td>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [10] "22_psychotic_newts_munching_curiously"       </span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># As with adjective_animal, use "style" to control punctuation</span></span>
-<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"Camel"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"Camel"</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "24ThunderingLizardsWanderingFervently"</span>
-<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"dot"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"dot"</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "20.delightful.armadillos.jumping.drudgingly"</span>
-<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"Title"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"Title"</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "15 Adventurous Gnus Hobbling Colorfully"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Change the tense of the verb:</span></span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>sentence</span><span class='op'>(</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "26_gaudy_flamingos_ambling_effortlessly"</span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span>past <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>sentence</span><span class='op'>(</span>past <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "26_gaudy_flamingos_ambled_effortlessly"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># Pass n = NULL to bind arguments to a function</span></span>
-<span class='r-in'><span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'>sentence</span><span class='op'>(</span><span class='cn'>NULL</span>, past <span class='op'>=</span> <span class='cn'>TRUE</span>, style <span class='op'>=</span> <span class='st'>"dot"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'>ids</span><span class='fu'>::</span><span class='fu'>sentence</span><span class='op'>(</span><span class='cn'>NULL</span>, past <span class='op'>=</span> <span class='cn'>TRUE</span>, style <span class='op'>=</span> <span class='st'>"dot"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'>id</span><span class='op'>(</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "30.jazzy.giraffes.flopped.owlishly"</span>
 <span class='r-in'><span class='fu'>id</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>

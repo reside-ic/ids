@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.1</span>
       </span>
     </div>
 
@@ -158,13 +158,11 @@ option will not affect the identifiers randomly selected).</p></td>
     <tr>
       <th>as</th>
       <td><p>The target data type for conversion from proquint.  The
-options are <code>integer</code>, <code>numeric</code> and <code>bignum</code>.
-The first two will overflow given sufficiently large input -
-this will throw an error (overflow is at
-<code>.Machine$integer.max</code> and <code>2 / .Machine$double.eps - 1</code>
-for <code>integer</code> and <code>numeric</code> respectively).  For
-<code>bignum</code> this will return a <em>list</em> of <code>bignum</code>
-elements <em>even if <code>p</code> is of length 1</em>.</p></td>
+options are <code>integer</code>, <code>numeric</code> and <code>bignum</code>.  The first two
+will overflow given sufficiently large input - this will throw
+an error (overflow is at <code>.Machine$integer.max</code> and <code>2 / .Machine$double.eps - 1</code> for <code>integer</code> and <code>numeric</code>
+respectively).  For <code>bignum</code> this will return a <em>list</em> of
+<code>bignum</code> elements <em>even if <code>p</code> is of length 1</em>.</p></td>
     </tr>
     <tr>
       <th>w</th>
@@ -197,14 +195,12 @@ insidious way (promoting the type or returning NA).</p>
 <p><code>proquint_word_to_int</code> always returns an integer vector of the
 same length as the input.</p>
 <p>Missing values are allowed; a missing integer representation of a
-proquint will translate as <code>NA_character_</code> and a missing
-proquint will translate as <code>NA_integer_</code> (if <code>as =
-"integer"</code>), <code>NA_real_</code>, if <code>as = "numeric"</code> or as
-<code>NULL</code> (if <code>as = "bignum"</code>).</p>
+proquint will translate as <code>NA_character_</code> and a missing proquint
+will translate as <code>NA_integer_</code> (if <code>as = "integer"</code>), <code>NA_real_</code>,
+if <code>as = "numeric"</code> or as <code>NULL</code> (if <code>as = "bignum"</code>).</p>
 <p>Names are always discarded.  Future versions may gain an argument
-<code>named</code> with a default of <code>FALSE</code>, but that setting to
-<code>TRUE</code> would preserve names.  Let me know if this would be
-useful.</p>
+<code>named</code> with a default of <code>FALSE</code>, but that setting to <code>TRUE</code>
+would preserve names.  Let me know if this would be useful.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
