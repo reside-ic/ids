@@ -36,7 +36,7 @@ respect the value of the global random number stream via
 \code{set.seed}.
 }
 \details{
-Since ids version 1.1.0, the openssl package is optional, and this
+Since ids version 1.2.0, the openssl package is optional, and this
 affects non-global random number drawing.  If you have openssl
 installed your random numbers will be ~50x faster than the
 implementation we include here.

@@ -413,3 +413,34 @@ which takes just the number of identifiers to generate as an argument
 ``` {r }
 sci_id(10)
 ```
+
+## Relationship to random number generation
+
+Creating *random* idenfiers requires some source of random numbers. There are a couple of competing needs here:
+
+(1) You might want the identifiers to be repeatable, so that setting the seed will ensure the same stream of random identifiers:
+
+```{r}
+set.seed(1)
+ids::adjective_animal(3)
+set.seed(1)
+ids::adjective_animal(3)
+```
+
+(2) Alternatively you might want to use identifiers as "globally unique" keys, avoiding any collisions
+
+```{r}
+set.seed(1)
+ids::random_id(3, 4)
+set.seed(1)
+ids::random_id(3, 4)
+```
+
+To support this, `ids` uses two different types of sources of random numbers:
+
+* **Global random numbers** come from R's random number stream and respond to `set.seed`, as above. These are used by default in `ids::adjective_animal`, `ids::proquint`, `ids::sentence` (i.e., the human-readable ids functions), and can be selected if required for `ids::random_id` and `ids::uuid` by passing the option `global = TRUE`.
+* **Non-global random numbers** come from "some other source", either `openssl::rand_num` or an internal source if `openssl` is unavailable (see below).  These will not be affected by `set.seed` and we provide no way of resetting or reproducing the stream.  This is the default for `ids::random_id` and `ids::uuid` (i.e., the non-reproducible ids functions), and can be selected if required by `ids::proquint` by passing the option `global = FALSE`.
+
+For non-global random numbers, all else being equal, you should prefer to use the numbers provided by `openssl`.  The default for all functions is to use `openssl` if available.  You can *force* `openssl` by passing `use_openssl = TRUE` (perhaps along with `global = FALSE`); if the package is not installed then we will error rather than continuing with the internal random number stream.
+
+The internal random number stream is a pure-R implementation of the `xoroshiro128+` algorithm.  As such it is quite slow (about 50x slower per byte of output than the cryptographically secure numbers from `openssl`) but it always available.  We seed the stream by hashing (via `utils::md5sum`) the current process id and the system time to the maximum precision available on that platform.
