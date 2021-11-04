@@ -77,7 +77,7 @@ random though with particular bits set)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -126,7 +126,7 @@ random though with particular bits set)." />
 
     <div class="ref-description">
     <p>Generate UUIDs.  In previous versions this
-was simply a thin wrapper around <code><a href='https://rdrr.io/pkg/uuid/man/UUIDgenerate.html'>uuid::UUIDgenerate</a></code>, however
+was simply a thin wrapper around <code>uuid::UUIDgenerate</code>, however
 this was subject to collisions on windows where relatively small
 numbers of UUIDs generated at the same time could return values
 that were identical. We now generate only version 4 UUIDs (i.e.,
@@ -158,24 +158,27 @@ returns the generating function</p></td>
     <p>Rich FitzJohn</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Generate one id</span>
-<span class='fu'>uuid</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "4c1a87a6-00e4-42f1-8b23-21efb76a861b"</div><div class='input'>
-<span class='co'># Or a bunch</span>
-<span class='fu'>uuid</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "4986367d-6049-4c83-a137-5d43287d6647"
-#&gt;  [2] "5d2f5193-3e58-4dd0-bec2-5649b6d001f9"
-#&gt;  [3] "7620ee11-6fde-4fb9-9684-4e5be0c5318e"
-#&gt;  [4] "9e6b32e0-53f2-4784-88d9-3274af7f2540"
-#&gt;  [5] "5ff6861a-ae31-416c-8f7f-e24d63b3ff86"
-#&gt;  [6] "d76c979f-b9a5-4cb3-aaf8-55bd6588447b"
-#&gt;  [7] "f73a6a09-d5c0-4135-80c7-2aef30316170"
-#&gt;  [8] "4600df33-917f-41bd-8186-ca747fd7c8cc"
-#&gt;  [9] "d0114879-4eaa-4163-8c2a-50a87e8c1c69"
-#&gt; [10] "fe23b690-1d4b-4bb8-9d62-5a2fbb7689b7"</div><div class='input'>
-<span class='co'># More in the style of random_id()</span>
-<span class='fu'>uuid</span><span class='op'>(</span>drop_hyphens <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "5b1468c794f34f85b09182fb3313be1f"</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Generate one id</span></span>
+<span class='r-in'><span class='fu'>uuid</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "2b568491-e178-469c-a364-fdc5b9fd65ec"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Or a bunch</span></span>
+<span class='r-in'><span class='fu'>uuid</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "e9c9729d-1ed1-4d9d-930c-85ba424a3a89"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [2] "6a930495-bac2-4daf-9326-b3e2743abc81"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "7ae7d9ae-8a87-438a-b7e8-52a75d8f25a3"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [4] "435d6aef-37b4-43e5-979d-3113f3ea8cc6"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "6bacaa71-0427-4a2f-a285-af0ce4dc8d95"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] "46f37492-0afc-40f5-97c7-0b8a90bbd405"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "9b630595-921b-495c-a551-c7664d509d5f"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [8] "d4418eba-c139-465e-87f7-75fa883b2327"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "55ef0226-bc30-4e87-85d2-0ef7cd5a0db8"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [10] "0bd719df-2ace-4071-bf63-69ef3792bda4"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># More in the style of random_id()</span></span>
+<span class='r-in'><span class='fu'>uuid</span><span class='op'>(</span>drop_hyphens <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "32cd08ba51bf45ebb24872533ece3aba"</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

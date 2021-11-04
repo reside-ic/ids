@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -117,6 +117,15 @@
       <small>Source: <a href='https://github.com/reside-ic/ids/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="ids-120" class="section level1">
+<h1 class="page-header" data-toc-text="1.2.0">
+<a href="#ids-120" class="anchor"></a>ids 1.2.0<small> Unreleased </small>
+</h1>
+<ul>
+<li>The <code>openssl</code> package is now optional, with <code>ids</code> now shipping with an internal random number generator which can be used for identifiers that do not depend on R’s global random number state (used by <code><a href="../reference/random_id.html">ids::random_id</a></code>, <code><a href="../reference/proquint.html">ids::proquint</a></code> and <code><a href="../reference/uuid.html">ids::uuid</a></code>). If openssl is found it will still be used. (<a href='https://github.com/reside-ic/ids/issues/11'>#11</a>)</li>
+<li>The <code>uuid</code> package is no longer used by <code><a href="../reference/uuid.html">ids::uuid</a></code> and we instead generate version 4 uuids. As before these do not depend on R’s global random number state (<a href='https://github.com/reside-ic/ids/issues/4'>#4</a>)</li>
+</ul>
+</div>
     <div id="ids-111" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.1">
 <a href="#ids-111" class="anchor"></a>ids 1.1.1<small> Unreleased </small>

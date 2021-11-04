@@ -79,7 +79,7 @@ the other functions documented on that page." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -137,7 +137,13 @@ this is totally optional); see <code><a href='int_to_proquint.html'>proquint_to_
 the other functions documented on that page.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>proquint</span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1</span>, n_words <span class='op'>=</span> <span class='fl'>2L</span>, use_cache <span class='op'>=</span> <span class='cn'>TRUE</span>, use_openssl <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>proquint</span><span class='op'>(</span>
+  n <span class='op'>=</span> <span class='fl'>1</span>,
+  n_words <span class='op'>=</span> <span class='fl'>2L</span>,
+  use_cache <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  use_openssl <span class='op'>=</span> <span class='cn'>NULL</span>,
+  global <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,9 +175,15 @@ option will not affect the identifiers randomly selected).</p></td>
     </tr>
     <tr>
       <th>use_openssl</th>
-      <td><p>Use openssl for random number generation, with
-the primary effect that the identifiers will not be affected by
-R's random seed (at a small speed cost).</p></td>
+      <td><p>Use openssl for random number generation when
+using a non-global generator (see <code><a href='random_id.html'>random_id</a></code> for
+details)</p></td>
+    </tr>
+    <tr>
+      <th>global</th>
+      <td><p>Use global random number generator that responds to
+<code>set.seed</code> (see <code><a href='random_id.html'>random_id</a></code> for details, but
+note that the default here is different).</p></td>
     </tr>
     </table>
 
@@ -186,16 +198,19 @@ PRO-nouncable QUINT-uplets of alternating unambiguous consonants
 and vowels: proquints."</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># A single, two word, proquint</span>
-<span class='fu'>proquint</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "pugip-gamur"</div><div class='input'>
-<span class='co'># Longer identifier:</span>
-<span class='fu'>proquint</span><span class='op'>(</span>n_words <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "kasim-tafan-miriv-kutuj-gibur"</div><div class='input'>
-<span class='co'># More identifiers</span>
-<span class='fu'>proquint</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "zobuv-sisuv" "timod-vobon" "fakoh-ranig" "dagat-vuzuh" "popaj-mudub"
-#&gt;  [6] "fafol-holij" "topat-sadaf" "mazov-judir" "sodur-somil" "bitin-tatal"</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># A single, two word, proquint</span></span>
+<span class='r-in'><span class='fu'>proquint</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "hagig-gozip"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Longer identifier:</span></span>
+<span class='r-in'><span class='fu'>proquint</span><span class='op'>(</span>n_words <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "turum-lasim-lijus-kupan-gosop"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># More identifiers</span></span>
+<span class='r-in'><span class='fu'>proquint</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "tizud-pisuv" "tukun-tihuv" "sivut-muhod" "zuzun-hamon" "dahud-vupoh"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] "mumif-jotig" "nuzit-lozat" "vonod-dizuh" "pinoh-jokaj" "gibuf-hitub"</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

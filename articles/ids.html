@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -76,7 +76,7 @@
       <h1 data-toc-skip>ids</h1>
                         <h4 class="author">Rich FitzJohn</h4>
             
-            <h4 class="date">2021-10-20</h4>
+            <h4 class="date">2021-11-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/reside-ic/ids/blob/master/vignettes/ids.Rmd"><code>vignettes/ids.Rmd</code></a></small>
       <div class="hidden name"><code>ids.Rmd</code></div>
@@ -92,35 +92,35 @@
 <p>The <code>random_id</code> function generates random identifiers by generating <code>bytes</code> random bytes and converting to hexadecimal (so each byte becomes a pair of characters). Rather than use R’s random number stream we use the <code>openssl</code> package here.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "ebb01d90706c79a0c7d5a3d1c62e903f"</code></pre>
+<pre><code>## [1] "3721fd6e63ce7b6d2f2faa5c6efd289a"</code></pre>
 <p>All <code>ids</code> functions take <code>n</code> as the first argument to be the number of identifiers generated:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "e07c360981ee24480c3867fa4e390146" "78422bf3e744e063a5037949eca5904a"
-## [3] "4f03cfbbb2b1892eb8a8e884c0c3210b" "82eb49bdd7fbc98b9cade970f650bc55"
-## [5] "eaf58a074f8925e066c59f6166e4ff8d"</code></pre>
+<pre><code>## [1] "6d6896a8e191f21b1e9bca15c1194bb7" "319aa914ab6c20dabf7b9f255ef9f1b4"
+## [3] "a239a3cd6d6e4739df2a85522de9704e" "0c5fddf6ae65f020aa8f349441f8021f"
+## [5] "7455e62c235f7e12a2b11af4a57d47fe"</code></pre>
 <p>The default here is 16 bytes, each of which has 256 values (so 256^16 = 2^128 = 3.4e38 combinations). You can make these larger or smaller with the <code>bytes</code> argument:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">8</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "225c4bd6fdc8aa1b" "1617bc94ff272c3c" "c674fe0e56484e0f" "280a248cf3ae42e0"
-## [5] "0730ef7ba6badaa6"</code></pre>
+<pre><code>## [1] "3598579eb2a0820c" "54009bc6645a508c" "e8f60848749c2cf4" "895fac95bd507c3a"
+## [5] "fbabcb72e90c55d9"</code></pre>
 <p>If <code>NULL</code> is provided as <code>n</code>, then a generating function is returned (all ids functions do this):</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="fl">8</span><span class="op">)</span>
 <span class="va">f</span></code></pre></div>
 <pre><code>## function (n = 1) 
 ## {
-##     random_id(n, bytes, use_openssl)
+##     random_id(n, bytes, use_openssl, global)
 ## }
-## &lt;bytecode: 0x562df17bbf90&gt;
-## &lt;environment: 0x562df0c11be8&gt;</code></pre>
+## &lt;bytecode: 0x55e7fbbb4d68&gt;
+## &lt;environment: 0x55e7fd660758&gt;</code></pre>
 <p>This function sets all arguments except for <code>n</code></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "b358bf63a511bc80"</code></pre>
+<pre><code>## [1] "03adeeec0d6223bb"</code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "4db004c821da34f7" "236df06151785697" "1460c03981167258" "a5dc5b1790a97936"</code></pre>
+<pre><code>## [1] "fc7c7d45367b2942" "b65e2e750b2e1c8b" "2806bcac3f474f17" "78fdbf2f82c74d9a"</code></pre>
 </div>
 <div id="uuids" class="section level2">
 <h2 class="hasAnchor">
@@ -128,28 +128,28 @@
 <p>The above look a lot like UUIDs but they are not actually UUIDs. The <code>uuid</code> package provides real UUIDs generated with libuuid, and the <code><a href="../reference/uuid.html">ids::uuid</a></code> function provides an interface to that:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/uuid.html">uuid</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "9b50e940-9aec-4ce7-a542-e0281fd599eb"</code></pre>
+<pre><code>## [1] "0d6ecc28-3f5c-4443-8152-83dbeb0832f9"</code></pre>
 <p>As above, generate more than one UUID:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/uuid.html">uuid</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "199863e2-f9e5-4685-89ca-42962a618276"
-## [2] "c789317f-48f3-46c5-82b1-e9a004967eb5"
-## [3] "1953bfaf-599b-4962-9584-211d3c8d9063"
-## [4] "7010f23f-9424-4a3e-9320-10f18f7f94d6"</code></pre>
+<pre><code>## [1] "a8655f77-7c74-4168-8e3d-7c75c9b792d6"
+## [2] "097ce110-fe84-4e35-84d4-efcef15e3d34"
+## [3] "95c97c9b-e630-4b09-8189-4eb03212b26f"
+## [4] "f0c1cae0-5fb9-4a9f-8fbc-f28ff2a10518"</code></pre>
 <p>Generate time-based UUIDs:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/uuid.html">uuid</a></span><span class="op">(</span><span class="fl">4</span>, use_time <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning in ids::uuid(4, use_time = TRUE): The 'use_time' argument is now ignored</code></pre>
-<pre><code>## [1] "42994030-78f1-4958-99e1-3754942bb519"
-## [2] "d50c7654-55f1-4d20-a18b-9a9acb4392b8"
-## [3] "58e81166-fd61-473c-b1dd-e44eb65c72b4"
-## [4] "765b3b02-ed4b-4425-8e5b-82a13e3dadac"</code></pre>
+<pre><code>## [1] "9bc14e66-564b-482a-a850-fccf51966aa3"
+## [2] "e9735fef-9cd6-44c4-a4eb-0c3e3b3618ca"
+## [3] "25dc4e13-afd1-4adc-a7b6-175774b4501e"
+## [4] "7ab69d6f-7fce-4a08-b470-1981d3deb42c"</code></pre>
 <p>and optionally drop the hyphens:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/uuid.html">uuid</a></span><span class="op">(</span><span class="fl">5</span>, drop_hyphens <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "d2c6f4bea5de42c991086e8d23fe666e" "a172af8e5632410fbca94a8d53a61f0b"
-## [3] "fc16a44d755a4e0993861763286564d5" "2388c027d8754e4996b3d2ed1251b21b"
-## [5] "ca67bb03069e450b97d77e3fed217512"</code></pre>
+<pre><code>## [1] "06761150024949e7ba4854f0c163ae91" "6a589e22d7314e20ae8cc8ac5cea00d3"
+## [3] "a9560fc8a6304ee19c2042c89b63222c" "dc6a4c98122943eaaab24d7b3b75be24"
+## [5] "102dde40909f418aa9ef99ea818095c9"</code></pre>
 </div>
 <div id="adjective-animal" class="section level2">
 <h2 class="hasAnchor">
@@ -276,15 +276,15 @@
 <p><code>ids</code> can generate proquints:</p>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint.html">proquint</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "suzug-hifig" "zuduv-kimur" "dazab-lajat" "nihar-zujaz" "moran-puhin"
-##  [6] "lobob-jupag" "luduh-sogim" "zosoh-tohav" "varov-dozov" "tinob-ninal"</code></pre>
+<pre><code>##  [1] "zabir-fagug" "zosut-mavig" "ribis-liduv" "jihon-tobur" "dizol-figab"
+##  [6] "kosir-bunat" "buhiv-vumar" "tadis-vunaz" "jahor-kagan" "tutod-hisin"</code></pre>
 <p>By default it generates two-word proquints but that can be changed:</p>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint.html">proquint</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "damul" "rarok" "kuzip" "vukud" "gogam"</code></pre>
+<pre><code>## [1] "tomuh" "vomul" "ralon" "zuzok" "sogak"</code></pre>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint.html">proquint</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "jijod-fujis-kumad-pizup" "gotov-sozut-duhav-fikuk"</code></pre>
+<pre><code>## [1] "mapig-kunod-pijoh-zujis" "vodap-bumad-notug-rirup"</code></pre>
 <p>Proquints are formed by alternating consonant/vowel/consonant/vowel/consonant using a subset of both (16 consonants and 4 vowels). This yields 2^16 (65,536) possibilities per word. Words are always lower case and always separated by a hyphen. So with 4 words there are 2^64 combinations in 23 characters.</p>
 <p>Proquints are also useful in that they can be translated with integers. The proquint <code>kapop</code> has integer value 25258</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
@@ -326,7 +326,7 @@
 <div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/int_to_proquint.html">proquint_to_int</a></span><span class="op">(</span><span class="va">p</span>, as <span class="op">=</span> <span class="st">"bignum"</span><span class="op">)</span></code></pre></div>
 <pre><code>## [[1]]
-## [b] 59234591720716861352293542331</code></pre>
+## [b] 68240143167322810041142066081</code></pre>
 <p>This returns a <em>list</em> with one bignum (this is required to allow vectorisation).</p>
 </div>
 <div id="roll-your-own-identifiers" class="section level2">
@@ -410,6 +410,42 @@
 ##  [4] "private-tyson"       "uplifted-buffon"     "sabotaged-lucretius"
 ##  [7] "contempt-czerny"     "outraged-humboldt"   "dignified-napier"   
 ## [10] "awake-bosch"</code></pre>
+</div>
+<div id="relationship-to-random-number-generation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#relationship-to-random-number-generation" class="anchor"></a>Relationship to random number generation</h2>
+<p>Creating <em>random</em> idenfiers requires some source of random numbers. There are a couple of competing needs here:</p>
+<ol style="list-style-type: decimal">
+<li>You might want the identifiers to be repeatable, so that setting the seed will ensure the same stream of random identifiers:</li>
+</ol>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "careful_annelida"      "uncalorific_ivorygull" "marginal_tegus"</code></pre>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "careful_annelida"      "uncalorific_ivorygull" "marginal_tegus"</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Alternatively you might want to use identifiers as “globally unique” keys, avoiding any collisions</li>
+</ol>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "57ccbf09" "e9c6656a" "cefb3934"</code></pre>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "733b52f7" "3e32d913" "aedd483d"</code></pre>
+<p>To support this, <code>ids</code> uses two different types of sources of random numbers:</p>
+<ul>
+<li>
+<strong>Global random numbers</strong> come from R’s random number stream and respond to <code>set.seed</code>, as above. These are used by default in <code><a href="../reference/adjective_animal.html">ids::adjective_animal</a></code>, <code><a href="../reference/proquint.html">ids::proquint</a></code>, <code><a href="../reference/sentence.html">ids::sentence</a></code> (i.e., the human-readable ids functions), and can be selected if required for <code><a href="../reference/random_id.html">ids::random_id</a></code> and <code><a href="../reference/uuid.html">ids::uuid</a></code> by passing the option <code>global = TRUE</code>.</li>
+<li>
+<strong>Non-global random numbers</strong> come from “some other source”, either <code><a href="https://rdrr.io/pkg/openssl/man/rand_bytes.html">openssl::rand_num</a></code> or an internal source if <code>openssl</code> is unavailable (see below). These will not be affected by <code>set.seed</code> and we provide no way of resetting or reproducing the stream. This is the default for <code><a href="../reference/random_id.html">ids::random_id</a></code> and <code><a href="../reference/uuid.html">ids::uuid</a></code> (i.e., the non-reproducible ids functions), and can be selected if required by <code><a href="../reference/proquint.html">ids::proquint</a></code> by passing the option <code>global = FALSE</code>.</li>
+</ul>
+<p>For non-global random numbers, all else being equal, you should prefer to use the numbers provided by <code>openssl</code>. The default for all functions is to use <code>openssl</code> if available. You can <em>force</em> <code>openssl</code> by passing <code>use_openssl = TRUE</code> (perhaps along with <code>global = FALSE</code>); if the package is not installed then we will error rather than continuing with the internal random number stream.</p>
+<p>The internal random number stream is a pure-R implementation of the <code>xoroshiro128+</code> algorithm. As such it is quite slow (about 50x slower per byte of output than the cryptographically secure numbers from <code>openssl</code>) but it always available. We seed the stream by hashing (via <code>utils::md5sum</code>) the current process id and the system time to the maximum precision available on that platform.</p>
 </div>
   </div>
 

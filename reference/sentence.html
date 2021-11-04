@@ -77,7 +77,7 @@ really wanted to." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -161,46 +161,55 @@ rather than slurping or jogging)</p></td>
     <p>Rich FitzJohn</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Generate an identifier</span>
-<span class='fu'>sentence</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "23_remarkable_moles_clamoring_mockingly"</div><div class='input'>
-<span class='co'># Generate a bunch</span>
-<span class='fu'>sentence</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "16_whimsical_ferrets_wading_gallantly"        
-#&gt;  [2] "22_joyous_sphinxes_skipping_bashfully"        
-#&gt;  [3] "6_eager_chickens_sprinting_courageously"      
-#&gt;  [4] "10_happy_crickets_laughing_drudgingly"        
-#&gt;  [5] "26_courageous_chickens_tumbling_calmly"       
-#&gt;  [6] "15_industrious_weasels_twisting_adventurously"
-#&gt;  [7] "6_curious_gnomes_chewing_gleefully"           
-#&gt;  [8] "6_giddy_warthogs_wandering_cleverly"          
-#&gt;  [9] "3_gorgeous_peacocks_scurriing_colorfully"     
-#&gt; [10] "11_delightful_lizards_swimming_oddly"         </div><div class='input'>
-<span class='co'># As with adjective_animal, use "style" to control punctuation</span>
-<span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"Camel"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "7FunnyTigersSwimmingSheepishly"</div><div class='input'><span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"dot"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "7.jazzy.yaks.sprinting.madly"</div><div class='input'><span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"Title"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "9 Pretty Mongooses Gliding Sadly"</div><div class='input'>
-<span class='co'># Change the tense of the verb:</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
-<span class='fu'>sentence</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "26_gaudy_flamingos_ambling_effortlessly"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
-<span class='fu'>sentence</span><span class='op'>(</span>past <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "26_gaudy_flamingos_ambled_effortlessly"</div><div class='input'>
-<span class='co'># Pass n = NULL to bind arguments to a function</span>
-<span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'>sentence</span><span class='op'>(</span><span class='cn'>NULL</span>, past <span class='op'>=</span> <span class='cn'>TRUE</span>, style <span class='op'>=</span> <span class='st'>"dot"</span><span class='op'>)</span>
-<span class='fu'>id</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "30.jazzy.giraffes.flopped.owlishly"</div><div class='input'><span class='fu'>id</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "28.goofy.skunks.slurped.madly"            
-#&gt;  [2] "20.happy.woodchucks.scampered.urgently"   
-#&gt;  [3] "2.incredible.phoenixes.squirmed.foolishly"
-#&gt;  [4] "22.daffy.gnomes.hurried.gladly"           
-#&gt;  [5] "22.psychotic.newts.munched.curiously"     
-#&gt;  [6] "11.joyous.dogs.hurried.unabashedly"       
-#&gt;  [7] "23.remarkable.oxes.wandered.unaccountably"
-#&gt;  [8] "15.obnoxious.dragons.sprinted.madly"      
-#&gt;  [9] "11.daffy.lizards.wade.vainly"             
-#&gt; [10] "8.cuddly.moles.juggled.fervently"         </div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Generate an identifier</span></span>
+<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "26_gaudy_flamingos_ambling_effortlessly"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Generate a bunch</span></span>
+<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "30_puzzled_phoenixes_racing_clumsily"        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [2] "24_exotic_snakes_hurrying_vainly"            </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "12_remarkable_reindeers_sailing_gladly"      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [4] "15_gorgeous_elves_chewing_urgently"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "19_astonishing_donkeys_creeping_purposefully"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] "28_goofy_skunks_slurping_madly"              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "20_happy_woodchucks_scampering_urgently"     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [8] "2_incredible_phoenixes_squirming_foolishly"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "22_daffy_gnomes_hurrying_gladly"             </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [10] "22_psychotic_newts_munching_curiously"       </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># As with adjective_animal, use "style" to control punctuation</span></span>
+<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"Camel"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "24ThunderingLizardsWanderingFervently"</span>
+<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"dot"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "20.delightful.armadillos.jumping.drudgingly"</span>
+<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"Title"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "15 Adventurous Gnus Hobbling Colorfully"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Change the tense of the verb:</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "26_gaudy_flamingos_ambling_effortlessly"</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>sentence</span><span class='op'>(</span>past <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "26_gaudy_flamingos_ambled_effortlessly"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Pass n = NULL to bind arguments to a function</span></span>
+<span class='r-in'><span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'>sentence</span><span class='op'>(</span><span class='cn'>NULL</span>, past <span class='op'>=</span> <span class='cn'>TRUE</span>, style <span class='op'>=</span> <span class='st'>"dot"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>id</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "30.jazzy.giraffes.flopped.owlishly"</span>
+<span class='r-in'><span class='fu'>id</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "28.goofy.skunks.slurped.madly"            </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [2] "20.happy.woodchucks.scampered.urgently"   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "2.incredible.phoenixes.squirmed.foolishly"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [4] "22.daffy.gnomes.hurried.gladly"           </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "22.psychotic.newts.munched.curiously"     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] "11.joyous.dogs.hurried.unabashedly"       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "23.remarkable.oxes.wandered.unaccountably"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [8] "15.obnoxious.dragons.sprinted.madly"      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "11.daffy.lizards.wade.vainly"             </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [10] "8.cuddly.moles.juggled.fervently"         </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
