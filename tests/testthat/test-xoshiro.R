@@ -74,3 +74,14 @@ test_that("sanitise xoshiro inputs", {
   expect_error(xoshiro128(sample),
                "Invalid input for state")
 })
+
+
+test_that("Default rng init does not affect seed", {
+  set.seed(1)
+  r <- .Random.seed
+  s1 <- random_seed(100)
+  set.seed(1)
+  s2 <- random_seed(100)
+  expect_false(identical(s1, s2))
+  expect_identical(.Random.seed, r)
+})

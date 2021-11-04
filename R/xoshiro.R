@@ -70,7 +70,7 @@ bits_to_uint <- function(x) {
 random_state <- function(state, n_bits_per_int, n_ints) {
   n_bytes_per_int <- n_bits_per_int / 8
   if (is.null(state)) {
-    state <- runif(n_bytes_per_int * n_ints) > 0.5
+    state <- random_seed(n_bits_per_int * n_ints)
   } else if (is.logical(state)) {
     stopifnot(length(state) == n_bits_per_int * n_ints)
   } else if (is.raw(state)) {
@@ -80,4 +80,18 @@ random_state <- function(state, n_bits_per_int, n_ints) {
     stop("Invalid input for state")
   }
   matrix(state, n_bits_per_int, n_ints)
+}
+
+
+random_seed <- function(n) {
+  p <- Sys.getpid()
+  t <- deparse(as.numeric(Sys.time()), control = "digits17")
+  tmp <- tempfile()
+  on.exit(unlink(tmp))
+  writeLines(c(p, t), tmp)
+  hash <- unname(tools::md5sum(tmp))
+  ## there seems to no great way of converting strings to raw really...
+  m <- matrix(match(strsplit(hash, NULL)[[1]], c(0:9, letters[1:6])) - 1L, 2)
+  data <- as.logical(rawToBits(as.raw(m[1, ] * 16 + m[2, ])))
+  data[seq_len(n)]
 }
