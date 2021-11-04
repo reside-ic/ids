@@ -416,7 +416,7 @@ sci_id(10)
 
 ## Relationship to random number generation
 
-Creating *random* idenfiers requires some source of random numbers. There are a couple of competing needs here:
+Creating *random* identifiers requires some source of random numbers. There are a couple of competing needs here:
 
 (1) You might want the identifiers to be repeatable, so that setting the seed will ensure the same stream of random identifiers:
 

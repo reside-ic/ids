@@ -13,14 +13,13 @@ proquint(
 )
 }
 \arguments{
-\item{n}{number of ids to return.  If \code{NULL}, it instead
-returns the generating function}
+\item{n}{number of ids to return.  If \code{NULL}, it instead returns
+the generating function}
 
 \item{n_words}{The number of words for each identifier; each word
-has \code{2^16} (65536) possible combinations, a two-word
-proquint has \code{2^32} possible combinations and an
-\code{k}-word proquint has \code{2^(k * 16)} possible
-combinations.}
+has \code{2^16} (65536) possible combinations, a two-word proquint
+has \code{2^32} possible combinations and an \code{k}-word proquint has
+\code{2^(k * 16)} possible combinations.}
 
 \item{use_cache}{Because there are relatively few combinations per
 word, and because constructing short strings is relatively
@@ -33,22 +32,22 @@ this option (i.e., given a particular random seed, changing this
 option will not affect the identifiers randomly selected).}
 
 \item{use_openssl}{Use openssl for random number generation when
-using a non-global generator (see \code{\link{random_id}} for
+using a non-global generator (see \link{random_id} for
 details)}
 
 \item{global}{Use global random number generator that responds to
-\code{set.seed} (see \code{\link{random_id}} for details, but
+\code{set.seed} (see \link{random_id} for details, but
 note that the default here is different).}
 }
 \description{
 Generate random "proquint" identifiers.  "proquint" stands for
 PRO-nouncable QUINT-uplets and were described by Daniel Wilkerson
-in \url{https://arxiv.org/html/0901.4016}.  Each "word" takes one
-of \eqn{2^16} possibilities.  A four word proquint has a keyspace
-of \eqn{10^19} possibilities but takes only 23 characters.
-Proquint identifiers can be interchanged with integers (though
-this is totally optional); see \code{\link{proquint_to_int}} and
-the other functions documented on that page.
+in \url{https://arxiv.org/html/0901.4016}.  Each "word" takes one of
+\code{2^16} possibilities.  A four word proquint has a keyspace of
+\code{10^19} possibilities but takes only 23 characters.  Proquint
+identifiers can be interchanged with integers (though this is
+totally optional); see \link{proquint_to_int} and the other
+functions documented on that page.
 }
 \details{
 In the abstract of their paper, Wilkerson introduces proquints:
@@ -62,11 +61,11 @@ and vowels: proquints."
 }
 \examples{
 # A single, two word, proquint
-proquint()
+ids::proquint()
 
 # Longer identifier:
-proquint(n_words = 5)
+ids::proquint(n_words = 5)
 
 # More identifiers
-proquint(10)
+ids::proquint(10)
 }

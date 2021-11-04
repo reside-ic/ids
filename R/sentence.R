@@ -1,6 +1,6 @@
 #' Create a sentence style identifier.  This uses the approach
 #' described by Asana on their blog
-#' \url{https://blog.asana.com/2011/09/6-sad-squid-snuggle-softly/}.
+#' <https://blog.asana.com/2011/09/6-sad-squid-snuggle-softly/>.
 #' This approach encodes 32 bits of information (so 2^32 ~= 4 billion
 #' possibilities) and in theory can be remapped to an integer if you
 #' really wanted to.
@@ -16,24 +16,24 @@
 #' @author Rich FitzJohn
 #' @examples
 #' # Generate an identifier
-#' sentence()
+#' ids::sentence()
 #'
 #' # Generate a bunch
-#' sentence(10)
+#' ids::sentence(10)
 #'
 #' # As with adjective_animal, use "style" to control punctuation
-#' sentence(style = "Camel")
-#' sentence(style = "dot")
-#' sentence(style = "Title")
+#' ids::sentence(style = "Camel")
+#' ids::sentence(style = "dot")
+#' ids::sentence(style = "Title")
 #'
 #' # Change the tense of the verb:
 #' set.seed(1)
-#' sentence()
+#' ids::sentence()
 #' set.seed(1)
-#' sentence(past = TRUE)
+#' ids::sentence(past = TRUE)
 #'
 #' # Pass n = NULL to bind arguments to a function
-#' id <- sentence(NULL, past = TRUE, style = "dot")
+#' id <- ids::sentence(NULL, past = TRUE, style = "dot")
 #' id()
 #' id(10)
 sentence <- function(n = 1, style = "snake", past = FALSE) {

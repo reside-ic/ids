@@ -1,9 +1,10 @@
-#' Generate UUIDs.  In previous versions this
-#' was simply a thin wrapper around \code{uuid::UUIDgenerate}, however
-#' this was subject to collisions on windows where relatively small
-#' numbers of UUIDs generated at the same time could return values
-#' that were identical. We now generate only version 4 UUIDs (i.e.,
-#' random though with particular bits set).
+#' Generate UUIDs (Universally Unique IDentifiers).  In previous
+#' versions this was simply a thin wrapper around
+#' `uuid::UUIDgenerate`, however this was subject to collisions on
+#' windows where relatively small numbers of UUIDs generated at the
+#' same time could return values that were identical. We now generate
+#' only version 4 UUIDs (i.e., random though with particular bits
+#' set).
 #'
 #' @title Generate UUIDs
 #'
@@ -18,13 +19,13 @@
 #' @author Rich FitzJohn
 #' @examples
 #' # Generate one id
-#' uuid()
+#' ids::uuid()
 #'
 #' # Or a bunch
-#' uuid(10)
+#' ids::uuid(10)
 #'
 #' # More in the style of random_id()
-#' uuid(drop_hyphens = TRUE)
+#' ids::uuid(drop_hyphens = TRUE)
 uuid <- function(n = 1, drop_hyphens = FALSE, use_time = NA) {
   if (!missing(use_time)) {
     warning("The 'use_time' argument is now ignored")

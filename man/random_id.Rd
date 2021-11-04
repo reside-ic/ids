@@ -7,8 +7,8 @@
 random_id(n = 1, bytes = 16, use_openssl = NULL, global = FALSE)
 }
 \arguments{
-\item{n}{number of ids to return.  If \code{NULL}, it instead
-returns the generating function}
+\item{n}{number of ids to return.  If \code{NULL}, it instead returns
+the generating function}
 
 \item{bytes}{The number of bytes to include for each identifier.
 The length of the returned identifiers will be twice this long
@@ -21,7 +21,7 @@ is available but fall back on R (See Details).}
 
 \item{global}{Logical, indicating if random numbers should be
 global (given R's global random number seed). If \code{TRUE},
-then ids generated will be predicatable.}
+then ids generated will be predictable.}
 }
 \description{
 Random hexadecimal identifiers.  If possible, by default this uses
@@ -29,7 +29,7 @@ the \code{openssl} package to produce a random set of bytes, and
 expresses that as a hex character string, creating
 cryptographically secure (unpredictable) identifiers.  If that is
 unavailable, fall back on the xoshiro128+ algorithm to produce
-random numbers that are not cryptograpically secure, but which do
+random numbers that are not cryptographically secure, but which do
 not affect the global random number stream (see Details). If
 desired, you can produce "predictable" random identifiers that
 respect the value of the global random number stream via
@@ -41,25 +41,18 @@ affects non-global random number drawing.  If you have openssl
 installed your random numbers will be ~50x faster than the
 implementation we include here.
 
-If \code{global = TRUE} we always use a simple \code{link{sample}}
+If \code{global = TRUE} we always use a simple \link{sample}
 based algorithm that is driven from the global random number
 stream. However, when \code{global = FALSE} the behaviour depends
 on the value of \code{use_openssl} and whether that package is
 installed, either using the openssl generators, using an internal
 algorithm based on xoshiro128+ or erroring.
-
 \itemize{
-
-\item{\code{use_openssl = NULL} and openssl installed: openssl}
-
-\item{\code{use_openssl = NULL} and openssl missing: internal}
-
-\item{\code{use_openssl = TRUE} and openssl installed: openssl}
-
-\item{\code{use_openssl = TRUE} and openssl missing: error}
-
-\item{\code{use_openssl = FALSE}: internal}
-
+\item \code{use_openssl = NULL} and openssl installed: openssl
+\item \code{use_openssl = NULL} and openssl missing: internal
+\item \code{use_openssl = TRUE} and openssl installed: openssl
+\item \code{use_openssl = TRUE} and openssl missing: error
+\item \code{use_openssl = FALSE}: internal
 }
 }
 \examples{
@@ -89,7 +82,7 @@ set.seed(1)
 # This time they are the same:
 id1 == id2
 
-# Pass \code{n = NULL} to generate a function that binds your arguments:
+# Pass `n = NULL` to generate a function that binds your arguments:
 id8 <- ids::random_id(NULL, bytes = 8)
 id8(10)
 }

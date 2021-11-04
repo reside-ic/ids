@@ -4,19 +4,19 @@
 #' Generic id generating function
 #' @title Generic id generating function
 #'
-#' @param n number of ids to return.  If \code{NULL}, it instead
-#'   returns the generating function
+#' @param n number of ids to return.  If `NULL`, it instead returns
+#'   the generating function
 #'
 #' @param ... A number of character vectors
 #'
-#' @param vals A list of character vectors, \emph{instead} of \code{...}
+#' @param vals A list of character vectors, *instead* of `...`
 #'
 #' @param style Style to join words with.  Can be one of "Pascal",
 #'   "camel", "snake", "kebab", "dot", "title", "sentence", "lower",
 #'   "upper", "constant" or "spongemock"
 #'
-#' @return Either a character vector of length \code{n}, or a
-#'   function of one argument if \code{n} is \code{NULL}
+#' @return Either a character vector of length `n`, or a function of
+#'   one argument if `n` is `NULL`
 #'
 #' @export
 #' @author Rich FitzJohn

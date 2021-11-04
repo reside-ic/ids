@@ -1,5 +1,7 @@
 CMD
 CaSe
+CodeFactor
+IDentifiers
 MocKiNg
 PascalCase
 Proquint
@@ -10,6 +12,7 @@ bytestream
 codecov
 com
 darwin
+erroring
 etc
 gfycat
 hexakosioihexekontahexaphobic
@@ -28,3 +31,5 @@ spongemock
 uplet
 uplets
 uuid
+uuids
+xoshiro

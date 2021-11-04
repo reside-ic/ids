@@ -1,6 +1,6 @@
 Package: ids
 Title: Generate Random Identifiers
-Version: 1.2.0
+Version: 1.2.1
 Authors@R: c(person("Rich", "FitzJohn", role = c("aut", "cre"),
                     email = "rich.fitzjohn@gmail.com"),
              person("Imperial College of Science, Technology and Medicine",
@@ -17,6 +17,7 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
 RoxygenNote: 7.1.2
+Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
 Encoding: UTF-8
 Language: en-GB
