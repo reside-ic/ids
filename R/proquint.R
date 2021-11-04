@@ -47,11 +47,13 @@ proquint_re1 <- sprintf("^%s$", proquint_re_word)
 ##'
 ##' @title Generate random proquint identifiers
 ##' @inheritParams ids
+##'
 ##' @param n_words The number of words for each identifier; each word
 ##'   has \code{2^16} (65536) possible combinations, a two-word
 ##'   proquint has \code{2^32} possible combinations and an
 ##'   \code{k}-word proquint has \code{2^(k * 16)} possible
 ##'   combinations.
+##'
 ##' @param use_cache Because there are relatively few combinations per
 ##'   word, and because constructing short strings is relatively
 ##'   expensive in R, it may be useful to cache all 65536 possible
@@ -61,9 +63,15 @@ proquint_re1 <- sprintf("^%s$", proquint_re_word)
 ##'   be much faster.  The identifiers selected will not change with
 ##'   this option (i.e., given a particular random seed, changing this
 ##'   option will not affect the identifiers randomly selected).
-##' @param use_openssl Use openssl for random number generation, with
-##'   the primary effect that the identifiers will not be affected by
-##'   R's random seed (at a small speed cost).
+##'
+##' @param use_openssl Use openssl for random number generation when
+##'   using a non-global generator (see \code{\link{random_id}} for
+##'   details)
+##'
+##' @param global Use global random number generator that responds to
+##'   \code{set.seed} (see \code{\link{random_id}} for details, but
+##'   note that the default here is different).
+##'
 ##' @export
 ##' @examples
 ##' # A single, two word, proquint
@@ -75,7 +83,7 @@ proquint_re1 <- sprintf("^%s$", proquint_re_word)
 ##' # More identifiers
 ##' proquint(10)
 proquint <- function(n = 1, n_words = 2L, use_cache = TRUE,
-                     use_openssl = FALSE) {
+                     use_openssl = NULL, global = TRUE) {
   ## Consider requiring something sane for 'n_words'?
   if (is.null(n)) {
     force(n_words)
@@ -84,7 +92,7 @@ proquint <- function(n = 1, n_words = 2L, use_cache = TRUE,
       proquint(n, n_words, use_cache)
     }
   } else {
-    words <- proquint_sample_words(n * n_words, use_cache, use_openssl)
+    words <- proquint_sample_words(n * n_words, use_cache, use_openssl, global)
     apply(matrix(words, n_words, n), 2L, paste, collapse = "-")
   }
 }
@@ -292,8 +300,9 @@ int_to_proquint_word <- function(i, use_cache = TRUE, validate = TRUE) {
 }
 
 ## Internal support functions:
-proquint_sample_words <- function(n, use_cache = TRUE, use_openssl = FALSE) {
-  int_to_proquint_word(rand_i16(n, use_openssl), use_cache)
+proquint_sample_words <- function(n, use_cache = TRUE, use_openssl = NULL,
+                                  global = TRUE) {
+  int_to_proquint_word(rand_i16(n, use_openssl, global), use_cache)
 }
 
 cache <- new.env(parent = emptyenv())
@@ -371,12 +380,7 @@ proquint_combine <- function(idx, len, as) {
   res
 }
 
-rand_i16 <- function(n, use_openssl = FALSE) {
-  if (use_openssl) {
-    r <- matrix(as.integer(openssl::rand_bytes(2 * n)), 2)
-    r[1L, ] <- r[1L, ] * 256L
-    as.integer(colSums(matrix(r, 2)))
-  } else {
-    sample(proquint_word, n, replace = TRUE) - 1L
-  }
+rand_i16 <- function(n, use_openssl = NULL, global = TRUE) {
+  b <- matrix(as.integer(random_bytes(n * 2, global, use_openssl)), n, 2)
+  b[, 1] + b[, 2] * 256L
 }

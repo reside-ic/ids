@@ -8,3 +8,4 @@
 ^ids_.*\.tar\.gz$
 ^scripts$
 ^\.github$
+^\.lintr$
