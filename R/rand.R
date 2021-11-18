@@ -38,7 +38,7 @@ random_real_nonglobal <- function(size, use_openssl) {
     openssl::rand_num(size)
   } else {
     m <- 4L
-    mult <- 256^(seq_len(m) - 1L)
+    mult <- 256^(seq_len(m) - 1L) # nolint
     bytes <- internals$random_bytes_internal(size * m)
     colSums(matrix(as.integer(bytes), m) * mult) / 256^m
   }

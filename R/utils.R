@@ -8,6 +8,6 @@ sample_str_weighted <- function(values, size, prob, global, use_openssl) {
 }
 
 
-`%||%` <- function(a, b) {
+`%||%` <- function(a, b) { # nolint
   if (is.null(a)) b else a
 }
