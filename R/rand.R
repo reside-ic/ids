@@ -28,7 +28,7 @@ random_integer_weighted <- function(prob, size, global, use_openssl) {
   } else {
     u <- random_real_nonglobal(size, use_openssl)
     p <- cumsum(prob) / sum(prob)
-    findInterval(u, p, rightmost.closed = TRUE)
+    findInterval(u, p, rightmost.closed = TRUE) + 1L
   }
 }
 

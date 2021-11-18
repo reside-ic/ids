@@ -121,3 +121,50 @@ test_that("global random number generator returns correct number of bytes", {
   expect_equal(
     sort(unique(as.integer(res))), 0:255)
 })
+
+
+test_that("Can select an integer with the appropriate generator", {
+  set.seed(1)
+  i1 <- random_integer(128, 10, TRUE, NULL)
+  set.seed(1)
+  i2 <- random_integer(128, 10, TRUE, NULL)
+  expect_identical(i1, i2)
+  set.seed(1)
+  i3 <- random_integer(128, 10, FALSE, NULL)
+  expect_false(identical(i3, i1))
+  set.seed(1)
+  i4 <- random_integer(128, 10, FALSE, NULL)
+  expect_false(identical(i4, i1))
+  expect_false(identical(i4, i2))
+})
+
+
+test_that("nonglobal integer distribution is unbiased using openssl", {
+  skip_on_cran() # stochastic test
+  skip_if_not_installed("openssl")
+  u <- random_real_nonglobal(10000, TRUE)
+  ## Chance of failing a test at 0.05 5 times in a row: 1e-7
+  testthat::try_again(
+    5,
+    expect_gt(ks.test(u, punif)$p.value, 0.05))
+})
+
+
+test_that("nonglobal integer distribution is unbiased using internal", {
+  skip_on_cran() # stochastic test
+  skip_if_not_installed("openssl")
+  u <- random_real_nonglobal(10000, FALSE)
+  ## Chance of failing a test at 0.05 5 times in a row: 1e-7
+  testthat::try_again(
+    5,
+    expect_gt(ks.test(u, punif)$p.value, 0.05))
+})
+
+
+test_that("weighted sampling samples correct range", {
+  p <- c(4, 1, 1, 4)
+  i <- random_integer_weighted(p, 1000, FALSE, TRUE)
+  expect_setequal(i, 1:4)
+  n <- table(i)
+  expect_gt(min(n[c(1, 4)]), max(n[c(2, 3)]))
+})
