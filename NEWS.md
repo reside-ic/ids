@@ -1,3 +1,7 @@
+# ids 1.2.2
+
+* All functions (except `uuid`) now accept `global` and `use_openssl`, allowing identifiers that do not depend on R's global random number state (#15)
+
 # ids 1.2.0
 
 * The `openssl` package is now optional, with `ids` now shipping with an internal random number generator which can be used for identifiers that do not depend on R's global random number state (used by `ids::random_id`, `ids::proquint` and `ids::uuid`). If openssl is found it will still be used. (#11)
