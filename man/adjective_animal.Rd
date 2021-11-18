@@ -9,7 +9,9 @@ adjective_animal(
   n_adjectives = 1,
   style = "snake",
   max_len = Inf,
-  alliterate = FALSE
+  alliterate = FALSE,
+  global = TRUE,
+  use_openssl = NULL
 )
 }
 \arguments{
@@ -35,6 +37,14 @@ second element will apply to the animals.}
 probability of any particular combination because it forces a
 weighted sampling.  Adjectives may also be repeated if
 \code{n_adjectives} is more than 1.}
+
+\item{global}{Use global random number generator that responds to
+\code{set.seed} (see \link{random_id} for details, but
+note that the default here is different).}
+
+\item{use_openssl}{Use openssl for random number generation when
+using a non-global generator (see \link{random_id} for
+details)}
 }
 \description{
 Ids based on a number of adjectives and an animal

@@ -90,3 +90,46 @@ test_that("mocking spongebob animals", {
     expect_true(sum(grepl("[A-Z]{4}|[a-z]{4}$", ids)) < 10)
   })
 })
+
+
+test_that("Can generate global and nonglobal animals", {
+  set.seed(1)
+  aa1 <- adjective_animal(4, global = TRUE)
+  set.seed(1)
+  aa2 <- adjective_animal(4, global = TRUE)
+  set.seed(1)
+  aa3 <- adjective_animal(4, global = FALSE)
+  set.seed(1)
+  aa4 <- adjective_animal(4, global = FALSE)
+  expect_equal(aa1, aa2)
+  expect_false(any(aa1 == aa3))
+  expect_false(any(aa1 == aa4))
+  expect_false(any(aa3 == aa4))
+})
+
+
+test_that("Can generate global and nonglobal alliterated animals", {
+  set.seed(1)
+  aa1 <- adjective_animal(4, alliterate = TRUE, global = TRUE)
+  set.seed(1)
+  aa2 <- adjective_animal(4, alliterate = TRUE, global = TRUE)
+  set.seed(1)
+  aa3 <- adjective_animal(4, alliterate = TRUE, global = FALSE)
+  set.seed(1)
+  aa4 <- adjective_animal(4, alliterate = TRUE, global = FALSE)
+
+  expect_equal(aa1, aa2)
+  expect_false(any(aa1 == aa3))
+  expect_false(any(aa1 == aa4))
+  expect_false(any(aa3 == aa4))
+
+  s1 <- substr(aa1, 1, 1)
+  s2 <- substr(aa2, 1, 1)
+  s3 <- substr(aa3, 1, 1)
+  s4 <- substr(aa4, 1, 1)
+
+  expect_equal(s1, s2)
+  expect_false(all(s1 == s3))
+  expect_false(all(s1 == s4))
+  expect_false(all(s3 == s4))
+})

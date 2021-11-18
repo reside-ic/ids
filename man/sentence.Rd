@@ -4,7 +4,13 @@
 \alias{sentence}
 \title{Sentence style identifiers}
 \usage{
-sentence(n = 1, style = "snake", past = FALSE)
+sentence(
+  n = 1,
+  style = "snake",
+  past = FALSE,
+  global = TRUE,
+  use_openssl = NULL
+)
 }
 \arguments{
 \item{n}{number of ids to return.  If \code{NULL}, it instead returns
@@ -16,6 +22,14 @@ the generating function}
 
 \item{past}{Use the past tense for verbs (e.g., slurped or jogged
 rather than slurping or jogging)}
+
+\item{global}{Use global random number generator that responds to
+\code{set.seed} (see \link{random_id} for details, but
+note that the default here is different).}
+
+\item{use_openssl}{Use openssl for random number generation when
+using a non-global generator (see \link{random_id} for
+details)}
 }
 \description{
 Create a sentence style identifier.  This uses the approach

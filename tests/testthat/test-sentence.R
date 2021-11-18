@@ -28,3 +28,19 @@ test_that("functional interface", {
                  function(x) x[[4L]], character(1))
   expect_true(all(verb %in% asana_verbs_past))
 })
+
+
+test_that("can produce nonglobal sentence", {
+  set.seed(1)
+  s1 <- sentence(4)
+  set.seed(1)
+  expect_equal(sentence(4), s1)
+
+  ## With 2^32 combinations collision over 4 attempts is probability ~ 2^-60
+  set.seed(1)
+  s2 <- sentence(4, global = FALSE)
+  set.seed(1)
+  s3 <- sentence(4, global = FALSE)
+  expect_false(any(s2 == s1))
+  expect_false(any(s3 == s1))
+})

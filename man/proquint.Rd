@@ -8,8 +8,8 @@ proquint(
   n = 1,
   n_words = 2L,
   use_cache = TRUE,
-  use_openssl = NULL,
-  global = TRUE
+  global = TRUE,
+  use_openssl = NULL
 )
 }
 \arguments{
@@ -31,13 +31,13 @@ be much faster.  The identifiers selected will not change with
 this option (i.e., given a particular random seed, changing this
 option will not affect the identifiers randomly selected).}
 
-\item{use_openssl}{Use openssl for random number generation when
-using a non-global generator (see \link{random_id} for
-details)}
-
 \item{global}{Use global random number generator that responds to
 \code{set.seed} (see \link{random_id} for details, but
 note that the default here is different).}
+
+\item{use_openssl}{Use openssl for random number generation when
+using a non-global generator (see \link{random_id} for
+details)}
 }
 \description{
 Generate random "proquint" identifiers.  "proquint" stands for

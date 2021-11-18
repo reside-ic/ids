@@ -60,7 +60,8 @@
 #' # Alliterated adjective animals always aid added awesomeness
 #' ids::adjective_animal(10, n_adjectives = 3, alliterate = TRUE)
 adjective_animal <- function(n = 1, n_adjectives = 1, style = "snake",
-                             max_len = Inf, alliterate = FALSE) {
+                             max_len = Inf, alliterate = FALSE,
+                             global = TRUE, use_openssl = NULL) {
   if (any(is.finite(max_len))) {
     if (any(max_len < 3)) {
       stop("max_len must be at least 3")
@@ -76,10 +77,11 @@ adjective_animal <- function(n = 1, n_adjectives = 1, style = "snake",
   }
   vals <- c(rep(list(gfycat_adjectives), n_adjectives), list(gfycat_animals))
   if (alliterate) {
-    aa_alliterate(n, vals, style)
+    aa_alliterate(n, vals, style, global, use_openssl)
   } else {
     vals <- c(rep(list(gfycat_adjectives), n_adjectives), list(gfycat_animals))
-    ids(n, vals = vals, style = style)
+    ids(n, vals = vals, style = style, global = global,
+        use_openssl = use_openssl)
   }
 }
 
@@ -93,7 +95,7 @@ adjective_animal <- function(n = 1, n_adjectives = 1, style = "snake",
 ## is greater than one.  Practically we found the number of duplicated
 ## names low enough when the max_len is not set too low and some were
 ## quite amusing, such as "hot_hot_hot_hen".
-aa_alliterate <- function(n, vals, style) {
+aa_alliterate <- function(n, vals, style, global, use_openssl) {
   m <- lapply(vals, function(x) split(x, factor(substr(x, 1, 1), letters)))
   m <- matrix(unlist(m, FALSE, FALSE), 26, length(vals),
               dimnames = list(letters, NULL))
@@ -103,11 +105,12 @@ aa_alliterate <- function(n, vals, style) {
   p <- p / sum(p)
 
   gen1 <- function(start, n) {
-    ids(n, vals = m[start, , drop = TRUE], style = style)
+    ids(n, vals = m[start, , drop = TRUE], style = style,
+        global = global, use_openssl = use_openssl)
   }
 
   gen <- function(n = 1) {
-    start <- letters[sample.int(26, n, prob = p, replace = TRUE)]
+    start <- sample_str_weighted(letters, n, p, global, use_openssl)
     ret <- character(n)
     for (i in unique(start)) {
       j <- start == i
