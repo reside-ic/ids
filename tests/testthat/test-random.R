@@ -142,22 +142,22 @@ test_that("Can select an integer with the appropriate generator", {
 test_that("nonglobal integer distribution is unbiased using openssl", {
   skip_on_cran() # stochastic test
   skip_if_not_installed("openssl")
-  u <- random_real_nonglobal(10000, TRUE)
   ## Chance of failing a test at 0.05 5 times in a row: 1e-7
-  testthat::try_again(
-    5,
-    expect_gt(ks.test(u, punif)$p.value, 0.05))
+  testthat::try_again(5, {
+    u <- random_real_nonglobal(10000, TRUE)
+    expect_gt(ks.test(u, punif)$p.value, 0.05)
+  })
 })
 
 
 test_that("nonglobal integer distribution is unbiased using internal", {
   skip_on_cran() # stochastic test
   skip_if_not_installed("openssl")
-  u <- random_real_nonglobal(10000, FALSE)
   ## Chance of failing a test at 0.05 5 times in a row: 1e-7
-  testthat::try_again(
-    5,
-    expect_gt(ks.test(u, punif)$p.value, 0.05))
+  testthat::try_again(5, {
+    u <- random_real_nonglobal(10000, FALSE)
+    expect_gt(ks.test(u, punif)$p.value, 0.05)
+  })
 })
 
 
