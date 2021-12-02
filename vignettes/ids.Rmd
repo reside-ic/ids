@@ -114,7 +114,7 @@ add increases the identifier space by a factor of `r n2`.  So for 1,
 This is a much smaller space than the random identifiers above, but
 these are more readable and memorable.
 
-By default the random numbers are comes from R's random
+By default the random numbers come from R's random
 number stream so are affected by `set.seed()`; see below for details.
 
 Because some of the animal and adjective names are very long
