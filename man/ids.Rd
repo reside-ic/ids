@@ -4,7 +4,14 @@
 \alias{ids}
 \title{Generic id generating function}
 \usage{
-ids(n, ..., vals = list(...), style = "snake")
+ids(
+  n,
+  ...,
+  vals = list(...),
+  style = "snake",
+  global = TRUE,
+  use_openssl = FALSE
+)
 }
 \arguments{
 \item{n}{number of ids to return.  If \code{NULL}, it instead returns
@@ -17,6 +24,14 @@ the generating function}
 \item{style}{Style to join words with.  Can be one of "Pascal",
 "camel", "snake", "kebab", "dot", "title", "sentence", "lower",
 "upper", "constant" or "spongemock"}
+
+\item{global}{Use global random number generator that responds to
+\code{set.seed} (see \link{random_id} for details, but
+note that the default here is different).}
+
+\item{use_openssl}{Use openssl for random number generation when
+using a non-global generator (see \link{random_id} for
+details)}
 }
 \value{
 Either a character vector of length \code{n}, or a function of

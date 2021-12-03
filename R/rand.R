@@ -11,6 +11,40 @@ random_bytes <- function(n, global, use_openssl) {
 }
 
 
+random_integer <- function(max, size, global, use_openssl) {
+  if (global) {
+    sample.int(max, size, replace = TRUE)
+  } else {
+    u <- random_real_nonglobal(size, use_openssl)
+    ceiling(u * max)
+  }
+}
+
+
+random_integer_weighted <- function(prob, size, global, use_openssl) {
+  max <- length(prob)
+  if (global) {
+    sample.int(max, size, prob = prob, replace = TRUE)
+  } else {
+    u <- random_real_nonglobal(size, use_openssl)
+    p <- cumsum(prob) / sum(prob)
+    findInterval(u, p, rightmost.closed = TRUE) + 1L
+  }
+}
+
+
+random_real_nonglobal <- function(size, use_openssl) {
+  if (use_openssl %||% internals$has_openssl) {
+    openssl::rand_num(size)
+  } else {
+    m <- 4L
+    mult <- 256^(seq_len(m) - 1L) # nolint
+    bytes <- internals$random_bytes_internal(size * m)
+    colSums(matrix(as.integer(bytes), m) * mult) / 256^m
+  }
+}
+
+
 random_bytes_global <- function(n) {
   as.raw(sample.int(256L, n, replace = TRUE) - 1L)
 }

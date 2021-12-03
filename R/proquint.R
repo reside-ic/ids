@@ -63,13 +63,7 @@ proquint_re1 <- sprintf("^%s$", proquint_re_word)
 ##'   this option (i.e., given a particular random seed, changing this
 ##'   option will not affect the identifiers randomly selected).
 ##'
-##' @param use_openssl Use openssl for random number generation when
-##'   using a non-global generator (see [ids::random_id] for
-##'   details)
-##'
-##' @param global Use global random number generator that responds to
-##'   `set.seed` (see [ids::random_id] for details, but
-##'   note that the default here is different).
+##' @inheritParams ids
 ##'
 ##' @export
 ##' @examples
@@ -82,7 +76,7 @@ proquint_re1 <- sprintf("^%s$", proquint_re_word)
 ##' # More identifiers
 ##' ids::proquint(10)
 proquint <- function(n = 1, n_words = 2L, use_cache = TRUE,
-                     use_openssl = NULL, global = TRUE) {
+                     global = TRUE, use_openssl = NULL) {
   ## Consider requiring something sane for 'n_words'?
   if (is.null(n)) {
     force(n_words)

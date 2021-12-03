@@ -36,10 +36,11 @@
 #' id <- ids::sentence(NULL, past = TRUE, style = "dot")
 #' id()
 #' id(10)
-sentence <- function(n = 1, style = "snake", past = FALSE) {
+sentence <- function(n = 1, style = "snake", past = FALSE,
+                     global = TRUE, use_openssl = NULL) {
   verbs <- if (past) asana_verbs_past else asana_verbs_present
   ids(n, asana_ids, asana_adjectives, asana_nouns, verbs, asana_adverbs,
-      style = style)
+      style = style, global = global, use_openssl = use_openssl)
 }
 
 asana_ids <- as.character(2:33)
