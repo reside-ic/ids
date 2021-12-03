@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/ids.html">Get started</a>
 </li>
@@ -55,7 +51,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/reside-ic/ids/">
+  <a href="https://github.com/reside-ic/ids/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -74,11 +70,11 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>ids</h1>
-                        <h4 class="author">Rich FitzJohn</h4>
+                        <h4 data-toc-skip class="author">Rich FitzJohn</h4>
             
-            <h4 class="date">2021-11-04</h4>
+            <h4 data-toc-skip class="date">2021-12-03</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/reside-ic/ids/blob/master/vignettes/ids.Rmd"><code>vignettes/ids.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/reside-ic/ids/blob/HEAD/vignettes/ids.Rmd" class="external-link"><code>vignettes/ids.Rmd</code></a></small>
       <div class="hidden name"><code>ids.Rmd</code></div>
 
     </div>
@@ -86,363 +82,349 @@
     
     
 <p>The <code>ids</code> package provides randomly generated ids in a number of different forms with different readability and sizes.</p>
-<div id="random-bytes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#random-bytes" class="anchor"></a>Random bytes</h2>
+<div class="section level2">
+<h2 id="random-bytes">Random bytes<a class="anchor" aria-label="anchor" href="#random-bytes"></a>
+</h2>
 <p>The <code>random_id</code> function generates random identifiers by generating <code>bytes</code> random bytes and converting to hexadecimal (so each byte becomes a pair of characters). Rather than use R’s random number stream we use the <code>openssl</code> package here.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "b4329a5b5cfbef99056cccfbf37e0244"</code></pre>
+<pre><code><span class="co">## [1] "20e33563839adc26d4c73ebe241f8032"</span></code></pre>
 <p>All <code>ids</code> functions take <code>n</code> as the first argument to be the number of identifiers generated:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "73c22c9420fd295c01590a5ba363ca74" "168e964b4fb27ed7c8f6ccf866500e49"
-## [3] "89748844128fb636a0dec0afb7f0c8f2" "eba5b55d641225e1595d85f858c3a436"
-## [5] "cb76c15f74f6917f2bb7703d507a660b"</code></pre>
+<pre><code><span class="co">## [1] "649d8b852867bf48d63d3149ed44792a" "c3c8b1516a40347dc99dc220a27442da"</span>
+<span class="co">## [3] "781d60e3711c53c46254133e517af094" "3b7ac1387b44cbd1ae5743f8861a0c33"</span>
+<span class="co">## [5] "dcf5d59add707b678233fecba9cd447b"</span></code></pre>
 <p>The default here is 16 bytes, each of which has 256 values (so 256^16 = 2^128 = 3.4e38 combinations). You can make these larger or smaller with the <code>bytes</code> argument:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">8</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "88302a1542ad65f9" "bf9eda4b90a80a99" "b269cb38aac22acb" "6551628c8f0ff665"
-## [5] "a5f5fb276a77fd47"</code></pre>
+<pre><code><span class="co">## [1] "1b55a49dba1c35db" "3523a46409ba29fc" "b12dfc63e9e6d28d" "d97a7fb2b0d61493"</span>
+<span class="co">## [5] "f0b798b471e873a2"</span></code></pre>
 <p>If <code>NULL</code> is provided as <code>n</code>, then a generating function is returned (all ids functions do this):</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="fl">8</span><span class="op">)</span>
 <span class="va">f</span></code></pre></div>
-<pre><code>## function (n = 1) 
-## {
-##     random_id(n, bytes, use_openssl, global)
-## }
-## &lt;bytecode: 0x55a45cb7c330&gt;
-## &lt;environment: 0x55a45e9a2d18&gt;</code></pre>
+<pre><code><span class="co">## function (n = 1) </span>
+<span class="co">## {</span>
+<span class="co">##     random_id(n, bytes, use_openssl, global)</span>
+<span class="co">## }</span>
+<span class="co">## &lt;bytecode: 0x564cb136e7d0&gt;</span>
+<span class="co">## &lt;environment: 0x564cb26445f0&gt;</span></code></pre>
 <p>This function sets all arguments except for <code>n</code></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "188dd78dc5432171"</code></pre>
+<pre><code><span class="co">## [1] "313a901a2cb2485c"</span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "afb833af33a063dc" "11a2c8fe9133ffda" "3b0d1b6c8140f39b" "b456690ea4b6479e"</code></pre>
+<pre><code><span class="co">## [1] "a904bfee70c47dc6" "4d70abe22e1a7ab6" "2583affea5717203" "e0851fd1cbe619ac"</span></code></pre>
 </div>
-<div id="uuids" class="section level2">
-<h2 class="hasAnchor">
-<a href="#uuids" class="anchor"></a>UUIDs</h2>
-<p>The above look a lot like UUIDs but they are not actually UUIDs. The <code>uuid</code> package provides real UUIDs generated with libuuid, and the <code><a href="../reference/uuid.html">ids::uuid</a></code> function provides an interface to that:</p>
+<div class="section level2">
+<h2 id="uuids">UUIDs<a class="anchor" aria-label="anchor" href="#uuids"></a>
+</h2>
+<p>The above look a lot like UUIDs but they are not actually UUIDs. The <code><a href="../reference/uuid.html">ids::uuid</a></code> function generates “version 4” UUIDs which are almost entirely random but contain dashes and have particular bits set:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/uuid.html">uuid</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "575dc56b-ffbf-4a39-b5dd-ea23ec9d9df8"</code></pre>
+<pre><code><span class="co">## [1] "58e46139-7364-471a-8e5c-13805ace98e1"</span></code></pre>
 <p>As above, generate more than one UUID:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/uuid.html">uuid</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "e97ed04e-f00d-4fad-ac01-75dd8d523d83"
-## [2] "f19cd0fd-792d-4c57-972c-c00be1361925"
-## [3] "1a1b9c77-4398-4092-a971-d5ee3f65731c"
-## [4] "bd1fb4d8-54b6-4f59-9bb6-58bedaf34a24"</code></pre>
-<p>Generate time-based UUIDs:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/uuid.html">uuid</a></span><span class="op">(</span><span class="fl">4</span>, use_time <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## Warning in ids::uuid(4, use_time = TRUE): The 'use_time' argument is now ignored</code></pre>
-<pre><code>## [1] "cde3a0d0-ee3a-4449-bace-dcb6e915c2af"
-## [2] "43da0271-27ee-4300-952d-7db6eeb40fa5"
-## [3] "f4e8397a-958d-4501-a4d0-6b6157740fe4"
-## [4] "ab343b9a-f486-42fc-a9cb-f16587e429e4"</code></pre>
-<p>and optionally drop the hyphens:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/uuid.html">uuid</a></span><span class="op">(</span><span class="fl">5</span>, drop_hyphens <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2f56ae8fa690495fa46ea7cf05cb7fe5" "5c46b9d925f44b419bb7eafdaa0671c9"
-## [3] "40400559342645ad9b0518c76e09d9aa" "d94d13ba10aa4e23803e90e1418e9ef0"
-## [5] "6268e51e6c134be7aa979953200cc15a"</code></pre>
+<pre><code><span class="co">## [1] "a16d837e-232b-4ce7-bb33-7f98463522e8"</span>
+<span class="co">## [2] "de4c2921-3331-45b4-8079-11e3f770930c"</span>
+<span class="co">## [3] "058081b1-42a1-4fcc-ac24-c8f03b255e83"</span>
+<span class="co">## [4] "b5c72ffb-b17b-432a-82df-4df5041537d2"</span></code></pre>
 </div>
-<div id="adjective-animal" class="section level2">
-<h2 class="hasAnchor">
-<a href="#adjective-animal" class="anchor"></a>Adjective animal</h2>
+<div class="section level2">
+<h2 id="adjective-animal">Adjective animal<a class="anchor" aria-label="anchor" href="#adjective-animal"></a>
+</h2>
 <p>Generate (somewhat) human readable identifiers by combining one or more adjectives with an animal name.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "careful_gaur"</code></pre>
-<p>The list of adjectives and animals comes from <a href="http://gfycat.com">gfycat.com</a>, via <a href="https://github.com/a-type/adjective-adjective-animal" class="uri">https://github.com/a-type/adjective-adjective-animal</a></p>
+<pre><code><span class="co">## [1] "careful_gaur"</span></code></pre>
+<p>The list of adjectives and animals comes from <a href="http://gfycat.com" class="external-link">gfycat.com</a>, via <a href="https://github.com/a-type/adjective-adjective-animal" class="external-link uri">https://github.com/a-type/adjective-adjective-animal</a></p>
 <p>Generate more than one identifier:</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "unterrestrial_takin"      "illfated_bonobo"         
-## [3] "wet_vixen"                "classless_africanwildcat"</code></pre>
+<pre><code><span class="co">## [1] "unterrestrial_takin"      "illfated_bonobo"         </span>
+<span class="co">## [3] "wet_vixen"                "classless_africanwildcat"</span></code></pre>
 <p>Use more than one adjective for very long identifier</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "changeable_tricolour_ethnological_shrimp"   
-## [2] "zealous_preagricultural_snobbish_drafthorse"
-## [3] "brilliant_rhombohedral_locustal_tattler"    
-## [4] "waiting_necessary_dermatic_earwig"</code></pre>
+<pre><code><span class="co">## [1] "changeable_tricolour_ethnological_shrimp"   </span>
+<span class="co">## [2] "zealous_preagricultural_snobbish_drafthorse"</span>
+<span class="co">## [3] "brilliant_rhombohedral_locustal_tattler"    </span>
+<span class="co">## [4] "waiting_necessary_dermatic_earwig"</span></code></pre>
 <p>There are 1748 animal names and 8946 adjectives so each one you add increases the identifier space by a factor of 8946. So for 1, 2, and 3 adjectives there are about 15.6 million, 140 billion and 1250 trillion possible combinations.</p>
 <p>This is a much smaller space than the random identifiers above, but these are more readable and memorable.</p>
-<p>Note that here, the random numbers are coming from R’s random number stream so are affected by <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code>.</p>
+<p>By default the random numbers come from R’s random number stream so are affected by <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code>; see below for details.</p>
 <p>Because some of the animal and adjective names are very long (e.g. a <em>quasiextraterritorial hexakosioihexekontahexaphobic queenalexandrasbirdwingbutterfly</em>), in order to generate more readable/memorable identifiers it may be useful to restrict the length. Pass <code>max_len</code> in to do this.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">4</span>, max_len <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "neon_beetle"   "dermal_quagga" "gluey_kakapo"  "slim_grison"</code></pre>
+<pre><code><span class="co">## [1] "neon_beetle"   "dermal_quagga" "gluey_kakapo"  "slim_grison"</span></code></pre>
 <p>A vector of length 2 here can be used to apply to the adjectives and animal respectively:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">20</span>, max_len <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="cn">Inf</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "legal_watussi"            "baggy_husky"             
-##  [3] "mirky_cranefly"           "lithe_langur"            
-##  [5] "glass_tigerbeetle"        "testy_octopus"           
-##  [7] "puny_robin"               "suede_mussel"            
-##  [9] "bare_americanindianhorse" "lowly_mammal"            
-## [11] "antsy_newfoundlanddog"    "wavy_basil"              
-## [13] "wood_grayfox"             "dying_firecrest"         
-## [15] "lazy_quoll"               "peat_trumpeterbird"      
-## [17] "choky_easternglasslizard" "human_wuerhosaurus"      
-## [19] "pagan_bittern"            "solid_fieldspaniel"</code></pre>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">20</span>, max_len <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="cn">Inf</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##  [1] "legal_watussi"            "baggy_husky"             </span>
+<span class="co">##  [3] "mirky_cranefly"           "lithe_langur"            </span>
+<span class="co">##  [5] "glass_tigerbeetle"        "testy_octopus"           </span>
+<span class="co">##  [7] "puny_robin"               "suede_mussel"            </span>
+<span class="co">##  [9] "bare_americanindianhorse" "lowly_mammal"            </span>
+<span class="co">## [11] "antsy_newfoundlanddog"    "wavy_basil"              </span>
+<span class="co">## [13] "wood_grayfox"             "dying_firecrest"         </span>
+<span class="co">## [15] "lazy_quoll"               "peat_trumpeterbird"      </span>
+<span class="co">## [17] "choky_easternglasslizard" "human_wuerhosaurus"      </span>
+<span class="co">## [19] "pagan_bittern"            "solid_fieldspaniel"</span></code></pre>
 <p>Note that this decreases the pool size and so increases the chance of collisions.</p>
 <p>In addition to snake_case, the default, the punctuation between words can be changed to:</p>
 <p>kebab-case:</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, style <span class="op">=</span> <span class="st">"kebab"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "residential-sizy-whiterhino"</code></pre>
+<pre><code><span class="co">## [1] "residential-sizy-whiterhino"</span></code></pre>
 <p>dot.case:</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, style <span class="op">=</span> <span class="st">"dot"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "brave.selfdestroying.elephantseal"</code></pre>
-<p>camel-case:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<pre><code><span class="co">## [1] "brave.selfdestroying.elephantseal"</span></code></pre>
+<p>camelCase:</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, style <span class="op">=</span> <span class="st">"camel"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "antiallergenicBioclimaticQueenalexandrasbirdwing"</code></pre>
+<pre><code><span class="co">## [1] "antiallergenicBioclimaticQueenalexandrasbirdwing"</span></code></pre>
 <p>PascalCase:</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, style <span class="op">=</span> <span class="st">"pascal"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "QuickMilitantKarakul"</code></pre>
+<pre><code><span class="co">## [1] "QuickMilitantKarakul"</span></code></pre>
 <p>CONSTANT_CASE (aka SHOUTY_CASE)</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, style <span class="op">=</span> <span class="st">"constant"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "DISCUSSIBLE_RELISHABLE_XOLOITZCUINTLI"</code></pre>
+<pre><code><span class="co">## [1] "DISCUSSIBLE_RELISHABLE_XOLOITZCUINTLI"</span></code></pre>
 <p>or with spaces, lower case:</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, style <span class="op">=</span> <span class="st">"lower"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "asphaltic savoury queenslandgrouper"</code></pre>
+<pre><code><span class="co">## [1] "asphaltic savoury queenslandgrouper"</span></code></pre>
 <p>UPPER CASE</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, style <span class="op">=</span> <span class="st">"upper"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "ATMOSPHERIC SERENE RINGWORM"</code></pre>
+<pre><code><span class="co">## [1] "ATMOSPHERIC SERENE RINGWORM"</span></code></pre>
 <p>Sentence case</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, style <span class="op">=</span> <span class="st">"sentence"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "Supersecure hardheaded mare"</code></pre>
+<pre><code><span class="co">## [1] "Supersecure hardheaded mare"</span></code></pre>
 <p>Title Case</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, style <span class="op">=</span> <span class="st">"title"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "Absent Cycadaceous Huemul"</code></pre>
+<pre><code><span class="co">## [1] "Absent Cycadaceous Huemul"</span></code></pre>
 <p>MocKiNg sPoNgEbOb CaSe</p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, style <span class="op">=</span> <span class="st">"spongemock"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "cREdItAbLe-DiNKy-QueEnbEE"</code></pre>
+<pre><code><span class="co">## [1] "cREdItAbLe-DiNKy-QueEnbEE"</span></code></pre>
 <p>Again, pass <code>n = NULL</code> here to create a generating function:</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">aa3</span> <span class="op">&lt;-</span> <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="fl">3</span>, style <span class="op">=</span> <span class="st">"kebab"</span>, max_len <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">8</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">aa3</span> <span class="op">&lt;-</span> <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="fl">3</span>, style <span class="op">=</span> <span class="st">"kebab"</span>, max_len <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">8</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>…which can be used to generate ids on demand.</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">aa3</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "blank-frowsy-dozing-johndory"</code></pre>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<pre><code><span class="co">## [1] "blank-frowsy-dozing-johndory"</span></code></pre>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">aa3</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "sand-bored-slow-anaconda"   "nylon-scared-sepia-flicker"
-## [3] "fervid-dismal-sulfur-kid"   "wacky-binary-stingy-myna"</code></pre>
+<pre><code><span class="co">## [1] "sand-bored-slow-anaconda"   "nylon-scared-sepia-flicker"</span>
+<span class="co">## [3] "fervid-dismal-sulfur-kid"   "wacky-binary-stingy-myna"</span></code></pre>
 </div>
-<div id="random-sentences" class="section level2">
-<h2 class="hasAnchor">
-<a href="#random-sentences" class="anchor"></a>Random sentences</h2>
-<p>The <code>sentence</code> function creates a sentence style identifier. This uses the approach described by Asana on <a href="https://blog.asana.com/2011/09/6-sad-squid-snuggle-softly">their blog</a>. This approach encodes 32 bits of information (so 2^32 ~= 4 billion possibilities) and in theory can be remapped to an integer if you really wanted to.</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="section level2">
+<h2 id="random-sentences">Random sentences<a class="anchor" aria-label="anchor" href="#random-sentences"></a>
+</h2>
+<p>The <code>sentence</code> function creates a sentence style identifier. This uses the approach described by Asana on <a href="https://blog.asana.com/2011/09/6-sad-squid-snuggle-softly" class="external-link">their blog</a>. This approach encodes 32 bits of information (so 2^32 ~= 4 billion possibilities) and in theory can be remapped to an integer if you really wanted to.</p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/sentence.html">sentence</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "4_nutty_goats_hopping_slowly"</code></pre>
+<pre><code><span class="co">## [1] "4_nutty_goats_hopping_slowly"</span></code></pre>
 <p>As with <code>adjective_animal</code>, the case can be changed:</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/sentence.html">sentence</a></span><span class="op">(</span><span class="fl">2</span>, <span class="st">"dot"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "12.dazzling.hedgehogs.wandering.boastfully"  
-## [2] "17.awesome.platypuses.jumping.optimistically"</code></pre>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<pre><code><span class="co">## [1] "12.dazzling.hedgehogs.wandering.boastfully"  </span>
+<span class="co">## [2] "17.awesome.platypuses.jumping.optimistically"</span></code></pre>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/sentence.html">sentence</a></span><span class="op">(</span><span class="fl">2</span>, <span class="st">"spongemock"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "21-UnKeMpt-rEiNdeErS-pRaNcInG-qUIrKiLy"    
-## [2] "6-cOoRdINatEd-FlAmInGoS-sAUnTeRiNg-brAvElY"</code></pre>
+<pre><code><span class="co">## [1] "21-UnKeMpt-rEiNdeErS-pRaNcInG-qUIrKiLy"    </span>
+<span class="co">## [2] "6-cOoRdINatEd-FlAmInGoS-sAUnTeRiNg-brAvElY"</span></code></pre>
 <p>If you would rather past tense for the verbs, then pass <code>past = TRUE</code>:</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/sentence.html">sentence</a></span><span class="op">(</span><span class="fl">4</span>, past <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "26_amazing_moose_laughed_zestfully"     
-## [2] "7_curious_sheep_pranced_quietly"        
-## [3] "31_waggish_iguanas_squiggled_youthfully"
-## [4] "7_nutty_llamas_sauntered_shakily"</code></pre>
+<pre><code><span class="co">## [1] "26_amazing_moose_laughed_zestfully"     </span>
+<span class="co">## [2] "7_curious_sheep_pranced_quietly"        </span>
+<span class="co">## [3] "31_waggish_iguanas_squiggled_youthfully"</span>
+<span class="co">## [4] "7_nutty_llamas_sauntered_shakily"</span></code></pre>
 </div>
-<div id="proquints" class="section level2">
-<h2 class="hasAnchor">
-<a href="#proquints" class="anchor"></a>proquints</h2>
-<p>“proquints” are an identifier that tries to be information dense but still human readable and (somewhat) pronounceable; “proquint” stands for <em>PRO</em>-nouncable <em>QUINT</em>-uplets. They are introduced in <a href="https://arxiv.org/html/0901.4016" class="uri">https://arxiv.org/html/0901.4016</a></p>
+<div class="section level2">
+<h2 id="proquints">proquints<a class="anchor" aria-label="anchor" href="#proquints"></a>
+</h2>
+<p>“proquints” are an identifier that tries to be information dense but still human readable and (somewhat) pronounceable; “proquint” stands for <em>PRO</em>-nouncable <em>QUINT</em>-uplets. They are introduced in <a href="https://arxiv.org/html/0901.4016" class="external-link uri">https://arxiv.org/html/0901.4016</a></p>
 <p><code>ids</code> can generate proquints:</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint.html">proquint</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "zabir-fagug" "zosut-mavig" "ribis-liduv" "jihon-tobur" "dizol-figab"
-##  [6] "kosir-bunat" "buhiv-vumar" "tadis-vunaz" "jahor-kagan" "tutod-hisin"</code></pre>
+<pre><code><span class="co">##  [1] "zabir-fagug" "zosut-mavig" "ribis-liduv" "jihon-tobur" "dizol-figab"</span>
+<span class="co">##  [6] "kosir-bunat" "buhiv-vumar" "tadis-vunaz" "jahor-kagan" "tutod-hisin"</span></code></pre>
 <p>By default it generates two-word proquints but that can be changed:</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint.html">proquint</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "tomuh" "vomul" "ralon" "zuzok" "sogak"</code></pre>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<pre><code><span class="co">## [1] "tomuh" "vomul" "ralon" "zuzok" "sogak"</span></code></pre>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint.html">proquint</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "mapig-kunod-pijoh-zujis" "vodap-bumad-notug-rirup"</code></pre>
+<pre><code><span class="co">## [1] "mapig-kunod-pijoh-zujis" "vodap-bumad-notug-rirup"</span></code></pre>
 <p>Proquints are formed by alternating consonant/vowel/consonant/vowel/consonant using a subset of both (16 consonants and 4 vowels). This yields 2^16 (65,536) possibilities per word. Words are always lower case and always separated by a hyphen. So with 4 words there are 2^64 combinations in 23 characters.</p>
 <p>Proquints are also useful in that they can be translated with integers. The proquint <code>kapop</code> has integer value 25258</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/int_to_proquint.html">proquint_to_int</a></span><span class="op">(</span><span class="st">"kapop"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 25258</code></pre>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/int_to_proquint.html">int_to_proquint</a></span><span class="op">(</span><span class="fl">25258</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "kapop"</code></pre>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint_conversion.html">proquint_to_int</a></span><span class="op">(</span><span class="st">"kapop"</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] 25258</span></code></pre>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint_conversion.html">int_to_proquint</a></span><span class="op">(</span><span class="fl">25258</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "kapop"</span></code></pre>
 <p>This makes proquints suitable for creating human-pronounceable identifiers out of things like ip addresses, integer primary keys, etc.</p>
-<p>The function <code><a href="../reference/int_to_proquint.html">ids::int_to_proquint_word</a></code> will translate between proquint words and integers (and are vectorised)</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/int_to_proquint.html">int_to_proquint_word</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">2</span><span class="op">^</span><span class="fl">16</span>, <span class="fl">10</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span><span class="op">)</span>
+<p>The function <code><a href="../reference/proquint_conversion.html">ids::int_to_proquint_word</a></code> will translate between proquint words and integers (and are vectorised)</p>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint_conversion.html">int_to_proquint_word</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">2</span><span class="op">^</span><span class="fl">16</span>, <span class="fl">10</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span><span class="op">)</span>
 <span class="va">w</span></code></pre></div>
-<pre><code>##  [1] "vugir" "fivoh" "pogop" "jomab" "pofos" "zidif" "zakik" "juraz" "barip"
-## [10] "zunok"</code></pre>
-<p>and <code><a href="../reference/int_to_proquint.html">ids::proquint_word_to_int</a></code> does the reverse</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/int_to_proquint.html">proquint_word_to_int</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 60635 10148 43242 23040 43180 62546 61846 24271   730 65126</code></pre>
-<p>while <code><a href="../reference/int_to_proquint.html">ids::proquint_to_int</a></code> and <code><a href="../reference/int_to_proquint.html">ids::int_to_proquint</a></code> allows translation of multi-word proquints. Overflow is a real possibility; the maximum integer representable is only about <code>r human_no(.Machine$integer.max)</code> and the maximum floating point number of accuracy of 1 is about 9010 trillion – these are big numbers but fairly small proquints:</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/int_to_proquint.html">int_to_proquint</a></span><span class="op">(</span><span class="va">.Machine</span><span class="op">$</span><span class="va">integer.max</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "luzuz-zuzuv"</code></pre>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/int_to_proquint.html">int_to_proquint</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">/</span> <span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "babob-babab-babab-babab"</code></pre>
+<pre><code><span class="co">##  [1] "vugir" "fivoh" "pogop" "jomab" "pofos" "zidif" "zakik" "juraz" "barip"</span>
+<span class="co">## [10] "zunok"</span></code></pre>
+<p>and <code><a href="../reference/proquint_conversion.html">ids::proquint_word_to_int</a></code> does the reverse</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint_conversion.html">proquint_word_to_int</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##  [1] 60635 10148 43242 23040 43180 62546 61846 24271   730 65126</span></code></pre>
+<p>while <code><a href="../reference/proquint_conversion.html">ids::proquint_to_int</a></code> and <code><a href="../reference/proquint_conversion.html">ids::int_to_proquint</a></code> allows translation of multi-word proquints. Overflow is a real possibility; the maximum integer representable is only about <code>r human_no(.Machine$integer.max)</code> and the maximum floating point number of accuracy of 1 is about 9010 trillion – these are big numbers but fairly small proquints:</p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint_conversion.html">int_to_proquint</a></span><span class="op">(</span><span class="va">.Machine</span><span class="op">$</span><span class="va">integer.max</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "luzuz-zuzuv"</span></code></pre>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint_conversion.html">int_to_proquint</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">/</span> <span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "babob-babab-babab-babab"</span></code></pre>
 <p>But if you had a 6 word proquint this would not work!</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint.html">proquint</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">6</span><span class="op">)</span></code></pre></div>
 <p>Too big for an integer:</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/int_to_proquint.html">proquint_to_int</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></code></pre></div>
-<pre><code>## Error in proquint_combine(idx, len, as): Numeric overflow: cannot represent proquint as numeric</code></pre>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint_conversion.html">proquint_to_int</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Error in proquint_combine(idx, len, as): Numeric overflow: cannot represent proquint as numeric</span></code></pre>
 <p>And too big for an numeric number:</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/int_to_proquint.html">proquint_to_int</a></span><span class="op">(</span><span class="va">p</span>, as <span class="op">=</span> <span class="st">"numeric"</span><span class="op">)</span></code></pre></div>
-<pre><code>## Error in proquint_combine(idx, len, as): Numeric overflow: cannot represent proquint as numeric</code></pre>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint_conversion.html">proquint_to_int</a></span><span class="op">(</span><span class="va">p</span>, as <span class="op">=</span> <span class="st">"numeric"</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Error in proquint_combine(idx, len, as): Numeric overflow: cannot represent proquint as numeric</span></code></pre>
 <p>To allow this, we use <code>openssl</code>’s <code>bignum</code> support:</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/int_to_proquint.html">proquint_to_int</a></span><span class="op">(</span><span class="va">p</span>, as <span class="op">=</span> <span class="st">"bignum"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [[1]]
-## [b] 68240143167322810041142066081</code></pre>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/proquint_conversion.html">proquint_to_int</a></span><span class="op">(</span><span class="va">p</span>, as <span class="op">=</span> <span class="st">"bignum"</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [[1]]</span>
+<span class="co">## [b] 68240143167322810041142066081</span></code></pre>
 <p>This returns a <em>list</em> with one bignum (this is required to allow vectorisation).</p>
 </div>
-<div id="roll-your-own-identifiers" class="section level2">
-<h2 class="hasAnchor">
-<a href="#roll-your-own-identifiers" class="anchor"></a>Roll your own identifiers</h2>
+<div class="section level2">
+<h2 id="roll-your-own-identifiers">Roll your own identifiers<a class="anchor" aria-label="anchor" href="#roll-your-own-identifiers"></a>
+</h2>
 <p>The <code>ids</code> functions can build identifiers in the style of <code>adjective_animal</code> or <code>sentence</code>. It takes as input a list of strings. This works particularly well with the <code>rcorpora</code> package which includes lists of strings.</p>
 <p>Here is a list of Pokemon names:</p>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pokemon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="fu">rcorpora</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rcorpora/man/corpora.html">corpora</a></span><span class="op">(</span><span class="st">"games/pokemon"</span><span class="op">)</span><span class="op">$</span><span class="va">pokemon</span><span class="op">$</span><span class="va">name</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">pokemon</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 663</code></pre>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pokemon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="fu">rcorpora</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rcorpora/man/corpora.html" class="external-link">corpora</a></span><span class="op">(</span><span class="st">"games/pokemon"</span><span class="op">)</span><span class="op">$</span><span class="va">pokemon</span><span class="op">$</span><span class="va">name</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">pokemon</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] 663</span></code></pre>
 <p>…and here is a list of adjectives</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">adjectives</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="fu">rcorpora</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rcorpora/man/corpora.html">corpora</a></span><span class="op">(</span><span class="st">"words/adjs"</span><span class="op">)</span><span class="op">$</span><span class="va">adjs</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">adjectives</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 961</code></pre>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">adjectives</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="fu">rcorpora</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rcorpora/man/corpora.html" class="external-link">corpora</a></span><span class="op">(</span><span class="st">"words/adjs"</span><span class="op">)</span><span class="op">$</span><span class="va">adjs</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">adjectives</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] 961</span></code></pre>
 <p>So we have a total pool size of about 637 thousand, which is not huge, but it is at least topical.</p>
 <p>To generate one identifier:</p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/ids.html">ids</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">adjectives</span>, <span class="va">pokemon</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "conceptual_venomoth"</code></pre>
+<pre><code><span class="co">## [1] "conceptual_venomoth"</span></code></pre>
 <p>All the style-changing code is available:</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/ids.html">ids</a></span><span class="op">(</span><span class="fl">10</span>, <span class="va">adjectives</span>, <span class="va">pokemon</span>, style <span class="op">=</span> <span class="st">"dot"</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "lacklustre.cradily"     "retiring.cradily"       "quick.mankey"          
-##  [4] "exponential.pikachu"    "unwary.magnemite"       "primer.gliscor"        
-##  [7] "eaten.vibrava"          "indiscriminate.victini" "sentient.vibrava"      
-## [10] "flammable.uxie"</code></pre>
+<pre><code><span class="co">##  [1] "lacklustre.cradily"     "retiring.cradily"       "quick.mankey"          </span>
+<span class="co">##  [4] "exponential.pikachu"    "unwary.magnemite"       "primer.gliscor"        </span>
+<span class="co">##  [7] "eaten.vibrava"          "indiscriminate.victini" "sentient.vibrava"      </span>
+<span class="co">## [10] "flammable.uxie"</span></code></pre>
 <p>Better would be to wrap this so that the constants are not passed around the whole time:</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">adjective_pokemon</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span> <span class="op">=</span> <span class="fl">1</span>, <span class="va">style</span> <span class="op">=</span> <span class="st">"snake"</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">pokemon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="fu">rcorpora</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rcorpora/man/corpora.html">corpora</a></span><span class="op">(</span><span class="st">"games/pokemon"</span><span class="op">)</span><span class="op">$</span><span class="va">pokemon</span><span class="op">$</span><span class="va">name</span><span class="op">)</span>
-  <span class="va">adjectives</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="fu">rcorpora</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rcorpora/man/corpora.html">corpora</a></span><span class="op">(</span><span class="st">"words/adjs"</span><span class="op">)</span><span class="op">$</span><span class="va">adjs</span><span class="op">)</span>
+  <span class="va">pokemon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="fu">rcorpora</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rcorpora/man/corpora.html" class="external-link">corpora</a></span><span class="op">(</span><span class="st">"games/pokemon"</span><span class="op">)</span><span class="op">$</span><span class="va">pokemon</span><span class="op">$</span><span class="va">name</span><span class="op">)</span>
+  <span class="va">adjectives</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="fu">rcorpora</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rcorpora/man/corpora.html" class="external-link">corpora</a></span><span class="op">(</span><span class="st">"words/adjs"</span><span class="op">)</span><span class="op">$</span><span class="va">adjs</span><span class="op">)</span>
   <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/ids.html">ids</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">adjectives</span>, <span class="va">pokemon</span>, style <span class="op">=</span> <span class="va">style</span><span class="op">)</span>
 <span class="op">}</span>
 
 <span class="fu">adjective_pokemon</span><span class="op">(</span><span class="fl">10</span>, <span class="st">"kebab"</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "boundary-poliwag"          "bohemian-lucario"         
-##  [3] "contemporaneous-cresselia" "process-ampharos"         
-##  [5] "commuting-liepard"         "healthiest-eevee"         
-##  [7] "inert-stunfisk"            "cardinal-lopunny"         
-##  [9] "employed-whimsicott"       "running-regirock"</code></pre>
+<pre><code><span class="co">##  [1] "boundary-poliwag"          "bohemian-lucario"         </span>
+<span class="co">##  [3] "contemporaneous-cresselia" "process-ampharos"         </span>
+<span class="co">##  [5] "commuting-liepard"         "healthiest-eevee"         </span>
+<span class="co">##  [7] "inert-stunfisk"            "cardinal-lopunny"         </span>
+<span class="co">##  [9] "employed-whimsicott"       "running-regirock"</span></code></pre>
 <p>As a second example we can use the word lists in rcorpora to generate identifiers in the form <code>&lt;mood&gt;_&lt;scientist&gt;</code>, like “melancholic_darwin”. These are similar to the names of docker containers.</p>
 <p>First the lists of names themselves:</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">moods</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="fu">rcorpora</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rcorpora/man/corpora.html">corpora</a></span><span class="op">(</span><span class="st">"humans/moods"</span><span class="op">)</span><span class="op">$</span><span class="va">moods</span><span class="op">)</span>
-<span class="va">scientists</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="fu">rcorpora</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rcorpora/man/corpora.html">corpora</a></span><span class="op">(</span><span class="st">"humans/scientists"</span><span class="op">)</span><span class="op">$</span><span class="va">scientists</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">moods</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="fu">rcorpora</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rcorpora/man/corpora.html" class="external-link">corpora</a></span><span class="op">(</span><span class="st">"humans/moods"</span><span class="op">)</span><span class="op">$</span><span class="va">moods</span><span class="op">)</span>
+<span class="va">scientists</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="fu">rcorpora</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rcorpora/man/corpora.html" class="external-link">corpora</a></span><span class="op">(</span><span class="st">"humans/scientists"</span><span class="op">)</span><span class="op">$</span><span class="va">scientists</span><span class="op">)</span></code></pre></div>
 <p>Moods include:</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">moods</span>, <span class="fl">10</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "great"        "haughty"      "threatened"   "jaded"        "sinful"      
-##  [6] "thoughtful"   "delighted"    "dependent"    "conventional" "dirty"</code></pre>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">moods</span>, <span class="fl">10</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##  [1] "great"        "haughty"      "threatened"   "jaded"        "sinful"      </span>
+<span class="co">##  [6] "thoughtful"   "delighted"    "dependent"    "conventional" "dirty"</span></code></pre>
 <p>The scientists names contain spaces which is not going to work for us because <code>ids</code> won’t correctly translate all internal spaces to the requested style.</p>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">scientists</span>, <span class="fl">10</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "emil fischer"              "frederick gowland hopkins"
-##  [3] "pierre-simon laplace"      "alexander fleming"        
-##  [5] "b. f. skinner"             "stephen hawking"          
-##  [7] "ernest rutherford"         "james dwight dana"        
-##  [9] "antoine lavoisier"         "bill nye"</code></pre>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">scientists</span>, <span class="fl">10</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##  [1] "emil fischer"              "frederick gowland hopkins"</span>
+<span class="co">##  [3] "pierre-simon laplace"      "alexander fleming"        </span>
+<span class="co">##  [5] "b. f. skinner"             "stephen hawking"          </span>
+<span class="co">##  [7] "ernest rutherford"         "james dwight dana"        </span>
+<span class="co">##  [9] "antoine lavoisier"         "bill nye"</span></code></pre>
 <p>To hack around this we’ll just take the last name from the list and remove all hyphens:</p>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">scientists</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">vapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"(-|jr\\.$)"</span>, <span class="st">""</span>, <span class="va">scientists</span><span class="op">)</span>, <span class="st">" "</span><span class="op">)</span>,
-                     <span class="va">tail</span>, <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">scientists</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html" class="external-link">strsplit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">"(-|jr\\.$)"</span>, <span class="st">""</span>, <span class="va">scientists</span><span class="op">)</span>, <span class="st">" "</span><span class="op">)</span>,
+                     <span class="va">tail</span>, <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span></code></pre></div>
 <p>Which gives strings that are just letters (though there are a few non-ASCII characters here that may cause problems because string handling is just a big pile of awful)</p>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">scientists</span>, <span class="fl">10</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "gamow"    "planck"   "nye"      "haxel"    "fermi"    "binet"   
-##  [7] "halley"   "drexler"  "tombaugh" "wundt"</code></pre>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">scientists</span>, <span class="fl">10</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##  [1] "gamow"    "planck"   "nye"      "haxel"    "fermi"    "binet"   </span>
+<span class="co">##  [7] "halley"   "drexler"  "tombaugh" "wundt"</span></code></pre>
 <p>With the word lists, create an identifier:</p>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/ids.html">ids</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">moods</span>, <span class="va">scientists</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "enraged_sagan"</code></pre>
+<pre><code><span class="co">## [1] "enraged_sagan"</span></code></pre>
 <p>Or pass <code>NULL</code> for <code>n</code> and create a function:</p>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sci_id</span> <span class="op">&lt;-</span> <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/ids.html">ids</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="va">moods</span>, <span class="va">scientists</span>, style <span class="op">=</span> <span class="st">"kebab"</span><span class="op">)</span></code></pre></div>
 <p>which takes just the number of identifiers to generate as an argument</p>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">sci_id</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "giddy-carver"        "splendid-dirac"      "reminiscent-hirase" 
-##  [4] "private-tyson"       "uplifted-buffon"     "sabotaged-lucretius"
-##  [7] "contempt-czerny"     "outraged-humboldt"   "dignified-napier"   
-## [10] "awake-bosch"</code></pre>
+<pre><code><span class="co">##  [1] "giddy-carver"        "splendid-dirac"      "reminiscent-hirase" </span>
+<span class="co">##  [4] "private-tyson"       "uplifted-buffon"     "sabotaged-lucretius"</span>
+<span class="co">##  [7] "contempt-czerny"     "outraged-humboldt"   "dignified-napier"   </span>
+<span class="co">## [10] "awake-bosch"</span></code></pre>
 </div>
-<div id="relationship-to-random-number-generation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#relationship-to-random-number-generation" class="anchor"></a>Relationship to random number generation</h2>
+<div class="section level2">
+<h2 id="relationship-to-random-number-generation">Relationship to random number generation<a class="anchor" aria-label="anchor" href="#relationship-to-random-number-generation"></a>
+</h2>
 <p>Creating <em>random</em> identifiers requires some source of random numbers. There are a couple of competing needs here:</p>
 <ol style="list-style-type: decimal">
 <li>You might want the identifiers to be repeatable, so that setting the seed will ensure the same stream of random identifiers:</li>
 </ol>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "careful_annelida"      "uncalorific_ivorygull" "marginal_tegus"</code></pre>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<pre><code><span class="co">## [1] "careful_annelida"      "uncalorific_ivorygull" "marginal_tegus"</span></code></pre>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/adjective_animal.html">adjective_animal</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "careful_annelida"      "uncalorific_ivorygull" "marginal_tegus"</code></pre>
+<pre><code><span class="co">## [1] "careful_annelida"      "uncalorific_ivorygull" "marginal_tegus"</span></code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Alternatively you might want to use identifiers as “globally unique” keys, avoiding any collisions</li>
 </ol>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "d80a1e3a" "97ff5258" "6576fd91"</code></pre>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<pre><code><span class="co">## [1] "a414de2e" "b6ac1212" "2a2b3f24"</span></code></pre>
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="fu">ids</span><span class="fu">::</span><span class="fu"><a href="../reference/random_id.html">random_id</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "0e9358cc" "1983b2ab" "ce318d0a"</code></pre>
+<pre><code><span class="co">## [1] "e48259b0" "9ceeda32" "1858a487"</span></code></pre>
 <p>To support this, <code>ids</code> uses two different types of sources of random numbers:</p>
 <ul>
 <li>
 <strong>Global random numbers</strong> come from R’s random number stream and respond to <code>set.seed</code>, as above. These are used by default in <code><a href="../reference/adjective_animal.html">ids::adjective_animal</a></code>, <code><a href="../reference/proquint.html">ids::proquint</a></code>, <code><a href="../reference/sentence.html">ids::sentence</a></code> (i.e., the human-readable ids functions), and can be selected if required for <code><a href="../reference/random_id.html">ids::random_id</a></code> and <code><a href="../reference/uuid.html">ids::uuid</a></code> by passing the option <code>global = TRUE</code>.</li>
 <li>
-<strong>Non-global random numbers</strong> come from “some other source”, either <code><a href="https://rdrr.io/pkg/openssl/man/rand_bytes.html">openssl::rand_num</a></code> or an internal source if <code>openssl</code> is unavailable (see below). These will not be affected by <code>set.seed</code> and we provide no way of resetting or reproducing the stream. This is the default for <code><a href="../reference/random_id.html">ids::random_id</a></code> and <code><a href="../reference/uuid.html">ids::uuid</a></code> (i.e., the non-reproducible ids functions), and can be selected if required by <code><a href="../reference/proquint.html">ids::proquint</a></code> by passing the option <code>global = FALSE</code>.</li>
+<strong>Non-global random numbers</strong> come from “some other source”, either <code><a href="https://rdrr.io/pkg/openssl/man/rand_bytes.html" class="external-link">openssl::rand_num</a></code> or an internal source if <code>openssl</code> is unavailable (see below). These will not be affected by <code>set.seed</code> and we provide no way of resetting or reproducing the stream. This is the default for <code><a href="../reference/random_id.html">ids::random_id</a></code> and <code><a href="../reference/uuid.html">ids::uuid</a></code> (i.e., the non-reproducible ids functions), and can be selected if required by <code><a href="../reference/proquint.html">ids::proquint</a></code>, <code><a href="../reference/adjective_animal.html">ids::adjective_animal</a></code> and <code><a href="../reference/sentence.html">ids::sentence</a></code> by passing the option <code>global = FALSE</code>.</li>
 </ul>
 <p>For non-global random numbers, all else being equal, you should prefer to use the numbers provided by <code>openssl</code>. The default for all functions is to use <code>openssl</code> if available. You can <em>force</em> <code>openssl</code> by passing <code>use_openssl = TRUE</code> (perhaps along with <code>global = FALSE</code>); if the package is not installed then we will error rather than continuing with the internal random number stream.</p>
 <p>The internal random number stream is a pure-R implementation of the <code>xoroshiro128+</code> algorithm. As such it is quite slow (about 50x slower per byte of output than the cryptographically secure numbers from <code>openssl</code>) but it always available. We seed the stream by hashing (via <code>utils::md5sum</code>) the current process id and the system time to the maximum precision available on that platform.</p>
@@ -460,11 +442,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Rich FitzJohn.</p>
+  <p></p>
+<p>Developed by Rich FitzJohn.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -472,6 +456,8 @@
 
   
 
+
+  
 
   </body>
 </html>

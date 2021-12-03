@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ids</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/ids.html">Get started</a>
 </li>
@@ -55,7 +51,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/reside-ic/ids/">
+  <a href="https://github.com/reside-ic/ids/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -72,31 +68,32 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="ids" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#ids" class="anchor"></a>ids</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="ids">ids<a class="anchor" aria-label="anchor" href="#ids"></a>
+</h1></div>
 <!-- badges: start -->
 
 <p>Generate random identifiers in a number of styles:</p>
 <ul>
-<li>random ids of any number of bytes, such as <code>31f6d556fe2b303c</code>
+<li>random ids of any number of bytes, such as <code>31f6d556fe2b303c</code> with <code><a href="reference/random_id.html">ids::random_id</a></code>
 </li>
-<li>UUIDs using the <code>uuid</code> package, such as <code>4f0efabf-0375-4a08-89ea-b8f162f07c44</code>
+<li>UUIDs using the <code>uuid</code> package, such as <code>4f0efabf-0375-4a08-89ea-b8f162f07c44</code> with <code><a href="reference/uuid.html">ids::uuid</a></code>
 </li>
-<li>human readable identifiers in the style <code>&lt;adjective&gt;_&lt;animal&gt;</code> (following <a href="http://gfycat.com">gfycat.com</a>), such as <code>misanthropic_lungfish</code>
+<li>human readable identifiers in the style <code>&lt;adjective&gt;_&lt;animal&gt;</code> (following <a href="http://gfycat.com" class="external-link">gfycat.com</a>), such as <code>misanthropic_lungfish</code> with <code><a href="reference/adjective_animal.html">ids::adjective_animal</a></code>
 </li>
-<li>human readable identifiers in the style of a sentence (following <a href="https://blog.asana.com/2011/09/6-sad-squid-snuggle-softly">Asana</a>, such as <code>33_enormous_chinchillas_tumbling_elegantly</code>
+<li>human readable identifiers in the style of a sentence (following <a href="https://blog.asana.com/2011/09/6-sad-squid-snuggle-softly" class="external-link">Asana</a>, such as <code>33_enormous_chinchillas_tumbling_elegantly</code> with <code><a href="reference/sentence.html">ids::sentence</a></code>
 </li>
 <li>
-<a href="https://arxiv.org/html/0901.4016">proquint</a> (“PRO-nouncable QUINT-uplet”) identifiers such as <code>dizuz-soboz</code> (which can be converted to an integer such as 40,2638,895)</li>
+<a href="https://arxiv.org/html/0901.4016" class="external-link">proquint</a> (“PRO-nouncable QUINT-uplet”) identifiers such as <code>dizuz-soboz</code> (which can be converted to an integer such as 40,2638,895) with <code><a href="reference/proquint.html">ids::proquint</a></code>
+</li>
 </ul>
-<p>These can all be tweaked with options for length, words that are used, and the case that joins words. There is a function <code>ids</code> for creating your own human readable identifiers.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<p>These can all be tweaked with options for length, words that are used, and the case that joins words. There is a function <code><a href="reference/ids.html">ids::ids</a></code> for creating your own human readable identifiers.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>Install this package from CRAN</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ids"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ids"</span><span class="op">)</span></code></pre></div>
 <p>or install the development version with</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"reside-ic/ids"</span>, upgrade <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
@@ -106,52 +103,62 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=ids">https://​cloud.r-project.org/​package=ids</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/reside-ic/ids/">https://​github.com/​reside-ic/​ids/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/reside-ic/ids/issues">https://​github.com/​reside-ic/​ids/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Rich FitzJohn <br><small class="roles"> Author, maintainer </small>  </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="https://cloud.r-project.org/package=ids" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/reside-ic/ids/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/reside-ic/ids/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a></li>
-<li><a href="https://github.com/richfitz/ids/actions"><img src="https://github.com/richfitz/ids/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://www.codefactor.io/repository/github/reside-ic/ids"><img src="https://www.codefactor.io/repository/github/reside-ic/ids/badge" alt="CodeFactor"></a></li>
-<li><a href="https://codecov.io/github/reside-ic/ids?branch=master"><img src="https://codecov.io/github/reside-ic/ids/coverage.svg?branch=master" alt="codecov.io"></a></li>
-<li><a href="https://cran.r-project.org/package=ids"><img src="https://www.r-pkg.org/badges/version/ids"></a></li>
+<li>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+</li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing ids</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Rich FitzJohn <br><small class="roles"> Author, maintainer </small>  </li>
+<li><a href="authors.html">More about authors...</a></li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="http://www.repostatus.org/#active" class="external-link"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a></li>
+<li><a href="https://github.com/richfitz/ids/actions" class="external-link"><img src="https://github.com/richfitz/ids/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://www.codefactor.io/repository/github/reside-ic/ids" class="external-link"><img src="https://www.codefactor.io/repository/github/reside-ic/ids/badge" alt="CodeFactor"></a></li>
+<li><a href="https://codecov.io/github/reside-ic/ids?branch=master" class="external-link"><img src="https://codecov.io/github/reside-ic/ids/coverage.svg?branch=master" alt="codecov.io"></a></li>
+<li><a href="https://cran.r-project.org/package=ids" class="external-link"><img src="https://www.r-pkg.org/badges/version/ids"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Rich FitzJohn.</p>
+  <p></p>
+<p>Developed by Rich FitzJohn.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -159,6 +166,8 @@
 
   
 
+
+  
 
   </body>
 </html>
